@@ -20,10 +20,10 @@
               <a class="nav-link" href="{{ route('first') }}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('about') }}">about REFINED</a>
+              <a class="nav-link" href="#">About REFINED</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('about') }}">about SOTM</a>
+                <a class="nav-link" href="https://segunobadje.org/">About SOTM</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
