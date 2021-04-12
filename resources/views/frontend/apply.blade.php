@@ -88,12 +88,12 @@
                         <input type="text" class="form-control" name="ministry" id="ministry" value="{{ old('ministry') }}">
                     </div>
                   <div class="form-group">
-                    <label for="sel1">Are you a SETMAN? <span>(you pioneer a ministry work with your or together with husband)</span></label>
+                    <label for="sel1">Are you a SetMan? (Do you pioneer a ministry work with your husband.)</span></label>
                     <label class="checkbox-inline">Yes<input style="margin-right: 5px;" name="setman" type="radio" value="yes" required></label>
                     <label class="checkbox-inline">No<input style="margin-right: 5px;" name="setman" type="radio" value="no" required></label>
                   </div>
                   <div class="form-group">
-                        <label>How did you hear about REFINED</label>
+                        <label>How did you hear about REFINED?</label>
                         <select class="form-control form-control-lg" name="advert">
                             <option value="Church announcement">Church announcement</option>
                             <option value="Social Media">Social Media</option>
@@ -103,7 +103,7 @@
                         </select>
                  </div>
                     <div class="form-group">
-                        <label for="bornagain">Are you born again </label>
+                        <label for="bornagain">Are you born again? </label>
                         <label class="radio-inline">Yes<input style="margin-right: 5px;" name="born_again" type="radio" value="yes" required></label>
                         <label class="radio-inline">No<input style="margin-right: 5px;" name="born_again" type="radio" value="no" required></label>
 
@@ -166,7 +166,7 @@
                 </div>
 
                 <div class="form">
-                <label class="custom-file-label" for="customFile">Upload Picture</label>
+                <label class="custom-file-label" for="customFile">Upload Picture (MAXIMUM SIZE: 1MB)</label>
                 <input type="file" class="form" name="picture" id="customFile" required>
                 </div>
 

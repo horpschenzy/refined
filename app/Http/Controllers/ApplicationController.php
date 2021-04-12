@@ -88,7 +88,7 @@ class ApplicationController extends Controller
                         ->subject('Refined Welcomes You');
             });
             $notification = array(
-                'message' => "Registeration Successful. Kindly check your mail to continue.",
+                'message' => "Registration Successful. Kindly check your mail to continue.",
                 'alert-type' => 'success'
             );
             return redirect('/')->with($notification);
