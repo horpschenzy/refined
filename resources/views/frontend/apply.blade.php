@@ -88,7 +88,7 @@
                         <input type="text" class="form-control" name="ministry" id="ministry" value="{{ old('ministry') }}">
                     </div>
                   <div class="form-group">
-                    <label for="sel1">Are you a SetMan? (Do you pioneer a ministry work with your husband.)</span></label>
+                    <label for="sel1">Are you a SetMan / G.O? (Do you pioneer a ministry work with your husband?)</span></label>
                     <label class="checkbox-inline">Yes<input style="margin-right: 5px;" name="setman" type="radio" value="yes" required></label>
                     <label class="checkbox-inline">No<input style="margin-right: 5px;" name="setman" type="radio" value="no" required></label>
                   </div>
