@@ -143,7 +143,7 @@
                         <label class="checkbox-inline">No<input style="margin-right: 5px;" name="take_refined"  type="radio" value="no" required></label>
                   </div>
                     <div class="form">
-                        <label for="sel1">Have you been denied addmission for this REFINED before?</label>
+                        <label for="sel1">Have you been denied admission for this REFINED before?</label>
                         <label class="checkbox-inline">Yes<input style="margin-right: 5px;" name="denied_admission" type="radio" value="yes" required></label>
                         <label class="checkbox-inline">No<input style="margin-right: 5px;" name="denied_admission"  type="radio" value="no" required></label>
                   </div>
