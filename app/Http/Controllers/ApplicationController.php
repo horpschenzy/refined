@@ -63,7 +63,7 @@ class ApplicationController extends Controller
                                     'state', 'maritalstatus', 'gender','agerange', 'prefer_com', 'advert',
                                     'setman', 'born_again', 'yearbornagain', 'holyghost', 'church', 'departmentchurch',
                                     'pastor_wife', 'take_refined', 'denied_admission', 'yearofattendance', 'graduate_refined',
-                                    'retake', 'expectation'
+                                    'retake', 'expectation','involved_in_ministry','ministry'
                             ]);
         if($request->hasFile('picture')){
             $picture = $request->file('picture');
