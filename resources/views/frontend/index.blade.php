@@ -7,9 +7,11 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="section-head">
-            <h1>the best place to learn and understand Ministry life for you and your family</h1>
-            <p>Studies have shown that those who participate in group fitness are more dedicated and get better results.</p>
-            <a href="#" class="btn btn-secondary">more ..</a>
+            <h1>Online Mentoring Course for 
+                Women-In-Ministry</h1>
+            <p>Join the thousands of women who are taking over the world for God
+                through their various ministries.</p>
+            <a href="{{ route('about') }}" class="btn btn-secondary">more ..</a>
           </div>
         </div>
         <div class="col-lg-6">
@@ -26,7 +28,7 @@
             </form>
 
             <p class="paragraph">
-              * We don’t share your personal info with anyone. Check out our Privacy Policy for more information.
+              * We don’t share your personal info with anyone.
             </p>
           </div>
         </div>
