@@ -21,7 +21,7 @@
                 <input type="text" placeholder="REF/2021/0001">
                 <label for="Password">Password</label>
                 <input type="password" placeholder="Enter Password">
-                <button type="submit" class="btn btn-primary btn-sh-primary ">join us</button>
+                <button type="button" class="btn btn-primary btn-sh-primary ">join us</button>
 
             </form>
 
