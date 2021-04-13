@@ -1,8 +1,6 @@
 <!doctype html>
-<html lang="en">
-
+<html lang="en"
     <head>
-
         <meta charset="utf-8" />
         <title>Dashboard | REFINED</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,10 +15,7 @@
         <link href="admin/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="admin/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-
     </head>
-
-
     <body data-sidebar="dark">
 
     <!-- <body data-layout="horizontal" data-topbar="colored"> -->
@@ -31,8 +26,6 @@
 
            @include('admin.panel.navbar')
             @include('admin.panel.sidebar')
-
-
 
             <!-- ============================================================== -->
             <!-- Start right Content here -->
@@ -53,10 +46,32 @@
         <!-- JAVASCRIPT -->
         @stack('scripts')
 
-
         <!--Morris Chart-->
         @stack('charts')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
+        <script>
+            @if(Session::has('message'))
+                var type = "{{ Session::get('alert-type', 'info') }}";
+                switch(type){
+                    case 'info':
+                        toastr.info("{{ Session::get('message') }}");
+                        break;
+
+                    case 'warning':
+                        toastr.warning("{{ Session::get('message') }}");
+                        break;
+
+                    case 'success':
+                        toastr.success("{{ Session::get('message') }}");
+                        break;
+
+                    case 'error':
+                        toastr.error("{{ Session::get('message') }}");
+                        break;
+                }
+            @endif
+        </script>
     </body>
 
 </html>
