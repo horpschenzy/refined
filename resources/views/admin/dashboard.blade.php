@@ -29,8 +29,7 @@
                             </div>
                             <div class="text-white">
                                 <h6 class="text-uppercase mb-3 font-size-16 text-white">Applicants</h6>
-                                <h2 class="mb-4 text-white">{{ $countapplicants }}</h2>
-                                <span class="badge bg-info"> +11% </span> <span class="ms-2">From previous Year</span>
+                                <h2 class="mb-4 text-white">{{ $countapplicants['all'] }}</h2>
                             </div>
                         </div>
                     </div>
@@ -43,8 +42,7 @@
                             </div>
                             <div class="text-white">
                                 <h6 class="text-uppercase mb-3 font-size-16 text-white">Accepted Members</h6>
-                                <h2 class="mb-4 text-white">469</h2>
-                                <span class="badge bg-danger"> -29% </span> <span class="ms-2">From previous period</span>
+                                <h2 class="mb-4 text-white">{{ $countapplicants['approved'] }}</h2>
                             </div>
                         </div>
                     </div>
@@ -57,8 +55,7 @@
                             </div>
                             <div class="text-white">
                                 <h6 class="text-uppercase mb-3 font-size-16 text-white">Reject Applicants</h6>
-                                <h2 class="mb-4 text-white">258</h2>
-                                <span class="badge bg-warning"> 0% </span> <span class="ms-2">From previous period</span>
+                                <h2 class="mb-4 text-white">{{ $countapplicants['rejected'] }}</h2>
                             </div>
                         </div>
                     </div>
@@ -71,8 +68,7 @@
                             </div>
                             <div class="text-white">
                                 <h6 class="text-uppercase mb-3 font-size-16 text-white">Pending for Review</h6>
-                                <h2 class="mb-4 text-white">13</h2>
-                                <span class="badge bg-info"> +89% </span> <span class="ms-2">For 2021</span>
+                                <h2 class="mb-4 text-white">{{  $countapplicants['pending']  }}</h2>
                             </div>
                         </div>
                     </div>
@@ -119,33 +115,33 @@
                                         </thead>
                                         @foreach ($applicants as $applicant)
                                         <tr>
-                                            <td> <img src="admin/assets/images/users/user-1.jpg" alt="user-image" class="avatar-xs me-2 rounded-circle" /></td>
+                                            <td> <img src="images/{{ $applicant->picture }}" alt="user-image" class="avatar-xs me-2 rounded-circle" /></td>
                                             <td>{{$applicant->firstname}} </td>
                                             <td>{{$applicant->lastname}}</td>
                                             <td>{{$applicant->gender}}</td>
                                             <td>{{$applicant->agerange}}</td>
-                                            <td>No</td>
-                                            <td>Single</td>
-                                            <td>pelumioo1@gmail.com</td>
-                                            <td>08037079950</td>
-                                            <td><span class="badge rounded-pill bg-primary">Telegram</span></td>
+                                            <td>{{ucfirst($applicant->pastor_wife)}}</td>
+                                            <td>{{ucfirst($applicant->maritalstatus)}}</td>
+                                            <td>{{$applicant->email}}</td>
+                                            <td>{{$applicant->phone}}</td>
+                                            <td><span class="badge rounded-pill bg-primary">{{$applicant->prefer_com}}</span></td>
                                             <td>
-                                                Nigeria
+                                                {{$applicant->country}}
                                             </td>
                                             <td>
-                                               Lagos
+                                                {{$applicant->state}}
                                             </td>
-                                            <td>Yes</td>
-                                            <td>Yes</td>
-                                            <td>Salvation Army</td>
-                                            <td>No</td>
-                                            <td>Referral from Past student</td>
-                                            <td>No</td>
-                                            <td>No</td>
-                                            <td> - </td>
-                                            <td> - </td>
-                                            <td> - </td>
-                                            <td> Transform </td>
+                                            <td>{{ucfirst($applicant->born_again)}}</td>
+                                            <td>{{ucfirst($applicant->holyghost)}}</td>
+                                            <td>{{ucfirst($applicant->church)}}</td>
+                                            <td>{{ucfirst($applicant->setman)}}</td>
+                                            <td>{{ucfirst($applicant->advert)}}</td>
+                                            <td>{{ucfirst($applicant->denied_admission)}}</td>
+                                            <td>{{ucfirst($applicant->take_refined)}}</td>
+                                            <td> {{ucfirst($applicant->yearofattendance)}} </td>
+                                            <td> {{ucfirst($applicant->graduate_refined)}} </td>
+                                            <td>{{ucfirst($applicant->retake)}} </td>
+                                            <td> {{ucfirst($applicant->expectation)}} </td>
                                             <td>
                                                 <div class="dropdown dropdown-topbar d-inline-block">
                                                     <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

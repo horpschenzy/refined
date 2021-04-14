@@ -91,7 +91,7 @@ class ApplicationController extends Controller
                 'message' => "Application Submitted Successfully. Kindly check your mail to continue.",
                 'alert-type' => 'success'
             );
-            return redirect('/')->with($notification);
+            return redirect('/success')->with($notification);
         }               
 
     }
