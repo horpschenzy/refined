@@ -15,6 +15,7 @@
         <link href="admin/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="admin/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+        @yield('styles')
     </head>
     <body data-sidebar="dark">
 

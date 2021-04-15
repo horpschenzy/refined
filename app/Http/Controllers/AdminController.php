@@ -27,7 +27,7 @@ class AdminController extends Controller
     {
 
         // $user = Auth::user();
-        $applicants = Application::where('firstname','!=','Admin')->limit(5)->get();
+        $applicants = Application::where('firstname','!=','Admin')->get();
         $countapplicants['all'] = Application::where('firstname','!=','Admin')->count();
         $countapplicants['approved'] = Application::where('status', 'approved')->where('firstname','!=','Admin')->count();
         $countapplicants['pending'] = Application::where('status', 'pending')->where('firstname','!=','Admin')->count();
