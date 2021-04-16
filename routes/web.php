@@ -32,5 +32,9 @@ Route::get('/faq', 'FrontendController@faq')->name('faq');
 
 //ADMIN
 Route::get('/dashboard', 'AdminController@index')->name('dashboard');
-Route::get('/members', 'AdminController@members')->name('members');
+Route::get('/rejected', 'AdminController@rejected')->name('rejected');
+Route::get('/approved', 'AdminController@approved')->name('approved');
+Route::get('/pending', 'AdminController@pending')->name('pending');
 Route::post('/logout', 'AdminController@logout')->name('logout');
+Route::get('/course', 'CourseController@index')->name('course');
+Route::get('/ExamandTest', 'ExamController@index')->name('exam');
