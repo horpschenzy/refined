@@ -19,10 +19,39 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function members()
+    public function approved()
     {
-        return view('admin.members');
+        $applicants = Application::where('firstname','!=','Admin')->get();
+        $countapplicants['all'] = Application::where('firstname','!=','Admin')->count();
+        $countapplicants['approved'] = Application::where('status', 'approved')->where('firstname','!=','Admin')->count();
+        $countapplicants['pending'] = Application::where('status', 'pending')->where('firstname','!=','Admin')->count();
+        $countapplicants['rejected'] = Application::where('status', 'rejected')->where('firstname','!=','Admin')->count();
+
+        return view('admin.approved', compact('countapplicants', 'applicants'));
     }
+
+    public function pending()
+    {
+        $applicants = Application::where('firstname','!=','Admin')->get();
+        $countapplicants['all'] = Application::where('firstname','!=','Admin')->count();
+        $countapplicants['approved'] = Application::where('status', 'approved')->where('firstname','!=','Admin')->count();
+        $countapplicants['pending'] = Application::where('status', 'pending')->where('firstname','!=','Admin')->count();
+        $countapplicants['rejected'] = Application::where('status', 'rejected')->where('firstname','!=','Admin')->count();
+
+        return view('admin.pending', compact('countapplicants', 'applicants'));
+    }
+
+    public function rejected()
+    {
+        $applicants = Application::where('firstname','!=','Admin')->get();
+        $countapplicants['all'] = Application::where('firstname','!=','Admin')->count();
+        $countapplicants['approved'] = Application::where('status', 'approved')->where('firstname','!=','Admin')->count();
+        $countapplicants['pending'] = Application::where('status', 'pending')->where('firstname','!=','Admin')->count();
+        $countapplicants['rejected'] = Application::where('status', 'rejected')->where('firstname','!=','Admin')->count();
+
+        return view('admin.rejected', compact('countapplicants', 'applicants'));
+    }
+
     public function index()
     {
 

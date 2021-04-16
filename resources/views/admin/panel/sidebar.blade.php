@@ -16,29 +16,33 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-account-multiple"></i>
+                        <span>Applicants</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('approved')}}">Approved Applicants</a></li>
+                        <li><a href="{{route('pending')}}">Pending Applicants</a></li>
+                        <li><a href="{{route('rejected')}}">Rejected Applicants</a></li>
+                    </ul>
+                </li>
+
+                 <li>
+                    <a href="#" class=" waves-effect">
+                        <i class="mdi mdi-cash-multiple"></i>
+                        <span>Courses</span>
+                    </a>
+                </li>
 
                 <li>
-                    <a href="{{route('members')}}" class=" waves-effect">
-                        <i class="mdi mdi-account-multiple"></i>
-                        <span>Members</span>
+                    <a href="#" class=" waves-effect">
+                        <i class="mdi mdi-home-search"></i>
+                        <span>Exams and Test</span>
                     </a>
                 </li>
 
                 {{-- <li>
-                    <a href="#" class=" waves-effect">
-                        <i class="mdi mdi-cash-multiple"></i>
-                        <span>Subscription</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="" class=" waves-effect">
-                        <i class="mdi mdi-home-search"></i>
-                        <span>Projects</span>
-                    </a>
-                </li>
-
-                <li>
                     <a href="" class=" waves-effect">
                         <i class="mdi mdi-account"></i>
                         <span>Users</span>
