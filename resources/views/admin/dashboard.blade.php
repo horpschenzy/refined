@@ -63,7 +63,7 @@
                                 <i class="mdi mdi-account-multiple float-end"></i>
                             </div>
                             <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Reject Applicants</h6>
+                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Rejected Applicants</h6>
                                 <h2 class="mb-4 text-white">{{ $countapplicants['rejected'] }}</h2>
                             </div>
                         </div>
