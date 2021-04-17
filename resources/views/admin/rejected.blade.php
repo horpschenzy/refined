@@ -157,10 +157,8 @@
                                                         </a>
 
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                        <a class="dropdown-item" href="#">Accept</a>
-                                                        <a class="dropdown-item" href="#">Pend</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item"  href="#">Reject</a>
+                                                        <a class="dropdown-item" href="/accept/{{ $applicant->id }}">Accept</a>
+                                                        <a class="dropdown-item" href="/pend/{{ $applicant->id }}">Pend</a>
                                                     </div>
                                                 </div>
                                             </td>
