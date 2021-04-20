@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Application;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -30,7 +30,7 @@ class AdminController extends Controller
             return redirect('/rejected')->with($notification);
         }
     }
-    
+
     public function pend($id)
     {
         $updateapplicants = Application::where('id',$id)->update(['status'=>'pending']);
@@ -42,7 +42,7 @@ class AdminController extends Controller
             return redirect('/pending')->with($notification);
         }
     }
-    
+
     public function accept($id)
     {
         $updateapplicants = Application::where('id',$id)->update(['status'=>'approved']);
@@ -54,7 +54,7 @@ class AdminController extends Controller
             return redirect('/approved')->with($notification);
         }
     }
-    
+
     public function approved()
     {
         $applicants = Application::where('firstname','!=','Admin')->where('status', 'approved')->get();
@@ -87,6 +87,11 @@ class AdminController extends Controller
         $countapplicants['rejected'] = Application::where('status', 'rejected')->where('firstname','!=','Admin')->count();
 
         return view('admin.dashboard', compact('countapplicants', 'applicants'));
+    }
+
+    public function applicants(Type $var = null)
+    {
+        return DataTables::of(Application::where('firstname','!=','Admin')->get())->make(true);
     }
 
     public function logout()

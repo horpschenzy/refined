@@ -31,6 +31,7 @@ Route::get('/contact', 'FrontendController@contact')->name('contact');
 Route::get('/faq', 'FrontendController@faq')->name('faq');
 
 //ADMIN
+Route::get('/applicants', 'AdminController@applicants')->name('get.applicants');
 Route::get('/dashboard', 'AdminController@index')->name('dashboard');
 Route::get('/rejected', 'AdminController@rejected')->name('rejected');
 Route::get('/approved', 'AdminController@approved')->name('approved');
