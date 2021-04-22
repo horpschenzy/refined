@@ -8,7 +8,7 @@
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="dist/images/refined-new-black.png">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <!-- Bootstrap Css -->
         <link href="admin/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
