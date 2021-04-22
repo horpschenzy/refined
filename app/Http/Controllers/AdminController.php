@@ -6,6 +6,7 @@ use App\Models\Application;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\DataTables\ApplicationDataTable;
 
 class AdminController extends Controller
@@ -23,8 +24,16 @@ class AdminController extends Controller
     public function reject(Request $request)
     {
         $id = $request->id;
-        $updateapplicants = Application::where('id',$id)->update(['status'=>'rejected']);
-        if($updateapplicants){
+        $applicant = Application::where('id',$id);
+        $updateapplicant = $applicant->update(['status'=>'rejected']);
+        if($updateapplicant){
+            $details = [];
+            $details['name'] = $applicant->first()->lastname;
+            $this->email = $applicant->first()->email;
+            Mail::send('emails.welcomemail', $details , function($message){
+                $message->to($this->email)
+                        ->subject('Refined Rejection Mail');
+            });
             $notification = array(
                 'message' => "Application Rejected Successfully.",
                 'alert-type' => 'success'
@@ -37,8 +46,8 @@ class AdminController extends Controller
     public function pend(Request $request)
     {
         $id = $request->id;
-        $updateapplicants = Application::where('id',$id)->update(['status'=>'pending']);
-        if($updateapplicants){
+        $updateapplicant = Application::where('id',$id)->update(['status'=>'pending']);
+        if($updateapplicant){
             $notification = array(
                 'message' => "Application Added To Pending List Successfully.",
                 'alert-type' => 'success'
@@ -51,8 +60,16 @@ class AdminController extends Controller
     public function accept(Request $request)
     {
         $id = $request->id;
-        $updateapplicants = Application::where('id',$id)->update(['status'=>'approved']);
-        if($updateapplicants){
+        $applicant = Application::where('id',$id);
+        $updateapplicant = $applicant->update(['status'=>'approved']);
+        if($updateapplicant){
+            $details = [];
+            $details['name'] = $applicant->first()->lastname;
+            $this->email = $applicant->first()->email;
+            Mail::send('emails.welcomemail', $details , function($message){
+                $message->to($this->email)
+                        ->subject('Refined Acceptance Mail');
+            });
             $notification = array(
                 'message' => "Application Accepted Successfully.",
                 'alert-type' => 'success'
