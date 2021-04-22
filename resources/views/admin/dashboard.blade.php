@@ -3,7 +3,7 @@
 @section('styles')
     <link href="admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="admin/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Responsive datatable examples -->
     <link href="admin/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 @endsection
@@ -90,9 +90,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title mb-4">Application Request</h4>
-
                             <div class="table-responsive">
-                                <table id="applicants-table" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <th>Image</th>
                                         <th>Firstname</th>
@@ -120,7 +119,7 @@
                                         <th>Action</th>
 
                                     </thead>
-                                    {{--  <tbody>
+                                    <tbody>
                                         @foreach ($applicants as $applicant)
                                         <tr>
                                             <td> <img src="images/{{ $applicant->picture }}" alt="user-image" class="avatar-xs me-2 rounded-circle" /></td>
@@ -157,17 +156,17 @@
                                                         </a>
 
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                        <a class="dropdown-item" href="#">Accept</a>
-                                                        <a class="dropdown-item" href="#">Pend</a>
+                                                        <a class="dropdown-item" onclick="accept({{ $applicant->id }})">Accept</a>
+                                                        <a class="dropdown-item" onclick="pend({{ $applicant->id }})">Pend</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item"  href="#">Reject</a>
+                                                        <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
                                         @endforeach
 
-                                    </tbody>  --}}
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -214,40 +213,111 @@
 
         <!-- Datatable init js -->
         <script src="admin/assets/js/pages/datatables.init.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
-            $(function() {
-                $('#applicants-table').DataTable({
-                    processing: true,
-                    serverSide: true,
-                    ajax: '{!! route('get.applicants') !!}',
-                    columns: [
-                        { data: 'id', name: 'id' },
-                        { data: 'firstname', name: 'firstname' },
-                        { data: 'lastname', name: 'lastname' },
-                        { data: 'gender', name: 'gender' },
-                        { data: 'agerange', name: 'agerange' },
-                        { data: 'pastor_wife', name: 'pastor_wife' },
-                        { data: 'maritalstatus', name: 'maritalstatus' },
-                        { data: 'email', name: 'email' },
-                        { data: 'phone', name: 'phone' },
-                        { data: 'prefer_com', name: 'prefer_com' },
-                        { data: 'country', name: 'country' },
-                        { data: 'state', name: 'state' },
-                        { data: 'born_again', name: 'born_again' },
-                        { data: 'holyghost', name: 'holyghost' },
-                        { data: 'church', name: 'church' },
-                        { data: 'setman', name: 'setman' },
-                        { data: 'advert', name: 'advert' },
-                        { data: 'denied_admission', name: 'denied_admission' },
-                        { data: 'take_refined', name: 'take_refined' },
-                        { data: 'yearofattendance', name: 'yearofattendence' },
-                        { data: 'graduate_refined', name: 'graduate_refined' },
-                        { data: 'retake', name: 'retake' },
-                        { data: 'expectation', name: 'expectation' },
-                    ]
-                });
-            });
-            </script>
+            function reject(id){
+                swal({
+                    title: "Are you sure you want to reject this application?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: false,
+                  })
+                  .then((reject) => {
+                    if (reject) {
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                        $.ajax({
+                            url: "/reject",
+                            type:"POST",
+                            data:{
+                              id:id,
+                              _token: _token
+                            },
+
+                            success:function(response){
+                              console.log(response);
+                              if(response) {
+                                swal("Poof! Application Rejected Successfully!", {
+                                    icon: "success", });
+
+                                location.reload();
+                              }
+                            },
+                        });
+                      
+                    } else {
+                      swal("Application Discarded!");
+                    }
+                  });
+            }
+            function accept(id){
+                swal({
+                    title: "Are you sure you want to accept this application?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: false,
+                  })
+                  .then((accept) => {
+                    if (accept) {
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                        $.ajax({
+                            url: "/accept",
+                            type:"POST",
+                            data:{
+                              id:id,
+                              _token: _token
+                            },
+
+                            success:function(response){
+                              console.log(response);
+                              if(response) {
+                                swal("Poof! Application Accepted Successfully!", {
+                                    icon: "success", });
+
+                                location.reload();
+                              }
+                            },
+                        });
+                      
+                    } else {
+                      swal("Application Discarded!");
+                    }
+                  });
+            }
+            function pend(id){
+                swal({
+                    title: "Are you sure you want to pend this application?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: false,
+                  })
+                  .then((pend) => {
+                    if (pend) {
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                        $.ajax({
+                            url: "/pend",
+                            type:"POST",
+                            data:{
+                              id:id,
+                              _token: _token
+                            },
+
+                            success:function(response){
+                              console.log(response);
+                              if(response) {
+                                swal("Poof! Application Pend Successfully!", {
+                                    icon: "success", });
+
+                                location.reload();
+                              }
+                            },
+                        });
+                      
+                    } else {
+                      swal("Application Discarded!");
+                    }
+                  });
+            }
+        </script>
 
 @endpush
 

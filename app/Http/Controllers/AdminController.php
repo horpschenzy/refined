@@ -6,6 +6,7 @@ use App\Models\Application;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
+use App\DataTables\ApplicationDataTable;
 
 class AdminController extends Controller
 {
@@ -19,40 +20,46 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function reject($id)
+    public function reject(Request $request)
     {
+        $id = $request->id;
         $updateapplicants = Application::where('id',$id)->update(['status'=>'rejected']);
         if($updateapplicants){
             $notification = array(
                 'message' => "Application Rejected Successfully.",
                 'alert-type' => 'success'
             );
-            return redirect('/rejected')->with($notification);
+            return true;
         }
+        return false;
     }
 
-    public function pend($id)
+    public function pend(Request $request)
     {
+        $id = $request->id;
         $updateapplicants = Application::where('id',$id)->update(['status'=>'pending']);
         if($updateapplicants){
             $notification = array(
                 'message' => "Application Added To Pending List Successfully.",
                 'alert-type' => 'success'
             );
-            return redirect('/pending')->with($notification);
+            return true;
         }
+        return false;
     }
 
-    public function accept($id)
+    public function accept(Request $request)
     {
+        $id = $request->id;
         $updateapplicants = Application::where('id',$id)->update(['status'=>'approved']);
         if($updateapplicants){
             $notification = array(
                 'message' => "Application Accepted Successfully.",
                 'alert-type' => 'success'
             );
-            return redirect('/approved')->with($notification);
+            return true;
         }
+        return false;
     }
 
     public function approved()
@@ -76,22 +83,22 @@ class AdminController extends Controller
         return view('admin.rejected', compact('applicants'));
     }
 
-    public function index()
+    public function index(ApplicationDataTable $dataTable)
     {
 
         // $user = Auth::user();
-        $applicants = Application::where('firstname','!=','Admin')->get();
+        $applicants = Application::where('firstname','!=','Admin')->where('status', 'pending')->get();
         $countapplicants['all'] = Application::where('firstname','!=','Admin')->count();
         $countapplicants['approved'] = Application::where('status', 'approved')->where('firstname','!=','Admin')->count();
         $countapplicants['pending'] = Application::where('status', 'pending')->where('firstname','!=','Admin')->count();
         $countapplicants['rejected'] = Application::where('status', 'rejected')->where('firstname','!=','Admin')->count();
 
-        return view('admin.dashboard', compact('countapplicants', 'applicants'));
+        return $dataTable->render('admin.dashboard', compact('countapplicants', 'applicants'));
     }
 
-    public function applicants(Type $var = null)
+    public function applicants()
     {
-        return DataTables::of(Application::where('firstname','!=','Admin')->get())->make(true);
+        return DataTables::of(Application::where('firstname','!=','Admin')->get())->toJson();
     }
 
     public function logout()

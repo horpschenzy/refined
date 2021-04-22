@@ -89,7 +89,7 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-4">Approved Applicants</h4>
+                            <h4 class="card-title mb-4">Pending Applicants</h4>
 
                             <div class="table-responsive">
                                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -157,9 +157,11 @@
                                                         </a>
 
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                        <a class="dropdown-item" href="/accept/{{ $applicant->id }}">Accept</a>
+                                                        <a class="dropdown-item" onclick="accept({{ $applicant->id }})">Accept</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item"  href="/reject/{{ $applicant->id }}">Reject</a>
+                                                        <a class="dropdown-item"  onclick="reject({{ $applicant->id }})">Reject</a>
+
+                                                        
                                                     </div>
                                                 </div>
                                             </td>
@@ -213,7 +215,77 @@
 
         <!-- Datatable init js -->
         <script src="admin/assets/js/pages/datatables.init.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            function reject(id){
+                swal({
+                    title: "Are you sure you want to reject this application?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: false,
+                  })
+                  .then((reject) => {
+                    if (reject) {
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                        $.ajax({
+                            url: "/reject",
+                            type:"POST",
+                            data:{
+                              id:id,
+                              _token: _token
+                            },
 
+                            success:function(response){
+                              console.log(response);
+                              if(response) {
+                                swal("Poof! Application Rejected Successfully!", {
+                                    icon: "success", });
+
+                                location.reload();
+                              }
+                            },
+                        });
+                      
+                    } else {
+                      swal("Application Discarded!");
+                    }
+                  });
+            }
+            function accept(id){
+                swal({
+                    title: "Are you sure you want to accept this application?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: false,
+                  })
+                  .then((accept) => {
+                    if (accept) {
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                        $.ajax({
+                            url: "/accept",
+                            type:"POST",
+                            data:{
+                              id:id,
+                              _token: _token
+                            },
+
+                            success:function(response){
+                              console.log(response);
+                              if(response) {
+                                swal("Poof! Application Accepted Successfully!", {
+                                    icon: "success", });
+
+                                location.reload();
+                              }
+                            },
+                        });
+                      
+                    } else {
+                      swal("Application Discarded!");
+                    }
+                  });
+            }
+        </script>
 
 @endpush
 

@@ -104,9 +104,9 @@
                                                         </a>
 
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                        <a class="dropdown-item" href="/pend/{{ $applicant->id }}">Pend</a>
+                                                        <a class="dropdown-item" onclick="pend({{ $applicant->id }})">Pend</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item"  href="/reject/{{ $applicant->id }}">Reject</a>
+                                                        <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -160,8 +160,77 @@
 
         <!-- Datatable init js -->
         <script src="admin/assets/js/pages/datatables.init.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            function reject(id){
+                swal({
+                    title: "Are you sure you want to reject this application?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: false,
+                  })
+                  .then((reject) => {
+                    if (reject) {
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                        $.ajax({
+                            url: "/reject",
+                            type:"POST",
+                            data:{
+                              id:id,
+                              _token: _token
+                            },
 
+                            success:function(response){
+                              console.log(response);
+                              if(response) {
+                                swal("Poof! Application Rejected Successfully!", {
+                                    icon: "success", });
 
+                                location.reload();
+                              }
+                            },
+                        });
+                      
+                    } else {
+                      swal("Application Discarded!");
+                    }
+                  });
+            }
+            function pend(id){
+                swal({
+                    title: "Are you sure you want to pend this application?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: false,
+                  })
+                  .then((pend) => {
+                    if (pend) {
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                        $.ajax({
+                            url: "/pend",
+                            type:"POST",
+                            data:{
+                              id:id,
+                              _token: _token
+                            },
+
+                            success:function(response){
+                              console.log(response);
+                              if(response) {
+                                swal("Poof! Application Pend Successfully!", {
+                                    icon: "success", });
+
+                                location.reload();
+                              }
+                            },
+                        });
+                      
+                    } else {
+                      swal("Application Discarded!");
+                    }
+                  });
+            }
+        </script>
 @endpush
 
 @push('charts')
