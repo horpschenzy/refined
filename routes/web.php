@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/success', 'FrontendController@success')->name('success');
 Route::get('/login', 'FrontendController@login')->name('login');
 Route::post('/admin/login', 'FrontendController@customlogin');
+Route::post('/login', 'FrontendController@customlogin');
 Route::post('/register', 'ApplicationController@store');
 Route::get('/about', 'FrontendController@about')->name('about');
 Route::get('/apply', 'FrontendController@apply')->name('apply');
@@ -46,3 +47,6 @@ Route::get('/ExamandTest', 'ExamController@index')->name('exam');
 
 Route::get('/addlesson', 'LessonController@index')->name('addlesson');
 
+
+//Member
+Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');
