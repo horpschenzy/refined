@@ -29,60 +29,7 @@
             </div>
             <!-- end page title -->
 
-            {{-- <div class="row">
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-primary">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-account-multiple float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Applicants</h6>
-                                <h2 class="mb-4 text-white">{{ $countapplicants['all'] }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-success">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-account-multiple float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Accepted Members</h6>
-                                <h2 class="mb-4 text-white">{{ $countapplicants['approved'] }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-danger">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-account-multiple float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Reject Applicants</h6>
-                                <h2 class="mb-4 text-white">{{ $countapplicants['rejected'] }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-warning">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-account-multiple float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Pending for Review</h6>
-                                <h2 class="mb-4 text-white">{{  $countapplicants['pending']  }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
+           
 
             <div class="row">
 
@@ -157,10 +104,9 @@
                                                         </a>
 
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                        <a class="dropdown-item" href="#">Accept</a>
-                                                        <a class="dropdown-item" href="#">Pend</a>
+                                                        <a class="dropdown-item" onclick="pend({{ $applicant->id }})">Pend</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item"  href="#">Reject</a>
+                                                        <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -214,8 +160,77 @@
 
         <!-- Datatable init js -->
         <script src="admin/assets/js/pages/datatables.init.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            function reject(id){
+                swal({
+                    title: "Are you sure you want to reject this application?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: false,
+                  })
+                  .then((reject) => {
+                    if (reject) {
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                        $.ajax({
+                            url: "/reject",
+                            type:"POST",
+                            data:{
+                              id:id,
+                              _token: _token
+                            },
 
+                            success:function(response){
+                              console.log(response);
+                              if(response) {
+                                swal("Poof! Application Rejected Successfully!", {
+                                    icon: "success", });
 
+                                location.reload();
+                              }
+                            },
+                        });
+                      
+                    } else {
+                      swal("Application Discarded!");
+                    }
+                  });
+            }
+            function pend(id){
+                swal({
+                    title: "Are you sure you want to pend this application?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: false,
+                  })
+                  .then((pend) => {
+                    if (pend) {
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                        $.ajax({
+                            url: "/pend",
+                            type:"POST",
+                            data:{
+                              id:id,
+                              _token: _token
+                            },
+
+                            success:function(response){
+                              console.log(response);
+                              if(response) {
+                                swal("Poof! Application Pend Successfully!", {
+                                    icon: "success", });
+
+                                location.reload();
+                              }
+                            },
+                        });
+                      
+                    } else {
+                      swal("Application Discarded!");
+                    }
+                  });
+            }
+        </script>
 @endpush
 
 @push('charts')

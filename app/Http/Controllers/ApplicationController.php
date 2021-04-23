@@ -77,7 +77,7 @@ class ApplicationController extends Controller
             $user = new User();
             $user->reg_no = 'REF/'.date('Y').'/'.$id;
             $user->application_id = $application->id;
-            $user->password = Hash::make($request->lastname.$id);
+            $user->password = Hash::make(strtolower($request->lastname.$application->id));
             $user->save();
 
             $details = [];

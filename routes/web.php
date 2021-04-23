@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/success', 'FrontendController@success')->name('success');
 Route::get('/login', 'FrontendController@login')->name('login');
 Route::post('/admin/login', 'FrontendController@customlogin');
+Route::post('/login', 'FrontendController@customlogin');
 Route::post('/register', 'ApplicationController@store');
 Route::get('/about', 'FrontendController@about')->name('about');
 Route::get('/apply', 'FrontendController@apply')->name('apply');
@@ -31,13 +32,21 @@ Route::get('/contact', 'FrontendController@contact')->name('contact');
 Route::get('/faq', 'FrontendController@faq')->name('faq');
 
 //ADMIN
+Route::get('/applicants', 'AdminController@applicants')->name('get.applicants');
 Route::get('/dashboard', 'AdminController@index')->name('dashboard');
 Route::get('/rejected', 'AdminController@rejected')->name('rejected');
 Route::get('/approved', 'AdminController@approved')->name('approved');
 Route::get('/pending', 'AdminController@pending')->name('pending');
+Route::post('/delete', 'AdminController@delete');
+Route::post('/reject', 'AdminController@reject');
+Route::post('/accept', 'AdminController@accept');
+Route::post('/pend', 'AdminController@pend');
 Route::post('/logout', 'AdminController@logout')->name('logout');
 Route::get('/course', 'CourseController@index')->name('course');
 Route::get('/ExamandTest', 'ExamController@index')->name('exam');
 
 Route::get('/addlesson', 'LessonController@index')->name('addlesson');
 
+
+//Member
+Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');

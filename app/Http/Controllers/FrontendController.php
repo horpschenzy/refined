@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
     protected function customLogin(Request $request)
     {
         $input = $request->all();
-
+        
         $this->validate($request, [
             'username' => 'required',
             'password' => 'required',
@@ -21,14 +22,19 @@ class FrontendController extends Controller
                 'message' => 'Login successfully!',
                 'alert-type' => 'success'
             );
-            return redirect()->route('dashboard')->with($notification);
+            $usertype = Auth::user()->usertype;
+            if($usertype == 'user'){
+                return redirect()->route('member.dashboard')->with($notification);
+            }else{
+                return redirect()->route('dashboard')->with($notification);
+            }
         }
         else{
             $notification = array(
                 'message' => 'Invalid Email Or Password!',
                 'alert-type' => 'error'
             );
-            return redirect()->route('login')
+            return redirect()->back()
                 ->with($notification);
         }
     }
@@ -37,7 +43,7 @@ class FrontendController extends Controller
     {
         return view('frontend.done');
     }
-    
+
     public function login()
     {
         return view('frontend.login');

@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="section-head">
-            <h1>Online Mentoring Course for 
+            <h1>Online Mentoring Course for
                 Women-In-Ministry</h1>
             <p>Join the thousands of women who are taking over the world for God
                 through their various ministries.</p>
@@ -17,13 +17,13 @@
         <div class="col-lg-6">
           <div class="big-form">
             <h1>Portal Access</h1>
-            <form action="" method="POST">
+            <form action="/login" method="POST">
                 @csrf
                 <label for="ref">Registration Number</label>
-                <input type="text" placeholder="REF/2021/0001">
+                <input type="text" placeholder="REF/2021/0001" name="username" required>
                 <label for="Password">Password</label>
-                <input type="password" placeholder="Enter Password">
-                <button type="button" class="btn btn-primary btn-sh-primary ">join us</button>
+                <input type="password" placeholder="Enter Password" name="password" required>
+                <button type="submit" class="btn btn-primary btn-sh-primary ">Login</button>
 
             </form>
 
