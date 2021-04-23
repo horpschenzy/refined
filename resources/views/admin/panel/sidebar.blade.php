@@ -29,9 +29,27 @@
                 </li>
 
                  <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="{{route('course')}}" class=" waves-effect">
                         <i class="mdi mdi-cash-multiple"></i>
                         <span>Courses</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('course')}}" class=" waves-effect">
+                        <i class="mdi mdi-monitor-cellphone"></i>
+                        <span>LiveStream</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class=" waves-effect">
+                        <i class="mdi mdi-teach"></i>
+                        <span>Classroom</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class=" waves-effect">
+                        <i class="mdi mdi-file-outline"></i>
+                        <span>Resources</span>
                     </a>
                 </li>
 
@@ -41,15 +59,26 @@
                         <span>Exams and Test</span>
                     </a>
                 </li>
-
-                {{-- <li>
-                    <a href="" class=" waves-effect">
+                <li>
+                    <a href="#" class=" waves-effect">
+                        <i class="mdi mdi-account-details"></i>
+                        <span>Attendance</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class=" waves-effect">
                         <i class="mdi mdi-account"></i>
                         <span>Users</span>
                     </a>
                 </li>
-
                 <li>
+                    <a href="#" class=" waves-effect">
+                        <i class="mdi mdi-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+
+                {{-- <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-email-outline"></i>
                         <span>Notifications</span>

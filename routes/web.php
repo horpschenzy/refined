@@ -43,3 +43,6 @@ Route::post('/pend', 'AdminController@pend');
 Route::post('/logout', 'AdminController@logout')->name('logout');
 Route::get('/course', 'CourseController@index')->name('course');
 Route::get('/ExamandTest', 'ExamController@index')->name('exam');
+
+Route::get('/addlesson', 'LessonController@index')->name('addlesson');
+
