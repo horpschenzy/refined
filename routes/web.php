@@ -36,6 +36,7 @@ Route::get('/dashboard', 'AdminController@index')->name('dashboard');
 Route::get('/rejected', 'AdminController@rejected')->name('rejected');
 Route::get('/approved', 'AdminController@approved')->name('approved');
 Route::get('/pending', 'AdminController@pending')->name('pending');
+Route::post('/delete', 'AdminController@delete');
 Route::post('/reject', 'AdminController@reject');
 Route::post('/accept', 'AdminController@accept');
 Route::post('/pend', 'AdminController@pend');
