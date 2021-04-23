@@ -21,6 +21,17 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+        $applicant = Application::where('id',$id);
+        $updateapplicant = $applicant->delete();
+        if($updateapplicant){
+            return true;
+        }
+        return false;
+    }
+
     public function reject(Request $request)
     {
         $id = $request->id;

@@ -160,8 +160,9 @@
                                                         <a class="dropdown-item" onclick="accept({{ $applicant->id }})">Accept</a>
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item"  onclick="reject({{ $applicant->id }})">Reject</a>
+                                                        <a class="dropdown-item"  onclick="delete({{ $applicant->id }})">Delete</a>
 
-                                                        
+
                                                     </div>
                                                 </div>
                                             </td>
@@ -217,6 +218,40 @@
         <script src="admin/assets/js/pages/datatables.init.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
+            function delete(id){
+                swal({
+                    title: "Are you sure you want to delete this application?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                  })
+                  .then((delete) => {
+                    if (delete) {
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                        $.ajax({
+                            url: "/delete",
+                            type:"POST",
+                            data:{
+                              id:id,
+                              _token: _token
+                            },
+
+                            success:function(response){
+                              console.log(response);
+                              if(response) {
+                                swal("Poof! Application Deleted Successfully!", {
+                                    icon: "success", });
+
+                                location.reload();
+                              }
+                            },
+                        });
+
+                    } else {
+                      swal("Application Discarded!");
+                    }
+                  });
+            }
             function reject(id){
                 swal({
                     title: "Are you sure you want to reject this application?",
@@ -245,7 +280,7 @@
                               }
                             },
                         });
-                      
+
                     } else {
                       swal("Application Discarded!");
                     }
@@ -279,7 +314,7 @@
                               }
                             },
                         });
-                      
+
                     } else {
                       swal("Application Discarded!");
                     }
