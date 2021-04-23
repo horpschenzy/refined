@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
@@ -76,8 +77,12 @@ class AdminController extends Controller
         if($updateapplicant){
             $details = [];
             $details['name'] = $applicant->first()->lastname;
+            $user = User::where('application_id', $id);
+            $details['reg_no'] = $user->first()->reg_no;
+            $details['password'] = strtolower($applicant->first()->lastname.$id);
             $this->email = $applicant->first()->email;
-            Mail::send('emails.welcomemail', $details , function($message){
+            
+            Mail::send('emails.refined', $details , function($message){
                 $message->to($this->email)
                         ->subject('Refined Acceptance Mail');
             });

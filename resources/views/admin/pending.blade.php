@@ -160,7 +160,7 @@
                                                         <a class="dropdown-item" onclick="accept({{ $applicant->id }})">Accept</a>
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item"  onclick="reject({{ $applicant->id }})">Reject</a>
-                                                        <a class="dropdown-item"  onclick="delete({{ $applicant->id }})">Delete</a>
+                                                        <a class="dropdown-item"  onclick="deleteApplicant({{ $applicant->id }})">Delete</a>
 
 
                                                     </div>
@@ -218,15 +218,16 @@
         <script src="admin/assets/js/pages/datatables.init.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
-            function delete(id){
+            function deleteApplicant(id)
+            {
                 swal({
                     title: "Are you sure you want to delete this application?",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
                   })
-                  .then((delete) => {
-                    if (delete) {
+                  .then((delete_applicant) => {
+                    if (delete_applicant) {
                         let _token   = $('meta[name="csrf-token"]').attr('content');
                         $.ajax({
                             url: "/delete",
