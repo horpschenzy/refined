@@ -18,8 +18,7 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-account-multiple"></i>
-                        <span>Applicants</span>
+                        <i class="mdi mdi-account-multiple"></i><span>Applicants</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('approved')}}">Approved Applicants</a></li>
@@ -27,21 +26,20 @@
                         <li><a href="{{route('rejected')}}">Rejected Applicants</a></li>
                     </ul>
                 </li>
-
-                 <li>
-                    <a href="{{route('course')}}" class=" waves-effect">
+                <li>
+                    <a href="{{route('course')}}" class="waves-effect">
                         <i class="mdi mdi-cash-multiple"></i>
                         <span>Courses</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('course')}}" class=" waves-effect">
+                    <a href="{{route('course')}}" class="waves-effect">
                         <i class="mdi mdi-monitor-cellphone"></i>
                         <span>LiveStream</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="#" class="waves-effect">
                         <i class="mdi mdi-teach"></i>
                         <span>Classroom</span>
                     </a>
