@@ -37,4 +37,9 @@ class MemberController extends Controller
     {
         return view('members.settings');
     }
+
+    public function profile()
+    {
+        return view('members.profile');
+    }
 }
