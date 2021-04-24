@@ -5601,6 +5601,20 @@ a.badge-dark.focus {
   color: #123c24;
 }
 
+.alert-soft-blue {
+    color: #3687e4;
+    background-color: rgba(54, 135, 228, 0.05);
+    border-color: #c7ddf7;
+  }
+
+.alert-soft-blue hr {
+    border-top-color: #b1cff4;
+  }
+
+.alert-soft-blue .alert-link {
+    color: #1b6dcc;
+  }
+
 .alert-info {
   color: #385d7a;
   background-color: #e2f0fb;

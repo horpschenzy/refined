@@ -34,12 +34,15 @@
                         <span>Resources</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="{{route('member.examandtest')}}" class=" waves-effect">
-                        <i class="mdi mdi-folder-account-outline"></i>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-email-outline"></i>
                         <span>Exams and Test</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('member.examandtest')}}">Start</a></li>
+                        <li><a href="{{route('member.results')}}">Results</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="{{route('member.settings')}}" class=" waves-effect">
