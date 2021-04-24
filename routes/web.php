@@ -37,6 +37,10 @@ Route::get('/dashboard', 'AdminController@index')->name('dashboard');
 Route::get('/rejected', 'AdminController@rejected')->name('rejected');
 Route::get('/approved', 'AdminController@approved')->name('approved');
 Route::get('/pending', 'AdminController@pending')->name('pending');
+Route::get('/livestream', 'AdminController@livestream')->name('livestream');
+Route::get('/classroom', 'AdminController@classroom')->name('classroom');
+Route::get('/resource', 'AdminController@resource')->name('resource');
+Route::get('/attendance', 'AdminController@attendance')->name('attendance');
 Route::post('/delete', 'AdminController@delete');
 Route::post('/reject', 'AdminController@reject');
 Route::post('/accept', 'AdminController@accept');
@@ -50,3 +54,8 @@ Route::get('/addlesson', 'LessonController@index')->name('addlesson');
 
 //Member
 Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');
+Route::get('/member/resource', 'MemberController@resource')->name('member.resources');
+Route::get('/member/classroom', 'MemberController@classroom')->name('member.classroom');
+Route::get('/member/courses', 'MemberController@course')->name('member.course');
+Route::get('/member/examandtest', 'MemberController@examandtest')->name('member.examandtest');
+Route::get('/member/settings', 'MemberController@settings')->name('member.settings');
