@@ -117,6 +117,10 @@ class AdminController extends Controller
         return view('admin.rejected', compact('applicants'));
     }
 
+    public function profile()
+    {
+        return view('admin.profile');
+    }
 
     public function livestream()
     {

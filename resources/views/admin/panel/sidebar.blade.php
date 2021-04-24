@@ -27,7 +27,7 @@
                 </li>
                 <li>
                     <a href="{{route('course')}}" class="waves-effect">
-                        <i class="mdi mdi-cash-multiple"></i>
+                        <i class="mdi mdi-book-open-page-variant"></i>
                         <span>Courses</span>
                     </a>
                 </li>
@@ -57,8 +57,13 @@
                 </li>
 
                 <li>
+<<<<<<< HEAD
+                    <a href="{{route('examandtest')}}" class=" waves-effect">
+                        <i class="mdi mdi-folder-account-outline"></i>
+=======
                     <a href="#" class="waves-effect">
                         <i class="mdi mdi-home-search"></i>
+>>>>>>> master
                         <span>Exams and Test</span>
                     </a>
                 </li>

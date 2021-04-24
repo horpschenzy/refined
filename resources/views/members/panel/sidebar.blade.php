@@ -37,7 +37,7 @@
 
                 <li>
                     <a href="{{route('member.examandtest')}}" class=" waves-effect">
-                        <i class="mdi mdi-calendar-check-outline"></i>
+                        <i class="mdi mdi-folder-account-outline"></i>
                         <span>Exams and Test</span>
                     </a>
                 </li>

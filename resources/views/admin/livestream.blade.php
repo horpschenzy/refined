@@ -74,6 +74,28 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-xl-3"></div>
+                <div class="col-xl-6">
+                    <div class="card">
+                        <div class="card-body text-center">
+
+                            <h4 class="card-title">Popup with video or map</h4>
+                            <p class="card-title-desc">In this example lazy-loading of images is enabled for the next image based on move direction. </p>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <a class="popup-youtube btn btn-secondary me-1 mt-2" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube Video</a>
+                                    <a class="popup-vimeo btn btn-secondary me-1 mt-2" href="https://vimeo.com/45830194">Open Vimeo Video</a>
+                                    <a class="popup-gmaps btn btn-secondary me-1 mt-2" href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom">Open Mixlr</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3"></div>
+            </div>
+            <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
