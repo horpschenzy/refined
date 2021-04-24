@@ -13,14 +13,23 @@
                             <ol class="breadcrumb m-0">
                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                                <li class="breadcrumb-item active">Welcome</li>
+                                <li class="breadcrumb-item active">Welcome, IBUKUN</li>
                             </ol>
                     </div>
                 </div>
 
             </div>
             <!-- end page title -->
-
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-body text-center">
+                        <h3 class="card-title">Start Test Now</h3>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                        </p>
+                        <a href="#" class="btn btn-primary waves-effect waves-light">Start Now</a>
+                    </div>
+                </div>
+            </div>
             {{-- <div class="row">
                 <div class="col-xl-3 col-sm-6">
                     <div class="card mini-stat bg-primary">
