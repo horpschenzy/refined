@@ -39,6 +39,8 @@ Route::get('/approved', 'AdminController@approved')->name('approved');
 Route::get('/pending', 'AdminController@pending')->name('pending');
 Route::get('/livestream', 'AdminController@livestream')->name('livestream');
 Route::get('/classroom', 'AdminController@classroom')->name('classroom');
+Route::get('/resource', 'AdminController@resource')->name('resource');
+Route::get('/attendance', 'AdminController@attendance')->name('attendance');
 Route::post('/delete', 'AdminController@delete');
 Route::post('/reject', 'AdminController@reject');
 Route::post('/accept', 'AdminController@accept');

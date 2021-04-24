@@ -127,6 +127,15 @@ class AdminController extends Controller
         return view('admin.classroom');
     }
 
+    public function resource()
+    {
+        return view('admin.resource');
+    }
+
+    public function attendance()
+    {
+        return view('admin.attendance');
+    }
     public function index(ApplicationDataTable $dataTable)
     {
 

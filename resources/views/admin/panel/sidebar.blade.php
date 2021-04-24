@@ -45,7 +45,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="{{route('resource')}}" class=" waves-effect">
                         <i class="mdi mdi-file-outline"></i>
                         <span>Resources</span>
                     </a>
@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="{{route('attendance')}}" class=" waves-effect">
                         <i class="mdi mdi-account-details"></i>
                         <span>Attendance</span>
                     </a>
