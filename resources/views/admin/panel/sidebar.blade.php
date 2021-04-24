@@ -17,8 +17,7 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-account-multiple"></i>
-                        <span>Applicants</span>
+                        <i class="mdi mdi-account-multiple"></i><span>Applicants</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('approved')}}">Approved Applicants</a></li>
@@ -26,7 +25,6 @@
                         <li><a href="{{route('rejected')}}">Rejected Applicants</a></li>
                     </ul>
                 </li>
-
                 <li>
                     <a href="{{route('course')}}" class="waves-effect">
                         <i class="mdi mdi-cash-multiple"></i>
@@ -40,19 +38,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('course')}}" class="waves-effect">
+                    <a href="{{route('livestream')}}" class="waves-effect">
                         <i class="mdi mdi-monitor-cellphone"></i>
                         <span>LiveStream</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{route('classroom')}}" class="waves-effect">
                         <i class="mdi mdi-teach"></i>
                         <span>Classroom</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{route('resource')}}" class=" waves-effect">
                         <i class="mdi mdi-file-outline"></i>
                         <span>Resources</span>
                     </a>
@@ -65,7 +63,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{route('attendance')}}" class=" waves-effect">
                         <i class="mdi mdi-account-details"></i>
                         <span>Attendance</span>
                     </a>

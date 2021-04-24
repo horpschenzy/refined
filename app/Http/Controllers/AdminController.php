@@ -81,7 +81,7 @@ class AdminController extends Controller
             $details['reg_no'] = $user->first()->reg_no;
             $details['password'] = strtolower($applicant->first()->lastname.$id);
             $this->email = $applicant->first()->email;
-            
+
             Mail::send('emails.refined', $details , function($message){
                 $message->to($this->email)
                         ->subject('Refined Acceptance Mail');
@@ -116,6 +116,26 @@ class AdminController extends Controller
         return view('admin.rejected', compact('applicants'));
     }
 
+
+    public function livestream()
+    {
+        return view('admin.livestream');
+    }
+
+    public function classroom()
+    {
+        return view('admin.classroom');
+    }
+
+    public function resource()
+    {
+        return view('admin.resource');
+    }
+
+    public function attendance()
+    {
+        return view('admin.attendance');
+    }
     public function index(ApplicationDataTable $dataTable)
     {
 
