@@ -12,4 +12,29 @@ class MemberController extends Controller
     {
         return view('members.dashboard');
     }
+
+    public function resource()
+    {
+        return view('members.resources');
+    }
+
+    public function classroom()
+    {
+        return view('members.classroom');
+    }
+
+    public function course()
+    {
+        return view('members.course');
+    }
+
+    public function examandtest()
+    {
+        return view('members.examandtest');
+    }
+
+    public function settings()
+    {
+        return view('members.settings');
+    }
 }

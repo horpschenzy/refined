@@ -13,13 +13,23 @@
                             <ol class="breadcrumb m-0">
                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                                <li class="breadcrumb-item active">Welcome</li>
+                                <li class="breadcrumb-item active">Resources</li>
                             </ol>
                     </div>
                 </div>
 
             </div>
             <!-- end page title -->
+
+
+
+
+
+
+
+            <!-- end main content-->
+
+        </div>
 
             {{-- <div class="row">
                 <div class="col-xl-3 col-sm-6">

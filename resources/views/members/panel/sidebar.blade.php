@@ -10,39 +10,39 @@
                 <li class="menu-title">Main</li>
 
                 <li>
-                    <a href="{{route('dashboard')}}" class="waves-effect">
+                    <a href="{{route('member.dashboard')}}" class="waves-effect">
                         <i class="mdi mdi-view-dashboard"></i>
                         {{-- <span class="badge rounded-pill bg-primary float-end">2</span> --}}
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('course')}}" class="waves-effect">
-                        <i class="mdi mdi-cash-multiple"></i>
+                    <a href="{{route('member.course')}}" class="waves-effect">
+                        <i class="mdi mdi-book-open-page-variant"></i>
                         <span>Courses</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{route('member.classroom')}}" class="waves-effect">
                         <i class="mdi mdi-teach"></i>
                         <span>Classroom</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="{{route('member.resources')}}" class=" waves-effect">
                         <i class="mdi mdi-file-outline"></i>
                         <span>Resources</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#" class=" waves-effect">
-                        <i class="mdi mdi-home-search"></i>
+                    <a href="{{route('member.examandtest')}}" class=" waves-effect">
+                        <i class="mdi mdi-calendar-check-outline"></i>
                         <span>Exams and Test</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="{{route('member.settings')}}" class=" waves-effect">
                         <i class="mdi mdi-cog"></i>
                         <span>Settings</span>
                     </a>

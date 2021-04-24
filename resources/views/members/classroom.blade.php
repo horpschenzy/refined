@@ -13,14 +13,34 @@
                             <ol class="breadcrumb m-0">
                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                                <li class="breadcrumb-item active">Welcome</li>
+                                <li class="breadcrumb-item active">Classroom</li>
                             </ol>
                     </div>
                 </div>
 
             </div>
             <!-- end page title -->
+            <div class="row">
+                <div class="col-xl-2"></div>
+                        <div class="col-xl-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Responsive embed video 1:1</h4>
+                                        <p class="card-title-desc">Aspect ratios can be customized with modifier classes.</p>
 
+                                        <!-- 1:1 aspect ratio -->
+                                        <div class="ratio ratio-4x3">
+                                            <iframe src="https://www.youtube.com/embed/1y_kfWUCFDQ" title="YouTube video" allowfullscreen></iframe>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2"></div>
+
+
+
+            </div>
             {{-- <div class="row">
                 <div class="col-xl-3 col-sm-6">
                     <div class="card mini-stat bg-primary">
