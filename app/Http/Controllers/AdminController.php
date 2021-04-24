@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Livestream;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
@@ -119,7 +120,8 @@ class AdminController extends Controller
 
     public function livestream()
     {
-        return view('admin.livestream');
+        $livestreams = Livestream::all();
+        return view('admin.livestream', compact('livestreams'));
     }
 
     public function classroom()

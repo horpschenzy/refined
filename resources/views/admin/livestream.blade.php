@@ -30,30 +30,33 @@
             <!-- end page title -->
             <div class="row">
                 <div class="col-12">
+                    @include('admin.flash-message')
                     <div class="card">
+                    <form method="POST" action="/livestream" enctype="multipart/form-data">
+                        @csrf
                         <div class="card-body">
                             <div class="mb-3 row">
                                 <label for="text-input" class="col-md-2 col-form-label">Event Name</label>
                                 <div class="col-md-10">
-                                    <input class="form-control" type="text" value="{{old('eventname')}}" name="eventname" id="text-input">
+                                    <input class="form-control" required type="text" value="{{old('event_name')}}" name="event_name" id="text-input">
                                 </div>
                             </div>
                              <div class="mb-3 row">
                                     <label for="file-input" class="col-md-2 col-form-label">Cover Image</label>
                                     <div class="col-md-10">
-                                        <input class="form-control" type="file" value="{{old('coverimage')}}" name="coverimage" id="file-input">
+                                        <input class="form-control" required type="file" value="{{old('cover_image')}}" name="cover_image" id="file-input">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label for="example-url-input" class="col-md-2 col-form-label">URL</label>
                                     <div class="col-md-10">
-                                        <input class="form-control" type="url" value="{{old('url')}}" name="url" id="example-url-input">
+                                        <input class="form-control" required type="url" value="{{old('url')}}" name="url" id="example-url-input">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="example-url-input" class="col-md-2 col-form-label">Video Type</label>
+                                    <label for="example-url-input" class="col-md-2 col-form-label">Type</label>
                                     <div class="col-md-10">
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select class="form-select" aria-label="Default select example" required name="type">
                                             <option selected>Open this select video type</option>
                                             <option value="Youtube">Youtube</option>
                                             <option value="Vimeo">Vimeo</option>
@@ -63,9 +66,10 @@
                                 </div>
                         </div>
                         <div class="text-center mb-3">
-                            <button type="submit" class="btn btn-primary waves-effect waves-light w-50">Send Files
+                            <button type="submit" class="btn btn-primary waves-effect waves-light w-50">Add Stream
                             </button>
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -218,14 +222,8 @@
         <!-- Datatable init js -->
         <script src="admin/assets/js/pages/datatables.init.js"></script>
 
-
 @endpush
 
 @push('charts')
-        <script src="admin/assets/libs/morris.js/morris.min.js"></script>
-        <script src="admin/assets/libs/raphael/raphael.min.js"></script>
-
-        <script src="admin/assets/js/pages/dashboard.init.js"></script>
-
         <script src="admin/assets/js/app.js"></script>
 @endpush

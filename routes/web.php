@@ -38,6 +38,7 @@ Route::get('/rejected', 'AdminController@rejected')->name('rejected');
 Route::get('/approved', 'AdminController@approved')->name('approved');
 Route::get('/pending', 'AdminController@pending')->name('pending');
 Route::get('/livestream', 'AdminController@livestream')->name('livestream');
+Route::post('/livestream', 'LivestreamController@store');
 Route::get('/classroom', 'AdminController@classroom')->name('classroom');
 Route::get('/resource', 'AdminController@resource')->name('resource');
 Route::get('/attendance', 'AdminController@attendance')->name('attendance');
