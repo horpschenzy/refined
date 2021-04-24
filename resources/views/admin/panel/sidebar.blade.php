@@ -12,7 +12,6 @@
                 <li>
                     <a href="{{route('dashboard')}}" class="waves-effect">
                         <i class="mdi mdi-view-dashboard"></i>
-                        {{-- <span class="badge rounded-pill bg-primary float-end">2</span> --}}
                         <span>Dashboard</span>
                     </a>
                 </li>
@@ -30,6 +29,12 @@
                     <a href="{{route('course')}}" class="waves-effect">
                         <i class="mdi mdi-book-open-page-variant"></i>
                         <span>Courses</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('addlesson')}}" class="waves-effect">
+                        <i class="mdi mdi-cash-multiple"></i>
+                        <span>Lessons</span>
                     </a>
                 </li>
                 <li>
@@ -52,8 +57,13 @@
                 </li>
 
                 <li>
+<<<<<<< HEAD
                     <a href="{{route('examandtest')}}" class=" waves-effect">
                         <i class="mdi mdi-folder-account-outline"></i>
+=======
+                    <a href="#" class="waves-effect">
+                        <i class="mdi mdi-home-search"></i>
+>>>>>>> master
                         <span>Exams and Test</span>
                     </a>
                 </li>
@@ -64,17 +74,20 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="#" class="waves-effect">
                         <i class="mdi mdi-account"></i>
                         <span>Users</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class=" waves-effect">
+                    <a href="#" class="waves-effect">
                         <i class="mdi mdi-cog"></i>
                         <span>Settings</span>
                     </a>
                 </li>
+
+               
+
             </ul>
         </div>
         <!-- Sidebar -->
