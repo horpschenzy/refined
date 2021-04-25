@@ -28,6 +28,24 @@
                 </div>
             </div>
             <!-- end page title -->
+            <div class="card">
+                <div class="card-body card-form__body">
+                    <form action="#">
+                        <div class="mb-3 row">
+                            <label for="example-url-input" class="col-md-2 col-form-label">Select Test</label>
+                            <div class="col-md-10">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Open this select test</option>
+                                    <option value="Youtube">Youtube</option>
+                                    <option value="Vimeo">Vimeo</option>
+                                    <option value="Mixlr">Mixlr</option>
+                                  </select>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary text-center"> Generate Result</button>
+                    </form>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-12">
@@ -36,96 +54,69 @@
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Title</th>
-                                        <th>URL</th>
-                                        <th>Description</th>
+                                        <th>Date</th>
+                                        <th>Registration number</th>
+                                        <th>Name</th>
+                                        <th>Score</th>
                                         <th>Status</th>
-                                        <th>Action</th>
+                                        <th>CGPA</th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>Started</td>
+                                        <td>27/06/2021</td>
+                                        <td>REF/2021/0001</td>
+                                        <td>Smith Kanyinsola</td>
+                                        <td>89%</td>
                                         <td>
-                                            <div class="dropdown dropdown-topbar d-inline-block">
-                                                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Action <i class="mdi mdi-chevron-down"></i>
-                                                    </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" onclick="#">Accept</a>
-                                                    <a class="dropdown-item" onclick="#">Pend</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" onclick="#">Reject</a>
-                                                    <a class="dropdown-item" onclick="#">Delete</a>
-                                                </div>
-                                            </div>
+                                            <span class="badge badge-pill bg-success">
+                                                passed
+                                            </span>
+                                        </td>
+                                        <td>
+                                            5.00
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td><div class="dropdown dropdown-topbar d-inline-block">
-                                            <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <i class="mdi mdi-chevron-down"></i>
-                                                </a>
-
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <a class="dropdown-item" onclick="#">Accept</a>
-                                                <a class="dropdown-item" onclick="#">Pend</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" onclick="#">Reject</a>
-                                                <a class="dropdown-item" onclick="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>End</td>
+                                        <td>27/06/2021</td>
+                                        <td>REF/2021/0021</td>
+                                        <td>Moyo Olayele</td>
+                                        <td>67%</td>
                                         <td>
-                                            <div class="dropdown dropdown-topbar d-inline-block">
-                                                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Action <i class="mdi mdi-chevron-down"></i>
-                                                    </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" onclick="#">Accept</a>
-                                                    <a class="dropdown-item" onclick="#">Pend</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" onclick="#">Reject</a>
-                                                    <a class="dropdown-item" onclick="#">Delete</a>
-                                                </div>
-                                            </div>
+                                            <span class="badge badge-pill bg-success">
+                                                passed
+                                            </span>
+                                        </td>
+                                        <td>
+                                            4.60
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Cedric Kelly</td>
-                                        <td>Senior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>Published</td>
+                                        <td>27/06/2021</td>
+                                        <td>REF/2021/0301</td>
+                                        <td>Monife Godwin</td>
+                                        <td>39%</td>
                                         <td>
-                                            <div class="dropdown dropdown-topbar d-inline-block">
-                                                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Action <i class="mdi mdi-chevron-down"></i>
-                                                    </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" onclick="#">Accept</a>
-                                                    <a class="dropdown-item" onclick="#">Pend</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" onclick="#">Reject</a>
-                                                    <a class="dropdown-item" onclick="#">Delete</a>
-                                                </div>
-                                            </div>
+                                            <span class="badge badge-pill bg-danger">
+                                                failed
+                                            </span>
+                                        </td>
+                                        <td>
+                                            4.69
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>27/06/2021</td>
+                                        <td>REF/2021/0381</td>
+                                        <td>Folake Tijani</td>
+                                        <td>96%</td>
+                                        <td>
+                                            <span class="badge badge-pill bg-success">
+                                                passed
+                                            </span>
+                                        </td>
+                                        <td>
+                                            4.89
                                         </td>
                                     </tr>
                                 </tbody>
@@ -137,9 +128,6 @@
             </div>
 
             <!-- end row -->
-
-
-
         </div>
         <!-- container-fluid -->
     </div>
