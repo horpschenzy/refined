@@ -3,7 +3,7 @@
 @section('styles')
     <link href="admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="admin/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-
+    
     <!-- Responsive datatable examples -->
     <link href="admin/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 @endsection
@@ -64,6 +64,12 @@
                                           </select>
                                     </div>
                                 </div>
+                                <div class="mb-3 row">
+                                    <label for="example-url-input" class="col-md-2 col-form-label">Description</label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" required name="description"></textarea>
+                                    </div>
+                                </div>
                         </div>
                         <div class="text-center mb-3">
                             <button type="submit" class="btn btn-primary waves-effect waves-light w-50">Add Stream
@@ -73,7 +79,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xl-3"></div>
                 <div class="col-xl-6">
                     <div class="card">
@@ -84,9 +90,9 @@
 
                             <div class="row">
                                 <div class="col-12">
-                                    <a class="popup-youtube btn btn-secondary me-1 mt-2" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube Video</a>
-                                    <a class="popup-vimeo btn btn-secondary me-1 mt-2" href="https://vimeo.com/45830194">Open Vimeo Video</a>
-                                    <a class="popup-gmaps btn btn-secondary me-1 mt-2" href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom">Open Mixlr</a>
+                                    <a class="popup-youtube btn btn-secondary" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube Video</a>
+                                    <a class="popup-vimeo btn btn-secondary" href="https://vimeo.com/45830194">Open Vimeo Video</a>
+                                    <a class="popup-gmaps btn btn-secondary" href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom">Open Mixlr</a>
                                 </div>
                             </div>
 
@@ -94,16 +100,17 @@
                     </div>
                 </div>
                 <div class="col-xl-3"></div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Title</th>
+                                        <th>Event Name</th>
                                         <th>URL</th>
+                                        <th>Type</th>
                                         <th>Description</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -111,11 +118,13 @@
                                 </thead>
 
                                 <tbody>
+                                    @foreach ($livestreams as $livestream)
                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>Started</td>
+                                        <td>{{ $livestream->event_name }}</td>
+                                        <td>{{ $livestream->url }}</td>
+                                        <td>{{ $livestream->type }}</td>
+                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ $livestream->description }}</p></td>
+                                        <td>{{ ucfirst($livestream->status) }}</td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -123,77 +132,19 @@
                                                     </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" onclick="#">Accept</a>
-                                                    <a class="dropdown-item" onclick="#">Pend</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" onclick="#">Reject</a>
-                                                    <a class="dropdown-item" onclick="#">Delete</a>
+                                                    @if ($livestream->status == 'not started')
+                                                        <a class="dropdown-item" onclick="startStream({{ $livestream->id }})">Start</a>   
+                                                        <div class="dropdown-divider"></div>
+                                                        @elseif ($livestream->status == 'started')
+                                                        <a class="dropdown-item" onclick="endStream({{ $livestream->id }})">End</a>
+                                                        <div class="dropdown-divider"></div>
+                                                    @endif
+                                                    <a class="dropdown-item" onclick="deleteStream({{ $livestream->id }})">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td><div class="dropdown dropdown-topbar d-inline-block">
-                                            <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Action <i class="mdi mdi-chevron-down"></i>
-                                                </a>
-
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <a class="dropdown-item" onclick="#">Accept</a>
-                                                <a class="dropdown-item" onclick="#">Pend</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" onclick="#">Reject</a>
-                                                <a class="dropdown-item" onclick="#">Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>End</td>
-                                        <td>
-                                            <div class="dropdown dropdown-topbar d-inline-block">
-                                                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Action <i class="mdi mdi-chevron-down"></i>
-                                                    </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" onclick="#">Accept</a>
-                                                    <a class="dropdown-item" onclick="#">Pend</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" onclick="#">Reject</a>
-                                                    <a class="dropdown-item" onclick="#">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cedric Kelly</td>
-                                        <td>Senior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>Published</td>
-                                        <td>
-                                            <div class="dropdown dropdown-topbar d-inline-block">
-                                                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Action <i class="mdi mdi-chevron-down"></i>
-                                                    </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" onclick="#">Accept</a>
-                                                    <a class="dropdown-item" onclick="#">Pend</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" onclick="#">Reject</a>
-                                                    <a class="dropdown-item" onclick="#">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -243,6 +194,118 @@
 
         <!-- Datatable init js -->
         <script src="admin/assets/js/pages/datatables.init.js"></script>
+        <!-- Magnific Popup-->
+        <script src="admin/assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+        <!-- lightbox init js-->
+        <script src="admin/assets/js/pages/lightbox.init.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <script>
+            function startStream(id){
+                swal({
+                    title: "Are you sure you want to start this stream?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: false,
+                  })
+                  .then((start_stream) => {
+                    if (start_stream) {
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                        $.ajax({
+                            url: "/start",
+                            type:"POST",
+                            data:{
+                              id:id,
+                              _token: _token
+                            },
+
+                            success:function(response){
+                              console.log(response);
+                              if(response) {
+                                swal("Poof! Stream Started Successfully!", {
+                                    icon: "success", });
+
+                                location.reload();
+                              }
+                            },
+                        });
+                      
+                    } else {
+                      swal("Stream Discarded!");
+                    }
+                  });
+            }
+            function endStream(id){
+                swal({
+                    title: "Are you sure you want to end this stream?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: false,
+                  })
+                  .then((end_stream) => {
+                    if (end_stream) {
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                        $.ajax({
+                            url: "/end",
+                            type:"POST",
+                            data:{
+                              id:id,
+                              _token: _token
+                            },
+
+                            success:function(response){
+                              console.log(response);
+                              if(response) {
+                                swal("Poof! Stream Ended Successfully!", {
+                                    icon: "success", });
+
+                                location.reload();
+                              }
+                            },
+                        });
+                      
+                    } else {
+                      swal("Stream Discarded!");
+                    }
+                  });
+            }
+            function deleteStream(id)
+            {
+                swal({
+                    title: "Are you sure you want to delete this stream?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                  })
+                  .then((delete_stream) => {
+                    if (delete_stream) {
+                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                        $.ajax({
+                            url: "/delete/stream",
+                            type:"POST",
+                            data:{
+                              id:id,
+                              _token: _token
+                            },
+
+                            success:function(response){
+                              console.log(response);
+                              if(response) {
+                                swal("Poof! Stream Deleted Successfully!", {
+                                    icon: "success", });
+
+                                location.reload();
+                              }
+                            },
+                        });
+
+                    } else {
+                      swal("Stream Discarded!");
+                    }
+                  });
+            }
+        </script>
 
 @endpush
 

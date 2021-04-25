@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Resource;
 use App\Models\Livestream;
 use App\Models\Application;
 use Illuminate\Http\Request;
@@ -135,7 +136,8 @@ class AdminController extends Controller
 
     public function resource()
     {
-        return view('admin.resource');
+        $resources = Resource::all();
+        return view('admin.resource', compact('resources'));
     }
 
     public function attendance()

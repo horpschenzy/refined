@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Resource;
+use App\Models\Livestream;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
@@ -15,12 +17,14 @@ class MemberController extends Controller
 
     public function resource()
     {
-        return view('members.resources');
+        $resources = Resource::all();
+        return view('members.resources', compact('resources'));
     }
 
     public function classroom()
     {
-        return view('members.classroom');
+        $livestream = Livestream::where('status', 'started')->first();
+        return view('members.classroom', compact('livestream'));
     }
 
     public function course()

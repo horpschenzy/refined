@@ -57,13 +57,8 @@
                 </li>
 
                 <li>
-<<<<<<< HEAD
                     <a href="{{route('examandtest')}}" class=" waves-effect">
                         <i class="mdi mdi-folder-account-outline"></i>
-=======
-                    <a href="#" class="waves-effect">
-                        <i class="mdi mdi-home-search"></i>
->>>>>>> master
                         <span>Exams and Test</span>
                     </a>
                 </li>
