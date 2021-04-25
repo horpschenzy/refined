@@ -26,26 +26,96 @@
 
                 <div class="card">
                     <div class="card-body card-form__body">
-                        <form action="#">
-                            <div class="form-group mb-3">
-                                <label class="control-label h6">New Question:</label>
-                                <input type="text" name="question[title]" class="form-control">
-                            </div>
-                            <button class="btn btn-primary"><i class="material-icons">add</i> Create Question</button>
-                        </form>
+                        <label for="example-url-input" class="col-md-2 col-form-label">Type</label>
+                        <div class="col-md-10">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Open this select quiz type</option>
+                                <option value="test">Test</option>
+                                <option value="exam">Exam</option>
+                                </select>
+                        </div>
                     </div>
                 </div>
 
                 <div id="questions_wrapper">
+                    <div class="card mb-4">
+                        <div class="card-header d-flex justify-content-between">
+                            <div class="d-flex align-items-center">
+                                {{-- <span class="question_handle btn btn-sm btn-secondary">
+                                    <i class="mdi mdi-format-list-bulleted-type"></i>
+                                </span> --}}
+                                <div class="h4 m-0 ml-4 col-8">
+                                    <input type="text" name="firstanswer" class="form-control" placeholder="Enter Question">
+                                </div>
+                            </div>
+                            <div>
+                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
 
+                            <div class="mb-4">
+                                <div class="row mb-1 align-items-end">
+                                    <div class="col-11"><strong></strong></div>
+                                    <div class="col-1"><strong>Correct</strong></div>
+                                </div>
 
-
+                                <form action="#">
+                                    <ul class="list-group" id="answer_container_1">
+                                        <li class="list-group-item d-flex justify-content-between">
+                                            <div class="d-flex align-items-center col-8">
+                                                <input type="text" name="firstanswer" class="form-control" placeholder=" First Answer Title">
+                                            </div>
+                                            <div class="justify-content-end">
+                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_1" checked>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between" >
+                                            <div class="d-flex align-items-center">
+                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
+                                                Second Answer
+                                            </div>
+                                            <div class="ml-auto">
+                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_2">
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between" >
+                                            <div class="d-flex align-items-center">
+                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
+                                                Third Answer
+                                            </div>
+                                            <div class="ml-auto">
+                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_2">
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between" >
+                                            <div class="d-flex align-items-center">
+                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
+                                                Fourth Answer
+                                            </div>
+                                            <div class="ml-auto">
+                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_2">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                            <div class="">
+                                <form action="#">
+                                    <div class="form-group mb-0">
+                                        <button class="btn btn-success">Add Question</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="questions_wrapper">
                     <div class="card mb-4" data-position="1" data-question-id="1">
                         <div class="card-header d-flex justify-content-between">
                             <div class="d-flex align-items-center ">
-
                                 <span class="question_handle btn btn-sm btn-secondary">
-                                    <i class="material-icons">menu</i>
+                                    <i class="mdi mdi-format-list-bulleted-type"></i>
                                 </span>
                                 <div class="h4 m-0 ml-4">Q: What is a prop in Angular?</div>
                             </div>
@@ -55,195 +125,86 @@
                         </div>
                         <div class="card-body">
 
-                            <div id="answerWrapper_1" class="mb-4">
-                                <div class="row mb-1">
-                                    <div class="col"><strong></strong></div>
-                                    <div class="col text-right"><strong>Correct</strong></div>
+                            <div class="mb-4">
+                                <div class="row mb-1 align-items-end">
+                                    <div class="col-11"><strong></strong></div>
+                                    <div class="col-1"><strong>Correct</strong></div>
                                 </div>
 
                                 <form action="#">
                                     <ul class="list-group" id="answer_container_1">
-                                        <li class="list-group-item d-flex" data-position="1" data-answer-id="1" data-question-id="1">
-                                            <span class="mr-2"><i class="material-icons text-light-gray">menu</i></span>
-                                            <div>
+                                        <li class="list-group-item d-flex justify-content-between">
+                                            <div class="d-flex align-items-center ">
+                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
                                                 First Answer Title
                                             </div>
-                                            <div class="ml-auto">
-                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_1" checked>
+                                            <div class="justify-content-end">
+                                                <input type="checkbox" name="question[correct_answer_id]" id="correct_answer_1" checked>
                                             </div>
                                         </li>
-                                        <li class="list-group-item d-flex" data-position="2" data-answer-id="2" data-question-id="1">
-                                            <span class="mr-2"><i class="material-icons text-light-gray">menu</i></span>
-                                            <div>
+                                        <li class="list-group-item d-flex justify-content-between" >
+                                            <div class="d-flex align-items-center">
+                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
                                                 Second Answer
                                             </div>
                                             <div class="ml-auto">
-                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_2">
+                                                <input type="checkbox" name="question[correct_answer_id]" id="correct_answer_2">
                                             </div>
                                         </li>
-                                        <li class="list-group-item d-flex" data-position="3" data-answer-id="3" data-question-id="1">
-                                            <span class="mr-2"><i class="material-icons text-light-gray">menu</i></span>
-                                            <div>
+                                        <li class="list-group-item d-flex justify-content-between" >
+                                            <div class="d-flex align-items-center">
+                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
                                                 Third Answer
                                             </div>
                                             <div class="ml-auto">
-                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_3">
+                                                <input type="checkbox" name="question[correct_answer_id]" id="correct_answer_2">
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between" >
+                                            <div class="d-flex align-items-center">
+                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
+                                                Fourth Answer
+                                            </div>
+                                            <div class="ml-auto">
+                                                <input type="checkbox" name="question[correct_answer_id]" id="correct_answer_2">
                                             </div>
                                         </li>
                                     </ul>
                                 </form>
                             </div>
-
-
-
-
                             <div class="">
                                 <form action="#">
                                     <div class="form-group mb-0">
-                                        <button class="btn btn-success">New Answer</button>
+                                        <button class="btn btn-success">Add Question</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
-
+                </div>
+                <div id="questions_wrapper">
                     <div class="card mb-4" data-position="1" data-question-id="1">
                         <div class="card-header d-flex justify-content-between">
                             <div class="d-flex align-items-center ">
-
                                 <span class="question_handle btn btn-sm btn-secondary">
-                                    <i class="material-icons">menu</i>
+                                    <i class="mdi mdi-format-list-bulleted-type"></i>
                                 </span>
-                                <div class="h4 m-0 ml-4">Q: How you define something?</div>
+                                <div class="h4 m-0 ml-4">Q: What is a prop in Angular?</div>
                             </div>
                             <div>
                                 <a href="#" class="btn btn-danger btn-sm">Delete</a>
                             </div>
                         </div>
                         <div class="card-body">
-
-
-                            <div id="answerWrapper_2" class="mb-4">
-                                <div class="row mb-1">
-                                    <div class="col"><strong></strong></div>
-                                    <div class="col text-right"><strong>Correct</strong></div>
-                                </div>
-
-                                <form action="#">
-                                    <ul class="list-group" id="answer_container_2">
-                                        <li class="list-group-item d-flex" data-position="1" data-answer-id="4" data-question-id="2">
-                                            <span class="mr-2"><i class="material-icons text-light-gray">menu</i></span>
-                                            <div>
-                                                First Answer Title
-                                            </div>
-                                            <div class="ml-auto">
-                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_4" checked>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item d-flex" data-position="2" data-answer-id="5" data-question-id="2">
-                                            <span class="mr-2"><i class="material-icons text-light-gray">menu</i></span>
-                                            <div>
-                                                Second Answer
-                                            </div>
-                                            <div class="ml-auto">
-                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_5">
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item d-flex" data-position="3" data-answer-id="6" data-question-id="2">
-                                            <span class="mr-2"><i class="material-icons text-light-gray">menu</i></span>
-                                            <div>
-                                                Third Answer
-                                            </div>
-                                            <div class="ml-auto">
-                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_6">
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </form>
-                            </div>
-
-
-
                             <div class="">
                                 <form action="#">
                                     <div class="form-group mb-0">
-                                        <button class="btn btn-success">New Answer</button>
+                                        <button class="btn btn-success w-100">Add Question</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="card mb-4" data-position="1" data-question-id="1">
-                        <div class="card-header d-flex justify-content-between">
-                            <div class="d-flex align-items-center ">
-
-                                <span class="question_handle btn btn-sm btn-secondary">
-                                    <i class="material-icons">menu</i>
-                                </span>
-                                <div class="h4 m-0 ml-4">Q: Can you deploy to production?</div>
-                            </div>
-                            <div>
-                                <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-
-
-
-                            <div id="answerWrapper_3" class="mb-4">
-                                <div class="row mb-1">
-                                    <div class="col"><strong></strong></div>
-                                    <div class="col text-right"><strong>Correct</strong></div>
-                                </div>
-
-                                <form action="#">
-                                    <ul class="list-group" id="answer_container_3">
-                                        <li class="list-group-item d-flex" data-position="1" data-answer-id="7" data-question-id="3">
-                                            <span class="mr-2"><i class="material-icons text-light-gray">menu</i></span>
-                                            <div>
-                                                First Answer Title
-                                            </div>
-                                            <div class="ml-auto">
-                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_7" checked>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item d-flex" data-position="2" data-answer-id="8" data-question-id="3">
-                                            <span class="mr-2"><i class="material-icons text-light-gray">menu</i></span>
-                                            <div>
-                                                Second Answer
-                                            </div>
-                                            <div class="ml-auto">
-                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_8">
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item d-flex" data-position="3" data-answer-id="9" data-question-id="3">
-                                            <span class="mr-2"><i class="material-icons text-light-gray">menu</i></span>
-                                            <div>
-                                                Third Answer
-                                            </div>
-                                            <div class="ml-auto">
-                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_9">
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </form>
-                            </div>
-
-
-                            <div class="">
-                                <form action="#">
-                                    <div class="form-group mb-0">
-                                        <button class="btn btn-success">New Answer</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
 
