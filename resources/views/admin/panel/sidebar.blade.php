@@ -55,12 +55,15 @@
                         <span>Resources</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="{{route('examandtest')}}" class=" waves-effect">
                         <i class="mdi mdi-folder-account-outline"></i>
                         <span>Exams and Test</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('examandtest')}}">Create</a></li>
+                        <li><a href="{{route('results')}}">Results</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="{{route('attendance')}}" class=" waves-effect">
@@ -81,7 +84,7 @@
                     </a>
                 </li>
 
-               
+
 
             </ul>
         </div>

@@ -11,7 +11,17 @@ class ExamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function results()
+    {
+        return view('members.results');
+    }
+
+    public function adminresults()
+    {
+        return view('admin.results');
+    }
+
+     public function index()
     {
         return view('admin.examandtest');
     }

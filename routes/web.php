@@ -44,6 +44,7 @@ Route::get('/resource', 'AdminController@resource')->name('resource');
 Route::post('/resource', 'ResourceController@store');
 Route::get('/attendance', 'AdminController@attendance')->name('attendance');
 Route::get('/examandtest', 'ExamController@index')->name('examandtest');
+Route::get('/results', 'ExamController@adminresults')->name('results');
 Route::post('/delete', 'AdminController@delete');
 Route::post('/reject', 'AdminController@reject');
 Route::post('/accept', 'AdminController@accept');
@@ -67,3 +68,5 @@ Route::get('/member/courses', 'MemberController@course')->name('member.course');
 Route::get('/member/examandtest', 'MemberController@examandtest')->name('member.examandtest');
 Route::get('/member/settings', 'MemberController@settings')->name('member.settings');
 Route::get('/member/profile', 'MemberController@profile')->name('member.profile');
+Route::get('/member/results', 'ExamController@results')->name('member.results');
+
