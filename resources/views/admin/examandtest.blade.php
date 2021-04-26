@@ -40,15 +40,13 @@
                 <div id="questions_wrapper">
                     <div class="card mb-4">
                         <div class="card-header d-flex justify-content-between">
-                            <div class="d-flex align-items-center">
-                                {{-- <span class="question_handle btn btn-sm btn-secondary">
-                                    <i class="mdi mdi-format-list-bulleted-type"></i>
-                                </span> --}}
-                                <div class="h4 m-0 ml-4 col-8">
-                                    <input type="text" name="firstanswer" class="form-control" placeholder="Enter Question">
+                            <div class=" d-flex align-items-center col-8">
+                                    <div class="card-body">
+                                    <input type="text" name="question" class="form-control col-8" placeholder="Enter Question">
                                 </div>
                             </div>
-                            <div>
+                            <div class="col-3"></div>
+                            <div class="card-body col-1">
                                 <a href="#" class="btn btn-danger btn-sm">Delete</a>
                             </div>
                         </div>
@@ -56,45 +54,42 @@
 
                             <div class="mb-4">
                                 <div class="row mb-1 align-items-end">
-                                    <div class="col-11"><strong></strong></div>
-                                    <div class="col-1"><strong>Correct</strong></div>
+                                    <div class="col-10"><strong></strong></div>
+                                    <div class="col-2"><strong>Choose Correct Answer</strong></div>
                                 </div>
 
                                 <form action="#">
                                     <ul class="list-group" id="answer_container_1">
                                         <li class="list-group-item d-flex justify-content-between">
                                             <div class="d-flex align-items-center col-8">
-                                                <input type="text" name="firstanswer" class="form-control" placeholder=" First Answer Title">
+                                                <input type="text" name="firstanswer" class="form-control" placeholder=" First Answer">
                                             </div>
                                             <div class="justify-content-end">
                                                 <input type="radio" name="question[correct_answer_id]" id="correct_answer_1" checked>
                                             </div>
                                         </li>
-                                        <li class="list-group-item d-flex justify-content-between" >
-                                            <div class="d-flex align-items-center">
-                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
-                                                Second Answer
+                                        <li class="list-group-item d-flex justify-content-between">
+                                            <div class="d-flex align-items-center col-8">
+                                                <input type="text" name="secondanswer" class="form-control" placeholder=" Second Answer">
                                             </div>
-                                            <div class="ml-auto">
-                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_2">
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between" >
-                                            <div class="d-flex align-items-center">
-                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
-                                                Third Answer
-                                            </div>
-                                            <div class="ml-auto">
-                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_2">
+                                            <div class="justify-content-end">
+                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_1">
                                             </div>
                                         </li>
-                                        <li class="list-group-item d-flex justify-content-between" >
-                                            <div class="d-flex align-items-center">
-                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
-                                                Fourth Answer
+                                        <li class="list-group-item d-flex justify-content-between">
+                                            <div class="d-flex align-items-center col-8">
+                                                <input type="text" name="thirdanswer" class="form-control" placeholder=" Third Answer">
                                             </div>
-                                            <div class="ml-auto">
-                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_2">
+                                            <div class="justify-content-end">
+                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_1">
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between">
+                                            <div class="d-flex align-items-center col-8">
+                                                <input type="text" name="fourthanswer" class="form-control" placeholder=" Fourth Answer">
+                                            </div>
+                                            <div class="justify-content-end">
+                                                <input type="radio" name="question[correct_answer_id]" id="correct_answer_1">
                                             </div>
                                         </li>
                                     </ul>
@@ -113,13 +108,12 @@
                 <div id="questions_wrapper">
                     <div class="card mb-4" data-position="1" data-question-id="1">
                         <div class="card-header d-flex justify-content-between">
-                            <div class="d-flex align-items-center ">
-                                <span class="question_handle btn btn-sm btn-secondary">
-                                    <i class="mdi mdi-format-list-bulleted-type"></i>
-                                </span>
-                                <div class="h4 m-0 ml-4">Q: What is a prop in Angular?</div>
+                            <div class="d-flex align-items-center col-8">
+                                <div class="h4 m-0 ml-4 card-body">
+                                    <input type="text" name="question" class="form-control col-8" placeholder="Enter Question">
+                                </div>
                             </div>
-                            <div>
+                            <div class="mt-4">
                                 <a href="#" class="btn btn-danger btn-sm">Delete</a>
                             </div>
                         </div>
@@ -127,43 +121,39 @@
 
                             <div class="mb-4">
                                 <div class="row mb-1 align-items-end">
-                                    <div class="col-11"><strong></strong></div>
-                                    <div class="col-1"><strong>Correct</strong></div>
+                                    <div class="col-10"><strong></strong></div>
+                                    <div class="col-2"><strong>Choose Correct Answers</strong></div>
                                 </div>
 
                                 <form action="#">
                                     <ul class="list-group" id="answer_container_1">
                                         <li class="list-group-item d-flex justify-content-between">
-                                            <div class="d-flex align-items-center ">
-                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
-                                                First Answer Title
+                                            <div class="d-flex align-items-center col-8">
+                                                <input type="text" name="firstanswer" class="form-control" placeholder=" First Answer">
                                             </div>
                                             <div class="justify-content-end">
                                                 <input type="checkbox" name="question[correct_answer_id]" id="correct_answer_1" checked>
                                             </div>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between" >
-                                            <div class="d-flex align-items-center">
-                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
-                                                Second Answer
+                                            <div class="d-flex align-items-center col-8">
+                                                <input type="text" name="firstanswer" class="form-control" placeholder=" First Answer">
                                             </div>
                                             <div class="ml-auto">
                                                 <input type="checkbox" name="question[correct_answer_id]" id="correct_answer_2">
                                             </div>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between" >
-                                            <div class="d-flex align-items-center">
-                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
-                                                Third Answer
+                                            <div class="d-flex align-items-center col-8">
+                                                <input type="text" name="firstanswer" class="form-control" placeholder=" First Answer">
                                             </div>
                                             <div class="ml-auto">
                                                 <input type="checkbox" name="question[correct_answer_id]" id="correct_answer_2">
                                             </div>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between" >
-                                            <div class="d-flex align-items-center">
-                                                <span class="mr-4"><i class="mdi mdi-format-list-bulleted-type text-light-gray"></i></span>
-                                                Fourth Answer
+                                            <div class="d-flex align-items-center col-8">
+                                                <input type="text" name="firstanswer" class="form-control" placeholder=" First Answer">
                                             </div>
                                             <div class="ml-auto">
                                                 <input type="checkbox" name="question[correct_answer_id]" id="correct_answer_2">
