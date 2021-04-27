@@ -120,7 +120,8 @@ class AdminController extends Controller
 
     public function profile()
     {
-        return view('admin.profile');
+        $applicant = Application::where('id', Auth::user()->application_id)->first();
+        return view('admin.profile', compact('applicant'));
     }
 
     public function livestream()

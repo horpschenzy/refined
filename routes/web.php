@@ -34,6 +34,7 @@ Route::get('/faq', 'FrontendController@faq')->name('faq');
 //ADMIN
 Route::get('/applicants', 'AdminController@applicants')->name('get.applicants');
 Route::get('/dashboard', 'AdminController@index')->name('dashboard');
+Route::get('/profile', 'AdminController@profile')->name('profile');
 Route::get('/rejected', 'AdminController@rejected')->name('rejected');
 Route::get('/approved', 'AdminController@approved')->name('approved');
 Route::get('/pending', 'AdminController@pending')->name('pending');
@@ -68,5 +69,7 @@ Route::get('/member/courses', 'MemberController@course')->name('member.course');
 Route::get('/member/examandtest', 'MemberController@examandtest')->name('member.examandtest');
 Route::get('/member/settings', 'MemberController@settings')->name('member.settings');
 Route::get('/member/profile', 'MemberController@profile')->name('member.profile');
+Route::post('/edit/profile', 'MemberController@editProfile');
+Route::post('/change/password', 'MemberController@changePassword');
 Route::get('/member/results', 'ExamController@results')->name('member.results');
 
