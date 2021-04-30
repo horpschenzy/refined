@@ -42,4 +42,9 @@ class MemberController extends Controller
     {
         return view('members.profile');
     }
+
+    public function memberslogin()
+    {
+        return view('frontend.memberslogin');
+    }
 }

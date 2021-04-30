@@ -23,6 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Frontend
 Route::get('/success', 'FrontendController@success')->name('success');
 Route::get('/login', 'FrontendController@login')->name('login');
+Route::get('/memberslogin', 'MemberController@memberslogin')->name('memberslogin');
+
 Route::post('/admin/login', 'FrontendController@customlogin');
 Route::post('/login', 'FrontendController@customlogin');
 Route::post('/register', 'ApplicationController@store');
@@ -35,6 +37,7 @@ Route::get('/faq', 'FrontendController@faq')->name('faq');
 Route::get('/applicants', 'AdminController@applicants')->name('get.applicants');
 Route::get('/dashboard', 'AdminController@index')->name('dashboard');
 Route::get('/rejected', 'AdminController@rejected')->name('rejected');
+Route::get('/users', 'AdminController@users')->name('admin.users');
 Route::get('/approved', 'AdminController@approved')->name('approved');
 Route::get('/pending', 'AdminController@pending')->name('pending');
 Route::get('/livestream', 'AdminController@livestream')->name('livestream');

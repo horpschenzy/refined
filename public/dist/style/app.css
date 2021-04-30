@@ -184,12 +184,18 @@ p.paragraph {
 }
 
 .btn-primary {
-  background-color: #1cbac8;
+  background-color: #CD9C5E;
 }
+
+.btn .btn-custom {
+    color: #fff;
+    border-color: #CD9C5E;
+    background-color: #CD9C5E;
+  }
 
 .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
   /* background-color: #14a7b4; */
-  background-color: #a1289d;
+  background-color: #a37941;
 }
 
 .btn-link {
@@ -197,7 +203,7 @@ p.paragraph {
 }
 
 .btn-link:hover, .btn-link:active, .btn-link:focus {
-  color: #1cbac8;
+  color: #a37941;
 }
 
 .btn-secondary {
@@ -207,11 +213,11 @@ p.paragraph {
   letter-spacing: 1px;
   font-weight: 400;
   font-size: 14px;
-  color: #730E6F;
+  color: #a37941;
 }
 
 .btn-secondary:hover, .btn-secondary:active, .btn-secondary:focus {
-  color: #730E6F;
+  color: #a37941;
   background-color: #fbfbfb;
 }
 
@@ -697,7 +703,8 @@ button {
 
 @media (max-width: 991px) {
   .navbar, .invers-fixed {
-    background-color: rgba(0, 0, 0, 0.5) !important;
+    /* background-color: rgba(0, 0, 0, 0.5) !important; */
+    /* background-color: rgb(255, 255, 255) !important; */
     padding: 10px 0;
   }
   .navbar .navbar-toggler, .invers-fixed .navbar-toggler {
@@ -750,10 +757,15 @@ button {
   letter-spacing: 2px;
   line-height: 28px;
 }
+#hero {
+    background: url("dist/images/background-refined-hero.png") center bottom no-repeat;
+    position: relative;
+    background-size: cover;
+}
 
 #hero1 {
   height: 880px;
-  background: url("../images/bg-7.jpg") center center no-repeat;
+  background: url("dist/images/background-refined-hero.png") center bottom no-repeat;
   background-size: cover;
   position: relative;
 }

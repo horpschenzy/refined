@@ -121,6 +121,11 @@ class AdminController extends Controller
         return view('admin.profile');
     }
 
+    public function users()
+    {
+        return view('admin.users');
+    }
+
     public function livestream()
     {
         return view('admin.livestream');
