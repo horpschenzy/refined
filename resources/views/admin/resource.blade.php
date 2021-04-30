@@ -31,89 +31,58 @@
             <!-- start page title -->
                          <div class="row">
                             <div class="col-12">
+                                @include('admin.flash-message')
                                 <div class="card">
+                                <form method="POST" action="/resource" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="card-body">
                                         <div class="mb-3 row">
                                             <label for="text-input" class="col-md-2 col-form-label">File Name</label>
                                             <div class="col-md-10">
-                                                <input class="form-control" type="text" name="resourcename" id="text-input" placeholder="Enter Resource Name">
+                                                <input class="form-control" type="text" name="file_name" id="text-input" placeholder="Enter Resource Name" required value="{{ old('file_name') }}">
                                             </div>
                                         </div>
-                                         <div class="mb-3 row">
-                                                <label for="file-input" class="col-md-2 col-form-label">File Image</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" type="file" name="resourceimage" id="file-input">
-                                                </div>
+                                        <div class="mb-3 row">
+                                            <label for="file-input" class="col-md-2 col-form-label">File Image</label>
+                                            <div class="col-md-10">
+                                                <input class="form-control" type="file" name="picture" id="file-input" required>
                                             </div>
-                                            <div class="mb-3 row">
-                                                <label for="example-url-input" class="col-md-2 col-form-label">URL</label>
-                                                <div class="col-md-10">
-                                                    <input class="form-control" type="url" value="" name="resourceurl" placeholder="Enter Reseource Link" id="example-url-input">
-                                                </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="example-url-input" class="col-md-2 col-form-label">URL</label>
+                                            <div class="col-md-10">
+                                                <input class="form-control" type="url" name="url" placeholder="Enter Reseource Link" id="example-url-input" value="{{ old('url') }}">
                                             </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="example-url-input" class="col-md-2 col-form-label">Description</label>
+                                            <div class="col-md-10">
+                                                <textarea class="form-control" name="description" placeholder="Enter Description" value="{{ old('description') }}"></textarea>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="text-center mb-3">
                                         <button type="submit" class="btn btn-primary waves-effect waves-light">Send Files
                                         </button>
                                     </div>
+                                </form>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 col-lg-6 col-xl-3">
-
+                            @foreach ($resources as $resource)
+                                
+                            <div class="col-md-6 col-lg-6 col-xl-4">
                                 <!-- Simple card -->
                                 <div class="card">
-                                    <img class="card-img-top img-fluid" src="admin/assets/images/small/img-1.jpg" alt="Card image cap">
+                                    <img class="card-img-top img-fluid" src="/images/resource/{{ $resource->picture }}" alt="{{ $resource->file_name }}">
                                     <div class="card-body">
-                                        <h4 class="card-title">Card title</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary waves-effect waves-light">Button</a>
+                                        <h4 class="card-title">{{ $resource->file_name }}</h4>
+                                        <p class="card-text">{{ $resource->description }}</p>
                                     </div>
                                 </div>
-
                             </div>
-                            <div class="col-md-6 col-lg-6 col-xl-3">
-
-                                <!-- Simple card -->
-                                <div class="card">
-                                    <img class="card-img-top img-fluid" src="admin/assets/images/small/img-1.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Card title</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary waves-effect waves-light">Button</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-xl-3">
-
-                                <!-- Simple card -->
-                                <div class="card">
-                                    <img class="card-img-top img-fluid" src="admin/assets/images/small/img-1.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Card title</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary waves-effect waves-light">Button</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- end col -->
-
-                            <div class="col-md-6 col-lg-6 col-xl-3">
-
-                                <!-- Simple card -->
-                                <div class="card">
-                                    <img class="card-img-top img-fluid" src="admin/assets/images/small/img-1.jpg" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Card title</h4>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="btn btn-primary waves-effect waves-light">Button</a>
-                                    </div>
-                                </div>
-
-                            </div>
+                            @endforeach
                             <!-- end col -->
 
 

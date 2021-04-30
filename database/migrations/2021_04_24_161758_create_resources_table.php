@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLivestreamsTable extends Migration
+class CreateResourcesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateLivestreamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('livestreams', function (Blueprint $table) {
+        Schema::create('resources', function (Blueprint $table) {
             $table->id();
-            $table->string('event_name', 255);
-            $table->string('cover_image', 255);
+            $table->string('file_name', 255);
+            $table->string('picture', 255);
             $table->string('url', 255);
-            $table->string('type', 100);
-            $table->enum('status', ['started', 'ended', 'not started'])->default('not started');
+            $table->longText('description');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateLivestreamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('livestreams');
+        Schema::dropIfExists('resources');
     }
 }
