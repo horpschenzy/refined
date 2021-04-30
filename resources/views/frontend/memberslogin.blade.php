@@ -59,14 +59,14 @@
                                         </div>
                                     </form> --}}
                                     <div class="big-form">
-                                        {{-- <div class="mb-5 text-center text-uppercase">
+                                        <div class="mb-5 text-center text-uppercase">
                                             <h1 >Portal Access</h1>
-                                        </div> --}}
+                                        </div>
                                         <form action="/login" method="POST">
                                             @csrf
                                         <div class="mb-3">
                                             <label for="ref">Registration Number</label>
-                                            <input type="text" placeholder="REF/2021/0001" name="username" required>
+                                            <input type="text" placeholder="REF/2021/0000" name="username" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="Password">Password</label>
@@ -86,9 +86,7 @@
                                         </div>
                                         </form>
 
-                                        {{-- <p class="paragraph">
-                                          * We don’t share your personal info with anyone.
-                                        </p> --}}
+                                        <p class="paragraph">* We don’t share your personal info with anyone.</p>
                                       </div>
                                 </div>
                             </div>

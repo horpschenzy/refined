@@ -55,7 +55,7 @@
           </li>
         </ul>
 
-        <a href="http://#" class="btn btn-primary">Apply</a>
+        <a href="{{route('apply')}}" class="btn btn-primary">Apply</a>
 
       </div>
     </div>
