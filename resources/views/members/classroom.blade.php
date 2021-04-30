@@ -25,13 +25,23 @@
                         <div class="col-xl-8">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Responsive embed video 1:1</h4>
-                                        <p class="card-title-desc">Aspect ratios can be customized with modifier classes.</p>
+                                        @if ($livestream)
+                                        <h4 class="card-title">{{ $livestream->event_name }}</h4>
+                                        <p class="card-title-desc">{{ $livestream->description }}</p>
 
                                         <!-- 1:1 aspect ratio -->
                                         <div class="ratio ratio-4x3">
-                                            <iframe src="https://www.youtube.com/embed/1y_kfWUCFDQ" title="YouTube video" allowfullscreen></iframe>
+                                            @if ($livestream->type == 'Youtube')
+                                                <iframe src="{{ $livestream->url }}" title="{{ $livestream->event_name }}" allowfullscreen></iframe>
+                                            @elseif ($livestream->type == 'Vimeo')
+                                                <iframe src="{{ $livestream->url }}" title="{{ $livestream->event_name }}" allowfullscreen></iframe>
+                                                
+                                            @endif
                                         </div>
+                                        @else
+                                            <h4 class="card-title"> NO STREAM AVAILABLE. PLEASE CHECK BACK LATER</h4>
+                                        @endif
+                                        
 
                                     </div>
                                 </div>

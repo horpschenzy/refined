@@ -56,8 +56,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-email-outline"></i>
+                    <a href="{{route('examandtest')}}" class=" waves-effect">
+                        <i class="mdi mdi-folder-account-outline"></i>
                         <span>Exams and Test</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">

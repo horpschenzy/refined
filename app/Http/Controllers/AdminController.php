@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Resource;
+use App\Models\Livestream;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
@@ -118,7 +120,8 @@ class AdminController extends Controller
 
     public function profile()
     {
-        return view('admin.profile');
+        $applicant = Application::where('id', Auth::user()->application_id)->first();
+        return view('admin.profile', compact('applicant'));
     }
 
     public function users()
@@ -128,7 +131,8 @@ class AdminController extends Controller
 
     public function livestream()
     {
-        return view('admin.livestream');
+        $livestreams = Livestream::all();
+        return view('admin.livestream', compact('livestreams'));
     }
 
     public function classroom()
@@ -138,7 +142,8 @@ class AdminController extends Controller
 
     public function resource()
     {
-        return view('admin.resource');
+        $resources = Resource::all();
+        return view('admin.resource', compact('resources'));
     }
 
     public function attendance()
