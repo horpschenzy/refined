@@ -124,6 +124,11 @@ class AdminController extends Controller
         return view('admin.profile', compact('applicant'));
     }
 
+    public function users()
+    {
+        return view('admin.users');
+    }
+
     public function livestream()
     {
         $livestreams = Livestream::all();
