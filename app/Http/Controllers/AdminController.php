@@ -80,10 +80,11 @@ class AdminController extends Controller
             $details = [];
             $details['name'] = $applicant->first()->lastname;
             $user = User::where('application_id', $id);
+            $details['code'] = uniqid('REF');
             $details['reg_no'] = $user->first()->reg_no;
             $details['password'] = strtolower($applicant->first()->lastname.$id);
             $this->email = $applicant->first()->email;
-
+            $user->update(['email_code' => $details['code']]);
             Mail::send('emails.refined', $details , function($message){
                 $message->to($this->email)
                         ->subject('Refined Acceptance Mail');
@@ -99,21 +100,21 @@ class AdminController extends Controller
 
     public function approved()
     {
-        $applicants = Application::where('firstname','!=','Admin')->where('status', 'approved')->get();
+        $applicants = Application::where('add_to_count', 1)->where('status', 'approved')->get();
 
         return view('admin.approved', compact('applicants'));
     }
 
     public function pending()
     {
-        $applicants = Application::where('firstname','!=','Admin')->where('status', 'pending')->get();
+        $applicants = Application::where('add_to_count', 1)->where('status', 'pending')->get();
 
         return view('admin.pending', compact('applicants'));
     }
 
     public function rejected()
     {
-        $applicants = Application::where('firstname','!=','Admin')->where('status', 'rejected')->get();
+        $applicants = Application::where('add_to_count', 1)->where('status', 'rejected')->get();
 
         return view('admin.rejected', compact('applicants'));
     }
@@ -124,6 +125,12 @@ class AdminController extends Controller
         return view('admin.profile', compact('applicant'));
     }
 
+    public function users()
+    {
+        $users = Application::where('add_to_count', 0)->get();
+        return view('admin.users', compact('users'));
+    }
+    
     public function livestream()
     {
         $livestreams = Livestream::all();
@@ -149,18 +156,18 @@ class AdminController extends Controller
     {
 
         // $user = Auth::user();
-        $applicants = Application::where('firstname','!=','Admin')->where('status', 'pending')->get();
-        $countapplicants['all'] = Application::where('firstname','!=','Admin')->count();
-        $countapplicants['approved'] = Application::where('status', 'approved')->where('firstname','!=','Admin')->count();
-        $countapplicants['pending'] = Application::where('status', 'pending')->where('firstname','!=','Admin')->count();
-        $countapplicants['rejected'] = Application::where('status', 'rejected')->where('firstname','!=','Admin')->count();
+        $applicants = Application::where('add_to_count', 1)->where('status', 'pending')->get();
+        $countapplicants['all'] = Application::where('add_to_count', 1)->count();
+        $countapplicants['approved'] = Application::where('status', 'approved')->where('add_to_count', 1)->count();
+        $countapplicants['pending'] = Application::where('status', 'pending')->where('add_to_count', 1)->count();
+        $countapplicants['rejected'] = Application::where('status', 'rejected')->where('add_to_count', 1)->count();
 
         return $dataTable->render('admin.dashboard', compact('countapplicants', 'applicants'));
     }
 
     public function applicants()
     {
-        return DataTables::of(Application::where('firstname','!=','Admin')->get())->toJson();
+        return DataTables::of(Application::where('add_to_count', 1)->get())->toJson();
     }
 
     public function logout()

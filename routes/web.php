@@ -59,10 +59,15 @@ Route::get('/course', 'CourseController@index')->name('course');
 Route::get('/ExamandTest', 'ExamController@index')->name('exam');
 
 Route::get('/addlesson', 'LessonController@index')->name('addlesson');
+Route::get('/users', 'AdminController@users')->name('users');
 
 
 //Member
 Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');
+Route::get('/member/reject/{email_code}', 'MemberController@reject');
+Route::get('/member/accept/{email_code}', 'MemberController@accept');
+Route::post('/accept/admission/{email_code}', 'MemberController@acceptAdmission');
+Route::post('/reject/admission/{email_code}', 'MemberController@rejectAdmission');
 Route::get('/member/resource', 'MemberController@resource')->name('member.resources');
 Route::get('/member/classroom', 'MemberController@classroom')->name('member.classroom');
 Route::get('/member/courses', 'MemberController@course')->name('member.course');

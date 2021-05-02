@@ -15,6 +15,111 @@ use Illuminate\Support\Facades\Validator;
 class MemberController extends Controller
 {
     //
+    public function rejectAdmission(Request $request, $email_code)
+    {
+        $user = User::select('reg_no','email_code')->where('email_code', $email_code)->where('reg_no', $request->username)->first();
+        if (!$user) {
+            $notification = array(
+                'message' => 'Error Rejecting Admission',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification)->withInput();
+        }
+
+
+        $input = $request->all();
+        
+        $this->validate($request, [
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        if(auth()->attempt(array('reg_no' => $input['username'], 'password' => $input['password'])))
+        {
+            Application::where('id', Auth::user()->application_id)->update(['status' => 'rejected']);
+            User::where('id', Auth::id())->update(['email_code', NULL]);
+            $notification = array(
+                'message' => 'Admission Rejected successfully!',
+                'alert-type' => 'success'
+            );
+            Auth::logout();
+            return redirect('/')->with($notification);
+        }
+        else{
+            $notification = array(
+                'message' => 'Invalid Password!',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()
+                ->with($notification);
+        }
+    }
+    
+    public function acceptAdmission(Request $request, $email_code)
+    {
+        $user = User::select('reg_no','email_code')->where('email_code', $email_code)->where('reg_no', $request->username)->first();
+        if (!$user) {
+            $notification = array(
+                'message' => 'Error Rejecting Admission',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification)->withInput();
+        }
+
+
+        $input = $request->all();
+        
+        $this->validate($request, [
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        if(auth()->attempt(array('reg_no' => $input['username'], 'password' => $input['password'])))
+        {
+            $notification = array(
+                'message' => 'Admission Accepted successfully!',
+                'alert-type' => 'success'
+            );
+            User::where('id', Auth::id())->update(['email_code', NULL]);
+            return redirect()->route('member.dashboard')->with($notification);
+        }
+        else{
+            $notification = array(
+                'message' => 'Invalid Password!',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()
+                ->with($notification);
+        }
+    }
+    
+    public function reject($email_code)
+    {
+        $user = User::select('reg_no','email_code')->where('email_code', $email_code)->first();
+        if (!$user) {
+            $notification = array(
+                'message' => 'Error Rejecting Admission',
+                'alert-type' => 'error'
+            );
+            return redirect('/')->with($notification)->withInput();
+        }
+
+        return view('frontend.process', ['user' => $user, 'type' => 'reject']);
+    }
+    
+    public function accept($email_code)
+    {
+        $user = User::select('reg_no','email_code')->where('email_code', $email_code)->first();
+        if (!$user) {
+            $notification = array(
+                'message' => 'Error Accepting Admission',
+                'alert-type' => 'error'
+            );
+            return redirect('/')->with($notification)->withInput();
+        }
+
+        return view('frontend.process', ['user' => $user, 'type' => 'accept']);
+    }
 
     public function __construct()
     {
