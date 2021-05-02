@@ -1,5 +1,5 @@
  <!-- start navbar -->
- <div id="navbar2">
+ {{-- <div id="navbar2">
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
       <div class="container">
         <!-- start toggle button -->
@@ -39,5 +39,25 @@
         <!-- end menue -->
       </div>
     </nav>
-  </div>
+</div> --}}
+<nav class="navbar navbar-expand navbar-light" aria-label="Second navbar example">
+    <div class="container-fluid">
+      <a class="navbar-brand pl-4" href="{{route('first')}}"> <img src="dist/images/refined-new-logo.png" alt="Refined Logo" srcset=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample02">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+          </li>
+          <li class="nav-item">
+          </li>
+        </ul>
+
+        <a href="{{route('apply')}}" class="btn btn-primary">Apply</a>
+
+      </div>
+    </div>
+</nav>
   <!-- end navbar -->

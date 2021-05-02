@@ -229,4 +229,9 @@ class MemberController extends Controller
             return back()->with($notification);
         }
     }
+
+    public function memberslogin()
+    {
+        return view('frontend.memberslogin');
+    }
 }
