@@ -62,7 +62,7 @@ Route::get('/course', 'CourseController@index')->name('course');
 Route::get('/ExamandTest', 'ExamController@index')->name('exam');
 
 Route::get('/addlesson', 'LessonController@index')->name('addlesson');
-Route::get('/users', 'AdminController@users')->name('users');
+Route::get('/users', 'AdminController@users')->name('admin.users');
 
 
 //Member
