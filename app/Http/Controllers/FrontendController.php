@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,6 +24,10 @@ class FrontendController extends Controller
                 'alert-type' => 'success'
             );
             $usertype = Auth::user()->usertype;
+            $encrypt = Auth::user()->encrypt;
+            if ($encrypt) {
+                User::where('id',Auth::id())->update(['encrypt' => NULL]);
+            }
             if($usertype == 'user'){
                 return redirect()->route('member.dashboard')->with($notification);
             }else{

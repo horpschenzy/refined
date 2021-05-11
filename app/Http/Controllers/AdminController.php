@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Crypt;
 use App\DataTables\ApplicationDataTable;
 
 class AdminController extends Controller
@@ -22,6 +23,28 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function addAdmin(Request $request)
+    {  
+        $application = new Application();
+        $application->firstname = $request->firstname;
+        $application->lastname = $request->lastname;
+        $application->email = $request->email;
+        $application->add_to_count = 0;
+        $application->save();
+        User::create([
+            'reg_no' => $request->email,
+            'application_id' => $application->id,
+            'usertype' => $request->usertype,
+            'password' => bcrypt($request->password),
+            'encrypt' => ($request->password),
+        ]);
+        $notification = array(
+            'message' => "User Added Successfully.",
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 
     public function delete(Request $request)
@@ -73,6 +96,10 @@ class AdminController extends Controller
 
     public function accept(Request $request)
     {
+        $countApplication = Application::where('status', 'approved')->count();
+        if($countApplication >= 1000){
+            return false;
+        }
         $id = $request->id;
         $applicant = Application::where('id',$id);
         $updateapplicant = $applicant->update(['status'=>'approved']);
@@ -127,7 +154,7 @@ class AdminController extends Controller
 
     public function users()
     {
-        $users = Application::where('add_to_count', 0)->get();
+        $users = Application::with('user')->where('add_to_count', 0)->get();
         return view('admin.users', compact('users'));
     }
     

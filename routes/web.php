@@ -63,6 +63,7 @@ Route::get('/ExamandTest', 'ExamController@index')->name('exam');
 
 Route::get('/addlesson', 'LessonController@index')->name('addlesson');
 Route::get('/users', 'AdminController@users')->name('admin.users');
+Route::post('/add/admin', 'AdminController@addAdmin');
 
 
 //Member

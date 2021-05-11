@@ -59,6 +59,17 @@
                                     <input class="form-control" required type="password" value="{{old('password')}}" name="password" id="text-input">
                                 </div>
                             </div>
+                            <div class="mb-3 row">
+                                <label for="usertype" class="col-md-2 col-form-label">Usertype</label>
+                                <div class="col-md-10">
+                                    <select class="form-control" required name="usertype" id="usertype">
+                                        <option value=''>Select Usertype</option>
+                                        <option value='cordinator'>Co-ordinator</option>
+                                        <option value='family_head'>Family Head</option>
+                                        <option value='admin'>Admin</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="text-center mb-3">
                             <button type="submit" class="btn btn-primary waves-effect waves-light w-50">Add User
@@ -68,28 +79,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="row">
-                <div class="col-xl-3"></div>
-                <div class="col-xl-6">
-                    <div class="card">
-                        <div class="card-body text-center">
-
-                            <h4 class="card-title">Popup with video or map</h4>
-                            <p class="card-title-desc">In this example lazy-loading of images is enabled for the next image based on move direction. </p>
-
-                            <div class="row">
-                                <div class="col-12">
-                                    <a class="popup-youtube btn btn-secondary" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube Video</a>
-                                    <a class="popup-vimeo btn btn-secondary" href="https://vimeo.com/45830194">Open Vimeo Video</a>
-                                    <a class="popup-gmaps btn btn-secondary" href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom">Open Mixlr</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3"></div>
-            </div> --}}
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -97,23 +86,21 @@
                             <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Event Name</th>
-                                        <th>URL</th>
-                                        <th>Type</th>
-                                        <th>Description</th>
-                                        <th>Status</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Username</th>
+                                        <th>Usertype</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($livestreams as $livestream)
+                                    @foreach ($users as $user)
                                     <tr>
-                                        <td>{{ $livestream->event_name }}</td>
-                                        <td>{{ $livestream->url }}</td>
-                                        <td>{{ $livestream->type }}</td>
-                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ $livestream->description }}</p></td>
-                                        <td>{{ ucfirst($livestream->status) }}</td>
+                                        <td>{{ $user->firstname }}</td>
+                                        <td>{{ $user->lastname }}</td>
+                                        <td>{{ $user->user->reg_no }}</td>
+                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ ucfirst(str_replace('_', ' ',$user->user->usertype)) }}</p></td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -121,14 +108,11 @@
                                                     </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    @if ($livestream->status == 'not started')
-                                                        <a class="dropdown-item" onclick="startStream({{ $livestream->id }})">Start</a>   
-                                                        <div class="dropdown-divider"></div>
-                                                        @elseif ($livestream->status == 'started')
-                                                        <a class="dropdown-item" onclick="endStream({{ $livestream->id }})">End</a>
+                                                    @if ($user->user->usertype == 'family_head')
+                                                        <a class="dropdown-item" onclick="assignCordinator({{ $user->id }})">Assign Co-ordinator</a>   
                                                         <div class="dropdown-divider"></div>
                                                     @endif
-                                                    <a class="dropdown-item" onclick="deleteStream({{ $livestream->id }})">Delete</a>
+                                                    <a class="dropdown-item" onclick="deleteUser({{ $user->id }})">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
