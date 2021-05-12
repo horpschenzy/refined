@@ -71,7 +71,7 @@
                         </div>
                         <div class="row">
                             @foreach ($resources as $resource)
-                                
+
                             <div class="col-md-6 col-lg-6 col-xl-4">
                                 <!-- Simple card -->
                                 <div class="card">
@@ -79,6 +79,7 @@
                                     <div class="card-body">
                                         <h4 class="card-title">{{ $resource->file_name }}</h4>
                                         <p class="card-text">{{ $resource->description }}</p>
+                                        <a href="{{ $resource->url }}" class="btn btn-primary">Get it Now</a>
                                     </div>
                                 </div>
                             </div>
