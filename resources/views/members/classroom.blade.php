@@ -35,7 +35,8 @@
                                                 <iframe src="{{ $livestream->url }}" title="{{ $livestream->event_name }}" allowfullscreen></iframe>
                                             @elseif ($livestream->type == 'Vimeo')
                                                 <iframe src="{{ $livestream->url }}" title="{{ $livestream->event_name }}" allowfullscreen></iframe>
-                                                
+                                            @elseif ($livestream->type == 'Mixlr')
+                                                <iframe src="{{ $livestream->url }}" title="{{ $livestream->event_name }}" width="100%" height="180px" scrolling="no" frameborder="no" marginheight="0" marginwidth="0"></iframe>
                                             @endif
                                         </div>
                                         @else
