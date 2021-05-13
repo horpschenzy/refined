@@ -15,7 +15,6 @@ class MakeStatusPendingByDefaultOnApplicationsTable extends Migration
     public function up()
     {
         Schema::table('applications', function (Blueprint $table) {
-            // $table->enum('status',['pending', 'approved', 'rejected'])->nullable(false)->default('pending')->change();
             DB::statement("ALTER TABLE applications MODIFY COLUMN status enum('pending', 'approved', 'rejected') NOT NULL");
             DB::statement("ALTER TABLE applications ALTER status SET DEFAULT 'pending'");
         });
