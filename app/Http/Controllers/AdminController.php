@@ -29,7 +29,7 @@ class AdminController extends Controller
     public function addAdmin(Request $request)
     {  
         $validate  = Validator::make($request->all(), [
-            'email' => 'required|unique:applications',
+            'email' => 'required|unique:applications'
         ]);
         if($validate->fails()){
             $notification = array(
