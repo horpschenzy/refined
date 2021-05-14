@@ -18,7 +18,7 @@ class ApplicationController extends Controller
         $validate  = Validator::make($request->all(), [
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:applications',
             'phone' => 'required',
             'country' => 'required',
             'state' => 'required',

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
 use App\DataTables\ApplicationDataTable;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -26,8 +27,17 @@ class AdminController extends Controller
     }
 
     public function addAdmin(Request $request)
-    {  unique:applications
-
+    {  
+        $validate  = Validator::make($request->all(), [
+            'email' => 'required|unique:applications',
+        ]);
+        if($validate->fails()){
+            $notification = array(
+                'message' => $validate->messages()->first(),
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification)->withInput();
+        }
         $application = new Application();
         $application->firstname = $request->firstname;
         $application->lastname = $request->lastname;
