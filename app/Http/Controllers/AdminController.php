@@ -26,7 +26,8 @@ class AdminController extends Controller
     }
 
     public function addAdmin(Request $request)
-    {  
+    {  unique:applications
+
         $application = new Application();
         $application->firstname = $request->firstname;
         $application->lastname = $request->lastname;
@@ -39,11 +40,24 @@ class AdminController extends Controller
             'usertype' => $request->usertype,
             'password' => bcrypt($request->password),
             'encrypt' => ($request->password),
+            'telegram_link' => ($request->telegram_link),
+            'family_circle' => ($request->family_circle),
         ]);
         $notification = array(
             'message' => "User Added Successfully.",
             'alert-type' => 'success'
         );
+        $details = [];
+            $details['name'] = $request->firstname;
+            $details['username'] = $request->email;
+            $details['password'] = $request->password;
+            $details['family_circle'] = $request->family_circle;
+            $details['usertype'] = $request->usertype;
+            $this->email = $request->email;
+            Mail::send('emails.family_head', $details , function($message){
+                $message->to($this->email)
+                        ->subject('Refined Appoints You');
+            });
         return redirect()->back()->with($notification);
     }
 
