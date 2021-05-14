@@ -63,7 +63,7 @@
                                             <h1 >Portal Access</h1>
                                         </div>
                                         <form action="/login" method="POST">
-                                            @csrf
+                                            @csrf 
                                         <div class="mb-3">
                                             <label for="ref">Registration Number</label>
                                             <input type="text" placeholder="REF/2021/0000" name="username" required>
