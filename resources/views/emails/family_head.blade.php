@@ -104,19 +104,23 @@ padding:15px 30px!important;
 <td valign="top" align="center" style="padding:0;Margin:0;width:530px">
 <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
 <tr style="border-collapse:collapse">
-<td align="left" style="padding:0;Margin:0;padding-bottom:5px;padding-top:20px"><h3 style="Margin:0;line-height:22px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;font-style:normal;font-weight:bold;color:#333333">OFFER OF ADMISSION,</h3></td>
+<td align="left" style="padding:0;Margin:0;padding-bottom:5px;padding-top:20px"><h3 style="Margin:0;line-height:22px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;font-style:normal;font-weight:bold;color:#333333">HI {{ $name }},</h3></td>
 </tr>
 <tr style="border-collapse:collapse">
-<td align="left" style="padding:0;Margin:0;padding-bottom:10px;padding-top:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify">Sequel to your application, the REFINED mentoring School is offering you admission to the REFINED 2021 Online Mentoring Course for Women In Ministry. This 3-month course starts on the 10th of June to the 19th of September, 2021. </p></td>
+<td align="left" style="padding:0;Margin:0;padding-bottom:10px;padding-top:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify">You have been successfully appointed as 
+    @if( $usertype == 'family_head')
+        the head of {{ $family_circle }} Circle. 
+    @elseif($usertype == 'cordinator')
+        a co-ordinator.
+    @elseif($usertype == 'admin')
+        an Admin
+    @endif
+</p></td>
 </tr>
 <tr style="border-collapse:collapse">
-<td style="padding:0;Margin:0;padding-top:5px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify">This admission is offered to you after a careful review of your application. As part of our requirements for processing your registration for the course, we expect that you agree to the Terms and Condition of the School.</p></td>
-</tr>
-<tr style="border-collapse:collapse">
-<td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px">Terms and Conditions for REFINED mentoring School.<br>►&nbsp;You are expressly prohibited from sharing your private log-in access with others who are not part of the School. <br>►&nbsp;ONLY posts related to the course are allowed on the telegram groups.<br>► Sharing of course content such as links to live teaching sessions, voice notes etc is NOT ALLOWED.<br>► Unnecessary posts, Broadcast Messages are discouraged on the group.</p></td>
-</tr>
-<tr style="border-collapse:collapse">
-<td style="padding:0;Margin:0;padding-bottom:10px;padding-top:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify">Please note that by creating an account with us, you accept the stated terms and conditions of this School.<br><br></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify">Please click the button below to <b>ACCEPT</b> or <b>REJECT</b> the offer of admission on or before Thursday, 20th May 2021. Failure to do this will mean forfeiture of your admission.<br><br></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify">Upon acceptance, expect to be sent an onboarding mail which will contain your registration number, Family circle and a Telegram invite link to join your family circle.&nbsp;</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify"><br></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify">No mail from us? Check Promotions/Spam.</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify"><br></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify">N.B: Download the Telegram application in preparation for this process.</p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify"><br></p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify">Please accept our hearty Congratulations! We hope to hear from you soon.<br><br>Registration Number:&nbsp;<strong>{{ $reg_no }}<br></strong>Password:&nbsp;<strong>{{ $password }}</strong><br></p></td>
+<td style="padding:0;Margin:0;padding-top:5px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify">Kindly find your login details below.</p></td>
+</tr><tr style="border-collapse:collapse">
+<td style="padding:0;Margin:0;padding-bottom:10px;padding-top:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify"><br>Username:&nbsp;<strong>{{ $username }}<br></strong>Password:&nbsp;<strong>{{ $password }}</strong><br></p></td>
 </tr>
 <tr style="border-collapse:collapse">
 <td align="left" style="padding:0;Margin:0;padding-top:40px"><h3 style="Margin:0;line-height:22px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;font-style:normal;font-weight:bold;color:#333333"><strong>Stay Blessed.</strong><br>REFINED Secretariat,</h3></td>
@@ -128,32 +132,7 @@ padding:15px 30px!important;
 </tr>
 </table></td>
 </tr>
-<tr style="border-collapse:collapse">
-<td align="left" style="padding:0;Margin:0;padding-top:20px;padding-left:35px;padding-right:35px">
-<!--[if mso]><table style="width:530px" cellpadding="0" cellspacing="0"><tr><td style="width:255px" valign="top"><![endif]-->
-<table cellpadding="0" cellspacing="0" class="es-left" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
-<tr style="border-collapse:collapse">
-<td class="es-m-p20b" align="left" style="padding:0;Margin:0;width:255px">
-<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-<tr style="border-collapse:collapse">
-<td align="center" style="padding:0;Margin:0"><span class="es-button-border" style="border-style:solid;border-color:transparent;background:#8064A2;border-width:0px;display:inline-block;border-radius:26px;width:auto"><a href="https:///member/accept/{code}" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:16px;border-style:solid;border-color:#8064A2;border-width:15px 30px 15px 30px;display:inline-block;background:#8064A2;border-radius:26px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:19px;width:auto;text-align:center">Accept</a></span></td>
-</tr>
-</table></td>
-</tr>
-</table>
-<!--[if mso]></td><td style="width:20px"></td><td style="width:255px" valign="top"><![endif]-->
-<table cellpadding="0" cellspacing="0" class="es-right" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
-<tr style="border-collapse:collapse">
-<td align="left" style="padding:0;Margin:0;width:255px">
-<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-<tr style="border-collapse:collapse">
-<td align="center" style="padding:0;Margin:0"><span class="es-button-border" style="border-style:solid;border-color:transparent;background:#5CB85C;border-width:0px;display:inline-block;border-radius:26px;width:auto"><a href="https://member/reject/{code}" class="es-button es-button-1" target="_blank" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:16px;border-style:solid;border-color:#5CB85C;border-width:15px 30px;display:inline-block;background:#5CB85C;border-radius:26px;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-weight:bold;font-style:normal;line-height:19px;width:auto;text-align:center">Reject</a></span></td>
-</tr>
-</table></td>
-</tr>
-</table>
-<!--[if mso]></td></tr></table><![endif]--></td>
-</tr>
+
 <tr style="border-collapse:collapse">
 <td align="left" style="padding:0;Margin:0;padding-top:20px;padding-left:35px;padding-right:35px">
 <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">

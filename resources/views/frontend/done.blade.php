@@ -13,7 +13,6 @@
                 @if (Session::has('message'))
                     {{ Session::get('message') }}
                 @endif
-                <h1>REFINDED 2021</h1>
               <p>Thank you for registering for REFINED 2021. Your application is being processed. Expect a feedback on your admission status via email within 3 weeks. Please check your inbox within the time. <strong>No mail from us in your box? Check Promotions/Spam</strong>.</p>
             </div>
           </div>

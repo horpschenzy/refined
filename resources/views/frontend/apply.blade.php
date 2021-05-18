@@ -26,7 +26,7 @@
                     <label for="first name">Last Name</label>
                     <input type="text" name="lastname" required value="{{ old('lastname') }}">
                 </div>
-                 <p>*Participant are required to register with their real names</p>
+                 <p>*Participants are required to register with their real names</p>
                  <div class="form">
                     <label for="email">Email</label>
                     <input type="email" class="form" name="email" required value="{{ old('email') }}">
