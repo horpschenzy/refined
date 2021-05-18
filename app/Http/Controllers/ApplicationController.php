@@ -43,7 +43,8 @@ class ApplicationController extends Controller
             );
             return redirect()->back()->with($notification)->withInput();
         }
-        $getStudentCount = count(Application::all());
+        //$getStudentCount = count(Application::all());
+        $getStudentCount = Application::orderBy('id','desc')->first()->id;
         $newId = $getStudentCount + 1;
         if ($newId < 10) {
             $id = "000".$newId;
