@@ -26,6 +26,28 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
+    public function sendMail()
+    {
+        $applicants = Application::select('email')->where('add_to_count', 1)->where('status', 'approved')->get();
+        // dd($applicants);
+        foreach ($applicants as $value) {
+            $details = [];
+            $this->email = $value->email;
+            $details['email'] = $value->email;
+            Mail::send('emails.newmail', $details , function($message){
+                $message->to($this->email)
+                        ->subject('Refined Update Mail');
+            });
+        }
+
+        $notification = array(
+            'message' => 'Mail Sent Successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect('/approved')->with($notification);
+
+    }
+
     public function addAdmin(Request $request)
     {  
         $validate  = Validator::make($request->all(), [

@@ -26,6 +26,10 @@
                             </ol>
                     </div>
                 </div>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2">
+                    <a href="/send-mail" class="btn btn-primary btn-sm"> SEND MAIL </a>
+                </div>
             </div>
             <!-- end page title -->
 
