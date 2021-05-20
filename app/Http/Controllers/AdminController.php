@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
 use App\DataTables\ApplicationDataTable;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -25,8 +26,40 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
+    public function sendMail()
+    {
+        $applicants = Application::select('email')->where('add_to_count', 1)->where('status', 'approved')->get();
+        // dd($applicants);
+        foreach ($applicants as $value) {
+            $details = [];
+            $this->email = $value->email;
+            $details['email'] = $value->email;
+            Mail::send('emails.newmail', $details , function($message){
+                $message->to($this->email)
+                        ->subject('Refined Update Mail');
+            });
+        }
+
+        $notification = array(
+            'message' => 'Mail Sent Successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect('/approved')->with($notification);
+
+    }
+
     public function addAdmin(Request $request)
     {  
+        $validate  = Validator::make($request->all(), [
+            'email' => 'required|unique:applications'
+        ]);
+        if($validate->fails()){
+            $notification = array(
+                'message' => $validate->messages()->first(),
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification)->withInput();
+        }
         $application = new Application();
         $application->firstname = $request->firstname;
         $application->lastname = $request->lastname;
@@ -39,11 +72,24 @@ class AdminController extends Controller
             'usertype' => $request->usertype,
             'password' => bcrypt($request->password),
             'encrypt' => ($request->password),
+            'telegram_link' => ($request->telegram_link),
+            'family_circle' => ($request->family_circle),
         ]);
         $notification = array(
             'message' => "User Added Successfully.",
             'alert-type' => 'success'
         );
+        $details = [];
+            $details['name'] = $request->firstname;
+            $details['username'] = $request->email;
+            $details['password'] = $request->password;
+            $details['family_circle'] = $request->family_circle;
+            $details['usertype'] = $request->usertype;
+            $this->email = $request->email;
+            Mail::send('emails.family_head', $details , function($message){
+                $message->to($this->email)
+                        ->subject('Refined Appoints You');
+            });
         return redirect()->back()->with($notification);
     }
 

@@ -95,7 +95,7 @@ class MemberController extends Controller
     
     public function reject($email_code)
     {
-        $user = User::select('reg_no','email_code')->where('email_code', $email_code)->first();
+        $user = User::select('reg_no','email_code','application_id')->where('email_code', $email_code)->first();
         if (!$user) {
             $notification = array(
                 'message' => 'Error Rejecting Admission',
@@ -104,12 +104,18 @@ class MemberController extends Controller
             return redirect('/')->with($notification)->withInput();
         }
 
-        return view('frontend.process', ['user' => $user, 'type' => 'reject']);
+        Application::where('id', $user->application_id)->update(['status' => 'rejected']);
+        User::where('id', $user->id)->update(['email_code' => NULL]);
+        $notification = array(
+            'message' => 'Admission Rejected successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect('/')->with($notification)->withInput();
     }
     
     public function accept($email_code)
     {
-        $user = User::select('reg_no','email_code')->where('email_code', $email_code)->first();
+        $user = User::select('reg_no','email_code','id')->where('email_code', $email_code)->first();
         if (!$user) {
             $notification = array(
                 'message' => 'Error Accepting Admission',
@@ -118,7 +124,13 @@ class MemberController extends Controller
             return redirect('/')->with($notification)->withInput();
         }
 
-        return view('frontend.process', ['user' => $user, 'type' => 'accept']);
+        $notification = array(
+            'message' => 'Admission Accepted successfully!',
+            'alert-type' => 'success'
+        );
+        User::where('id', $user->id)->update(['email_code' => NULL]);
+
+        return redirect('/')->with($notification)->withInput();
     }
 
     public function __construct()
