@@ -63,7 +63,7 @@ class AdminController extends Controller
         $application = new Application();
         $application->firstname = $request->firstname;
         $application->lastname = $request->lastname;
-        $application->email = $request->email;
+        // $application->email = $request->email;
         $application->add_to_count = 0;
         $application->save();
         User::create([
