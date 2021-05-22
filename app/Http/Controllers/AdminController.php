@@ -51,7 +51,7 @@ class AdminController extends Controller
     public function addAdmin(Request $request)
     {  
         $validate  = Validator::make($request->all(), [
-            'reg_no' => 'required|unique:users'
+            'reg_no' => 'unique:users'
         ]);
         if($validate->fails()){
             $notification = array(
