@@ -50,20 +50,20 @@ class AdminController extends Controller
 
     public function addAdmin(Request $request)
     {  
-        $validate  = Validator::make($request->all(), [
-            'email' => 'required|unique:applications'
-        ]);
-        if($validate->fails()){
-            $notification = array(
-                'message' => $validate->messages()->first(),
-                'alert-type' => 'error'
-            );
-            return redirect()->back()->with($notification)->withInput();
-        }
+        // $validate  = Validator::make($request->all(), [
+        //     'reg_no' => 'unique:users'
+        // ]);
+        // if($validate->fails()){
+        //     $notification = array(
+        //         'message' => $validate->messages()->first(),
+        //         'alert-type' => 'error'
+        //     );
+        //     return redirect()->back()->with($notification)->withInput();
+        // }
         $application = new Application();
         $application->firstname = $request->firstname;
         $application->lastname = $request->lastname;
-        $application->email = $request->email;
+        // $application->email = $request->email;
         $application->add_to_count = 0;
         $application->save();
         User::create([
@@ -154,7 +154,7 @@ class AdminController extends Controller
             $details['name'] = $applicant->first()->lastname;
             $user = User::where('application_id', $id);
             $details['code'] = uniqid('REF');
-            $details['reg_no'] = $user->first()->reg_no;
+            // $details['reg_no'] = $user->first()->reg_no;
             $details['password'] = strtolower($applicant->first()->lastname.$id);
             $this->email = $applicant->first()->email;
             $user->update(['email_code' => $details['code']]);
