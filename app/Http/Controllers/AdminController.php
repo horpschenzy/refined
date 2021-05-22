@@ -154,7 +154,7 @@ class AdminController extends Controller
             $details['name'] = $applicant->first()->lastname;
             $user = User::where('application_id', $id);
             $details['code'] = uniqid('REF');
-            $details['reg_no'] = $user->first()->reg_no;
+            // $details['reg_no'] = $user->first()->reg_no;
             $details['password'] = strtolower($applicant->first()->lastname.$id);
             $this->email = $applicant->first()->email;
             $user->update(['email_code' => $details['code']]);
