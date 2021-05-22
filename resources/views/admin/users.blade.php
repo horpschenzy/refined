@@ -115,9 +115,9 @@
                                         <td>{{ $user->firstname }}</td>
                                         <td>{{ $user->lastname }}</td>
                                         <td>{{ $user->user->reg_no }}</td>
+                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ ucfirst(str_replace('_', ' ',$user->user->usertype)) }}</p></td>
                                         <td>{{ $user->user->family_circle }}</td>
                                         <td>{{ $user->user->telegram_link }}</td>
-                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ ucfirst(str_replace('_', ' ',$user->user->usertype)) }}</p></td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
