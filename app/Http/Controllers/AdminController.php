@@ -50,16 +50,16 @@ class AdminController extends Controller
 
     public function addAdmin(Request $request)
     {  
-        $validate  = Validator::make($request->all(), [
-            'reg_no' => 'unique:users'
-        ]);
-        if($validate->fails()){
-            $notification = array(
-                'message' => $validate->messages()->first(),
-                'alert-type' => 'error'
-            );
-            return redirect()->back()->with($notification)->withInput();
-        }
+        // $validate  = Validator::make($request->all(), [
+        //     'reg_no' => 'unique:users'
+        // ]);
+        // if($validate->fails()){
+        //     $notification = array(
+        //         'message' => $validate->messages()->first(),
+        //         'alert-type' => 'error'
+        //     );
+        //     return redirect()->back()->with($notification)->withInput();
+        // }
         $application = new Application();
         $application->firstname = $request->firstname;
         $application->lastname = $request->lastname;
