@@ -33,7 +33,7 @@
             </div>
             <!-- end page title -->
 
-           
+
 
             <div class="row">
 
@@ -110,11 +110,39 @@
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                         <a class="dropdown-item" onclick="pend({{ $applicant->id }})">Pend</a>
                                                         <div class="dropdown-divider"></div>
+                                                        <a href="#assignToFamily"    data-bs-toggle="modal" data-bs-target="#assignToFamily" class="dropdown-item">Assign to Family</a>
+                                                        <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
+                                        <div class="modal fade" id="assignToFamily" tabindex="-1" aria-labelledby="assignToFamily" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="assignToFamily">Assign to Family</h5>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="assign/{{$applicant->id}}" method="post">
+                                                        <div>
+                                                            <h3>Assign</h3>
+                                                            <p> {{$applicant->firstname}} {{$applicant->lastname}}</p>
+                                                        </div>
+                                                        <label for="familyName">Family Name</label>
+                                                        <select class="form-select" name="family_cirle" aria-label="Default select example">
+                                                          <option selected>Select Family Circle</option>
+                                                          <option value="1">Love</option>
+                                                        </select>
+                                                        <div class="modal-footer">
+                                                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                                                            <button type="submit" class="btn btn-primary">Assign</button>
+                                                        </div>
+                                                    </form>
+                                              </div>
+                                            </div>
+                                          </div>
                                         @endforeach
 
                                     </tbody>
@@ -194,7 +222,7 @@
                               }
                             },
                         });
-                      
+
                     } else {
                       swal("Application Discarded!");
                     }
@@ -228,7 +256,7 @@
                               }
                             },
                         });
-                      
+
                     } else {
                       swal("Application Discarded!");
                     }
