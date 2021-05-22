@@ -238,6 +238,8 @@
         <script src="../admin/assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
+
+
         <script>
             @if(Session::has('message'))
                 var type = "{{ Session::get('alert-type', 'info') }}";

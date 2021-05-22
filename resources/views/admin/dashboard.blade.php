@@ -29,6 +29,8 @@
             </div>
             <!-- end page title -->
 
+
+
             <div class="row">
                 <div class="col-xl-3 col-sm-6">
                     <div class="card mini-stat bg-primary">
@@ -182,14 +184,18 @@
     </div>
     <!-- End Page-content -->
 
-        @include('admin.panel.footer')
+
+    @include('admin.panel.footer')
 
 
 </div>
 @endsection
 
 @push('scripts')
+
         <script src="admin/assets/libs/jquery/jquery.min.js"></script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script> --}}
+
         <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="admin/assets/libs/metismenu/metisMenu.min.js"></script>
         <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>

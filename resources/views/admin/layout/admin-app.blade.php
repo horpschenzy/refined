@@ -16,6 +16,7 @@
         <!-- App Css-->
         <link href="admin/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
         @yield('styles')
+
     </head>
     <body data-sidebar="dark">
 
@@ -31,7 +32,7 @@
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
-            
+
             @yield('content')
             <!-- end main content-->
 
