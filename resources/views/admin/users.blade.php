@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="file-input" class="col-md-2 col-form-label">Email</label>
+                                <label for="file-input" class="col-md-2 col-form-label">Email  (username)</label>
                                 <div class="col-md-10">
                                     <input class="form-control" required type="email" value="{{old('email')}}" name="email" id="text-input">
                                 </div>
