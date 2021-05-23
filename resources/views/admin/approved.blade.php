@@ -133,7 +133,13 @@
                                                         <label for="familyName">Family Name</label>
                                                         <select class="form-select" name="family_cirle" aria-label="Default select example">
                                                           <option selected>Select Family Circle</option>
-                                                          <option value="1">Love</option>
+                                                          @if ( count($users) > 0)
+                                                            @foreach($users as $applicant)
+                                                            <option value="{{ $applicant->family_circle }}">{{ $applicant->family_circle }}</option>
+                                                            @endforeach
+                                                            @else
+                                                            <p>No Family Cirle data found</p>
+                                                         @endif
                                                         </select>
                                                         <div class="modal-footer">
                                                             {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}

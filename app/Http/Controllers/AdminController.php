@@ -49,7 +49,7 @@ class AdminController extends Controller
     }
 
     public function addAdmin(Request $request)
-    {  
+    {
         // $validate  = Validator::make($request->all(), [
         //     'reg_no' => 'unique:users'
         // ]);
@@ -174,8 +174,9 @@ class AdminController extends Controller
     public function approved()
     {
         $applicants = Application::where('add_to_count', 1)->where('status', 'approved')->get();
+        $users = User::where('usertype', 'family_head')->get();
 
-        return view('admin.approved', compact('applicants'));
+        return view('admin.approved', compact('applicants', 'users'));
     }
 
     public function pending()
@@ -203,7 +204,7 @@ class AdminController extends Controller
         $users = Application::with('user')->where('add_to_count', 0)->get();
         return view('admin.users', compact('users'));
     }
-    
+
     public function livestream()
     {
         $livestreams = Livestream::all();
