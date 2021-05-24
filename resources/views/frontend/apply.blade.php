@@ -9,7 +9,7 @@
           <div class="col-md-8">
             <div class="section-head text-center">
               <h1>Application Closed</h1>
-              <p>Application For Refined 2021 Is Now Closed</p>
+              <p>Application for Refined 2021 is now closed</p>
               {{-- <p>Book your slot in the up coming 2021 Refined for Women by Pastor (Dr.) Funke Obadje. We thank God 2020 was glorious, we believe God for much more in 2021</p> --}}
             </div>
           </div>

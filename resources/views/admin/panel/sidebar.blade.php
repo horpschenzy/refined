@@ -66,6 +66,17 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="#" class="wave effect">
+                        <i class="mdi mdi-account-multiple"></i>
+                        <span>Family Cirle</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="#">Family List</a></li>
+                        <li><a href="#">Coordinators</a></li>
+                        <li><a href="#">Family Heads</a></li>
+                    </ul>
+                </li>
+                <li>
                     <a href="{{route('attendance')}}" class=" waves-effect">
                         <i class="mdi mdi-account-details"></i>
                         <span>Attendance</span>

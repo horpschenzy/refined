@@ -21,8 +21,8 @@
                         <h4>Dashboard</h4>
                             <ol class="breadcrumb m-0">
                                  <li class="breadcrumb-item"><a href="javascript: void(0);">REFINED</a></li>
-                               {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                                <li class="breadcrumb-item active">Dashboard</li>
+                               <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
+                                <li class="breadcrumb-item active">Family List</li>
                             </ol>
                     </div>
                 </div>
@@ -32,66 +32,12 @@
 
 
             <div class="row">
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-primary">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-account-multiple float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Applicants</h6>
-                                <h2 class="mb-4 text-white">{{ $countapplicants['all'] }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-success">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-account-multiple float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Accepted Members</h6>
-                                <h2 class="mb-4 text-white">{{ $countapplicants['approved'] }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-danger">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-account-multiple float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Rejected Applicants</h6>
-                                <h2 class="mb-4 text-white">{{ $countapplicants['rejected'] }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-warning">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-account-multiple float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Pending for Review</h6>
-                                <h2 class="mb-4 text-white">{{  $countapplicants['pending']  }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
 
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-4">Application Request</h4>
+                            <h4 class="card-title mb-4">Family List</h4>
+
                             <div class="table-responsive">
                                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
@@ -158,11 +104,9 @@
                                                         </a>
 
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                        <a class="dropdown-item" onclick="accept({{ $applicant->id }})">Accept</a>
                                                         <a class="dropdown-item" onclick="pend({{ $applicant->id }})">Pend</a>
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
-                                                        <a class="dropdown-item" onclick="deleteApplicant({{ $applicant->id }})">Delete</a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -176,13 +120,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Button trigger modal -->
-{{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assignToFamily">
-    Launch demo modal
-  </button> --}}
-
-  <!-- Modal -->
-
             <!-- end row -->
 
 
@@ -191,18 +128,14 @@
     </div>
     <!-- End Page-content -->
 
-
-    @include('admin.panel.footer')
+        @include('admin.panel.footer')
 
 
 </div>
 @endsection
 
 @push('scripts')
-
         <script src="admin/assets/libs/jquery/jquery.min.js"></script>
-        {{-- <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script> --}}
-
         <script src="admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="admin/assets/libs/metismenu/metisMenu.min.js"></script>
         <script src="admin/assets/libs/simplebar/simplebar.min.js"></script>
@@ -229,41 +162,6 @@
         <script src="admin/assets/js/pages/datatables.init.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
-            function deleteApplicant(id)
-            {
-                swal({
-                    title: "Are you sure you want to delete this application?",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                  })
-                  .then((delete_applicant) => {
-                    if (delete_applicant) {
-                        let _token   = $('meta[name="csrf-token"]').attr('content');
-                        $.ajax({
-                            url: "/delete",
-                            type:"POST",
-                            data:{
-                              id:id,
-                              _token: _token
-                            },
-
-                            success:function(response){
-                              console.log(response);
-                              if(response) {
-                                swal("Poof! Application Deleted Successfully!", {
-                                    icon: "success", });
-
-                                location.reload();
-                              }
-                            },
-                        });
-
-                    } else {
-                      swal("Application Discarded!");
-                    }
-                  });
-            }
             function reject(id){
                 swal({
                     title: "Are you sure you want to reject this application?",
@@ -286,40 +184,6 @@
                               console.log(response);
                               if(response) {
                                 swal("Poof! Application Rejected Successfully!", {
-                                    icon: "success", });
-
-                                location.reload();
-                              }
-                            },
-                        });
-
-                    } else {
-                      swal("Application Discarded!");
-                    }
-                  });
-            }
-            function accept(id){
-                swal({
-                    title: "Are you sure you want to accept this application?",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: false,
-                  })
-                  .then((accept) => {
-                    if (accept) {
-                        let _token   = $('meta[name="csrf-token"]').attr('content');
-                        $.ajax({
-                            url: "/accept",
-                            type:"POST",
-                            data:{
-                              id:id,
-                              _token: _token
-                            },
-
-                            success:function(response){
-                              console.log(response);
-                              if(response) {
-                                swal("Poof! Application Accepted Successfully!", {
                                     icon: "success", });
 
                                 location.reload();
@@ -367,7 +231,6 @@
                   });
             }
         </script>
-
 @endpush
 
 @push('charts')
