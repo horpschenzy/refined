@@ -8,6 +8,7 @@ use App\Models\Livestream;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
@@ -24,6 +25,76 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function assignApplicants(Request $request, $id)
+    {
+        if ($request->family_circle) {
+
+            $check_head = DB::table('head_member')->where('head_id',$request->family_circle)->count();
+            if($check_head == 20){
+                $notification = array(
+                    'message' => 'Maximum amount reached for this !',
+                    'alert-type' => 'error'
+                );
+                return redirect('/approved')->with($notification);
+            }
+            $check_member = DB::table('head_member')->where('application_id',$id);
+            $user = User::select('reg_no')->where('application_id', $id)->first();
+            $applicant = Application::where('id', $id);
+            $head_details = User::select('family_circle','telegram_link')->where('id', $request->family_circle)->first();
+
+            if ($check_member) {
+                $update = $check_member->update(['head_id'=> $request->family_circle, 'application_id' => $id]);
+                $applicant->update(['assign' => 1]);
+                if ($update) {
+                    $details = [];
+                    $details['name'] = $applicant->first()->firstname;
+                    $details['reg_no'] = $user->reg_no;
+                    $details['family_circle'] = $head_details->family_circle;
+                    $details['telegram_link'] = $head_details->telegram_link;
+                    $details['password'] = strtolower($applicant->first()->lastname.$id);
+                    $this->email = $applicant->first()->email;
+                    $details['email'] = $applicant->first()->email;
+                    Mail::send('emails.onboarding', $details , function($message){
+                        $message->to($this->email)
+                                ->subject('WELCOME ON BOARD');
+                    });
+                    $notification = array(
+                        'message' => 'Member Assigned Successfully!',
+                        'alert-type' => 'success'
+                    );
+                    return redirect('/approved')->with($notification);
+                }
+            }
+            $insert = DB::insert('insert into head_member (head_id, application_id) values (?, ?)', [$request->family_circle, $id]);
+            if ($insert) {
+                $applicant->update(['assign' => 1]);
+                $details = [];
+                $details['name'] = $applicant->first()->firstname;
+                $details['reg_no'] = $user->reg_no;
+                $details['family_circle'] = $head_details->family_circle;
+                $details['telegram_link'] = $head_details->telegram_link;
+                $details['password'] = strtolower($applicant->first()->lastname.$id);
+                $this->email = $applicant->first()->email;
+                $details['email'] = $applicant->first()->email;
+                Mail::send('emails.onboarding', $details , function($message){
+                    $message->to($this->email)
+                            ->subject('WELCOME ON BOARD');
+                });
+                $notification = array(
+                    'message' => 'Member Assigned Successfully!',
+                    'alert-type' => 'success'
+                );
+                return redirect('/approved')->with($notification);
+            }
+        }
+
+        $notification = array(
+            'message' => 'Kindly Select a Family circle head!',
+            'alert-type' => 'error'
+        );
+        return redirect('/approved')->with($notification);
     }
 
     public function sendMail()
@@ -49,7 +120,7 @@ class AdminController extends Controller
     }
 
     public function addAdmin(Request $request)
-    {  
+    {
         // $validate  = Validator::make($request->all(), [
         //     'reg_no' => 'unique:users'
         // ]);
@@ -154,7 +225,7 @@ class AdminController extends Controller
             $details['name'] = $applicant->first()->lastname;
             $user = User::where('application_id', $id);
             $details['code'] = uniqid('REF');
-            // $details['reg_no'] = $user->first()->reg_no;
+            $details['reg_no'] = $user->first()->reg_no;
             $details['password'] = strtolower($applicant->first()->lastname.$id);
             $this->email = $applicant->first()->email;
             $user->update(['email_code' => $details['code']]);
@@ -174,8 +245,9 @@ class AdminController extends Controller
     public function approved()
     {
         $applicants = Application::where('add_to_count', 1)->where('status', 'approved')->get();
+        $family_circles = User::select('family_circle', 'id')->whereNotNull('family_circle')->get();
 
-        return view('admin.approved', compact('applicants'));
+        return view('admin.approved', compact('applicants', 'family_circles'));
     }
 
     public function pending()
@@ -203,7 +275,7 @@ class AdminController extends Controller
         $users = Application::with('user')->where('add_to_count', 0)->get();
         return view('admin.users', compact('users'));
     }
-    
+
     public function livestream()
     {
         $livestreams = Livestream::all();

@@ -38,6 +38,7 @@
             <div class="row">
 
                 <div class="col-xl-12">
+                    @include('admin.flash-message')
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title mb-4">Approved Applicants</h4>
@@ -48,6 +49,7 @@
                                         <th>Image</th>
                                         <th>Firstname</th>
                                         <th>Lastname</th>
+                                        <th>ASSIGNED</th>
                                         <th>Gender</th>
                                         <th>Age Range</th>
                                         <th>Pastor's Wife</th>
@@ -77,6 +79,7 @@
                                             <td> <img src="images/{{ $applicant->picture }}" alt="user-image" class="avatar-xs me-2 rounded-circle" /></td>
                                             <td>{{$applicant->firstname}} </td>
                                             <td>{{$applicant->lastname}}</td>
+                                            <td>{{ ($applicant->assign) ? 'YES' : 'NO' }}</td>
                                             <td>{{$applicant->gender}}</td>
                                             <td>{{$applicant->agerange}}</td>
                                             <td>{{ucfirst($applicant->pastor_wife)}}</td>
@@ -110,8 +113,11 @@
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                         <a class="dropdown-item" onclick="pend({{ $applicant->id }})">Pend</a>
                                                         <div class="dropdown-divider"></div>
+                                                        @if (!$applicant->assign)
+
                                                         <a href="#assignToFamily"    data-bs-toggle="modal" data-bs-target="#assignToFamily" class="dropdown-item">Assign to Family</a>
                                                         <div class="dropdown-divider"></div>
+                                                        @endif
                                                         <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
                                                     </div>
                                                 </div>
@@ -125,15 +131,18 @@
                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="assign/{{$applicant->id}}" method="post">
+                                                    <form action="/assign/applicant/{{$applicant->id}}" method="post">
+                                                        @csrf
                                                         <div>
                                                             <h3>Assign</h3>
                                                             <p> {{$applicant->firstname}} {{$applicant->lastname}}</p>
                                                         </div>
                                                         <label for="familyName">Family Name</label>
-                                                        <select class="form-select" name="family_cirle" aria-label="Default select example">
+                                                        <select class="form-select" name="family_circle" aria-label="Default select example">
                                                           <option selected>Select Family Circle</option>
-                                                          <option value="1">Love</option>
+                                                          @foreach ($family_circles as $family_circle)
+                                                            <option value="{{ $family_circle->id }}">{{ $family_circle->family_circle }}</option>
+                                                          @endforeach
                                                         </select>
                                                         <div class="modal-footer">
                                                             {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
