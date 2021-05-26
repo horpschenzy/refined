@@ -13,7 +13,7 @@ class CreateHeadMemberTable extends Migration
      */
     public function up()
     {
-        Schema::table('head_member', function (Blueprint $table) {
+        Schema::create('head_member', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('head_id');
             $table->unsignedBigInteger('application_id');
