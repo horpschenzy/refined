@@ -115,7 +115,7 @@
                                                         <div class="dropdown-divider"></div>
                                                         @if (!$applicant->assign)
 
-                                                        <a href="#assignToFamily"    data-bs-toggle="modal" data-bs-target="#assignToFamily" class="dropdown-item">Assign to Family</a>
+                                                        <a href="#assignToFamily{{$applicant->id}}"    data-bs-toggle="modal" data-bs-target="#assignToFamily{{$applicant->id}}" class="dropdown-item">Assign to Family</a>
                                                         <div class="dropdown-divider"></div>
                                                         @endif
                                                         <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
@@ -123,7 +123,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <div class="modal fade" id="assignToFamily" tabindex="-1" aria-labelledby="assignToFamily" aria-hidden="true">
+                                        <div class="modal fade" id="assignToFamily{{$applicant->id}}" tabindex="-1" aria-labelledby="assignToFamily" aria-hidden="true">
                                             <div class="modal-dialog">
                                               <div class="modal-content">
                                                 <div class="modal-header">
