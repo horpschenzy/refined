@@ -49,27 +49,14 @@
                                         <th>Image</th>
                                         <th>Firstname</th>
                                         <th>Lastname</th>
-                                        <th>ASSIGNED</th>
-                                        <th>Gender</th>
-                                        <th>Age Range</th>
+                                        <th>Assigned to Family</th>
+                                        <th>Family Circle</th>
                                         <th>Pastor's Wife</th>
                                         <th>Marital Status</th>
-                                        <th>Email</th>
                                         <th>Phone number</th>
-                                        <th>Means of communication</th>
                                         <th>Country</th>
                                         <th>State</th>
-                                        <th>Born Again</th>
-                                        <th>Spirit Filled</th>
-                                        <th>Church</th>
                                         <th>SETMAN/G.O</th>
-                                        <th>Ad Source</th>
-                                        <th>Previously denied admission</th>
-                                        <th>Refined before</th>
-                                        <th>What year</th>
-                                        <th>Complete and Graduate</th>
-                                        <th>Retake</th>
-                                        <th>Expectation</th>
                                         <th>Action</th>
 
                                     </thead>
@@ -80,30 +67,17 @@
                                             <td>{{$applicant->firstname}} </td>
                                             <td>{{$applicant->lastname}}</td>
                                             <td>{{ ($applicant->assign) ? 'YES' : 'NO' }}</td>
-                                            <td>{{$applicant->gender}}</td>
-                                            <td>{{$applicant->agerange}}</td>
+                                            <td><span class="badge rounded-pill bg-primary">{{$applicant->gender}}</span></td>
                                             <td>{{ucfirst($applicant->pastor_wife)}}</td>
                                             <td>{{ucfirst($applicant->maritalstatus)}}</td>
-                                            <td>{{$applicant->email}}</td>
                                             <td>{{$applicant->phone}}</td>
-                                            <td><span class="badge rounded-pill bg-primary">{{$applicant->prefer_com}}</span></td>
                                             <td>
                                                 {{$applicant->country}}
                                             </td>
                                             <td>
                                                 {{$applicant->state}}
                                             </td>
-                                            <td>{{ucfirst($applicant->born_again)}}</td>
-                                            <td>{{ucfirst($applicant->holyghost)}}</td>
-                                            <td>{{ucfirst($applicant->church)}}</td>
                                             <td>{{ucfirst($applicant->setman)}}</td>
-                                            <td>{{ucfirst($applicant->advert)}}</td>
-                                            <td>{{ucfirst($applicant->denied_admission)}}</td>
-                                            <td>{{ucfirst($applicant->take_refined)}}</td>
-                                            <td> {{ucfirst($applicant->yearofattendance)}} </td>
-                                            <td> {{ucfirst($applicant->graduate_refined)}} </td>
-                                            <td>{{ucfirst($applicant->retake)}} </td>
-                                            <td> {{ucfirst($applicant->expectation)}} </td>
                                             <td>
                                                 <div class="dropdown dropdown-topbar d-inline-block">
                                                     <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
