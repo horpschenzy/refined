@@ -119,6 +119,13 @@ class AdminController extends Controller
 
     }
 
+    public function family(){
+
+
+        $users = Application::with('user')->where('add_to_count', 0)->get();
+        return view('admin.familylist', compact('users'));
+    }
+
     public function addAdmin(Request $request)
     {
         // $validate  = Validator::make($request->all(), [
@@ -162,6 +169,15 @@ class AdminController extends Controller
                         ->subject('Refined Appoints You');
             });
         return redirect()->back()->with($notification);
+    }
+
+
+    public function edit(Request $request)
+    {
+        $id = $request->id;
+        $applicant = Application::where('id',$id);
+
+        dd($applicant);
     }
 
     public function delete(Request $request)
