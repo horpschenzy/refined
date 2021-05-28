@@ -50,6 +50,7 @@
                                         <th>Firstname</th>
                                         <th>Lastname</th>
                                         <th>Assigned to Family</th>
+                                        <th>Gender</th>
                                         <th>Family Circle</th>
                                         <th>Pastor's Wife</th>
                                         <th>Marital Status</th>
@@ -57,6 +58,9 @@
                                         <th>Country</th>
                                         <th>State</th>
                                         <th>SETMAN/G.O</th>
+                                        <th>Age Range</th>
+                                        <th>Church</th>
+                                        <th>Refined Before?</th>
                                         <th>Action</th>
 
                                     </thead>
@@ -68,6 +72,7 @@
                                             <td>{{$applicant->lastname}}</td>
                                             <td>{{ ($applicant->assign) ? 'YES' : 'NO' }}</td>
                                             <td><span class="badge rounded-pill bg-primary">{{$applicant->gender}}</span></td>
+                                            <td><span>{{($applicant->circle) ? $applicant->circle->user->family_circle : '' }}</span></td>
                                             <td>{{ucfirst($applicant->pastor_wife)}}</td>
                                             <td>{{ucfirst($applicant->maritalstatus)}}</td>
                                             <td>{{$applicant->phone}}</td>
@@ -78,6 +83,9 @@
                                                 {{$applicant->state}}
                                             </td>
                                             <td>{{ucfirst($applicant->setman)}}</td>
+                                            <td>{{ucfirst($applicant->agerange)}}</td>
+                                            <td>{{ucfirst($applicant->church)}}</td>
+                                            <td>{{ucfirst($applicant->take_refined)}}</td>
                                             <td>
                                                 <div class="dropdown dropdown-topbar d-inline-block">
                                                     <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
