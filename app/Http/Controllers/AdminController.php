@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Course;
 use App\Models\Resource;
 use App\Models\Livestream;
 use App\Models\Application;
@@ -25,6 +26,56 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function editUser(Request $request)
+    {
+        $getApplication = Application::where('id', $request->id)->first();
+        $getApplication->firstname = $request->firstname;
+        $getApplication->lastname = $request->lastname;
+        if ($getApplication->save()) {
+            $user = User::where('application_id', $request->id)->first();
+            $user->reg_no = $request->email;
+            $user->family_circle = $request->family_circle;
+            $user->telegram_link = $request->telegram_link;
+
+            if ($user->save()) {
+                $notification = array(
+                    'message' => 'User Updated Successfully!',
+                    'alert-type' => 'success'
+                );
+                return back()->with($notification);
+            }
+            $notification = array(
+                'message' => 'User Can\'t be updated!',
+                'alert-type' => 'error'
+            );
+            return back()->with($notification);
+        }
+        $notification = array(
+            'message' => 'User Can\'t be updated!',
+            'alert-type' => 'error'
+        );
+        return back()->with($notification);
+
+    }
+    public function deleteUser(Request $request)
+    {
+        $id = $request->id;
+        Application::where('id',$id)->delete();
+        $delete_user = User::where('application_id',$id)->delete();
+        if($delete_user){
+            $notification = array(
+                'message' => 'User Deleted Successfully!',
+                'alert-type' => 'success'
+            );
+            return back()->with($notification);
+        }
+        $notification = array(
+            'message' => 'User Can\'t be Deleted!',
+            'alert-type' => 'error'
+        );
+        return back()->with($notification);
     }
 
     public function assignApplicants(Request $request, $id)
@@ -100,7 +151,6 @@ class AdminController extends Controller
     public function sendMail()
     {
         $applicants = Application::select('email')->where('add_to_count', 1)->where('status', 'approved')->get();
-        // dd($applicants);
         foreach ($applicants as $value) {
             $details = [];
             $this->email = $value->email;
@@ -128,47 +178,57 @@ class AdminController extends Controller
 
     public function addAdmin(Request $request)
     {
-        // $validate  = Validator::make($request->all(), [
-        //     'reg_no' => 'unique:users'
-        // ]);
-        // if($validate->fails()){
-        //     $notification = array(
-        //         'message' => $validate->messages()->first(),
-        //         'alert-type' => 'error'
-        //     );
-        //     return redirect()->back()->with($notification)->withInput();
-        // }
-        $application = new Application();
-        $application->firstname = $request->firstname;
-        $application->lastname = $request->lastname;
-        // $application->email = $request->email;
-        $application->add_to_count = 0;
-        $application->save();
-        User::create([
-            'reg_no' => $request->email,
-            'application_id' => $application->id,
-            'usertype' => $request->usertype,
-            'password' => bcrypt($request->password),
-            'encrypt' => ($request->password),
-            'telegram_link' => ($request->telegram_link),
-            'family_circle' => ($request->family_circle),
-        ]);
-        $notification = array(
-            'message' => "User Added Successfully.",
-            'alert-type' => 'success'
-        );
-        $details = [];
-            $details['name'] = $request->firstname;
-            $details['username'] = $request->email;
-            $details['password'] = $request->password;
-            $details['family_circle'] = $request->family_circle;
-            $details['usertype'] = $request->usertype;
-            $this->email = $request->email;
-            Mail::send('emails.family_head', $details , function($message){
-                $message->to($this->email)
-                        ->subject('Refined Appoints You');
-            });
-        return redirect()->back()->with($notification);
+
+        $getemailexist = User::where('reg_no',$request->email)->first();
+        if ($getemailexist) {
+            $notification = array(
+                'message' => "User already exist.",
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
+
+        // $notification = array(
+        //     'message' => "User Can't be added Successfully.",
+        //     'alert-type' => 'success'
+        // );
+        // $check = DB::transaction(function()
+        // {
+            $application = new Application();
+            $application->firstname = request()->firstname;
+            $application->lastname = request()->lastname;
+            $application->add_to_count = 0;
+            if ($application->save()) {
+
+                User::create([
+                    'reg_no' => request()->email,
+                    'application_id' => $application->id,
+                    'usertype' => request()->usertype,
+                    'password' => bcrypt(request()->password),
+                    'encrypt' => (request()->password),
+                    'telegram_link' => (request()->telegram_link),
+                    'family_circle' => (request()->family_circle),
+                ]);
+                $notification = array(
+                    'message' => "User Added Successfully.",
+                    'alert-type' => 'success'
+                );
+                $details = [];
+                $details['name'] = request()->firstname;
+                $details['username'] = request()->email;
+                $details['password'] = request()->password;
+                $details['family_circle'] = request()->family_circle;
+                $details['usertype'] = request()->usertype;
+                $this->email = request()->email;
+                Mail::send('emails.family_head', $details , function($message){
+                    $message->to($this->email)
+                            ->subject('Refined Appoints You');
+                });
+                return redirect()->back()->with($notification);
+
+            }
+            // });
+            // print_r($check); die;
     }
 
 
@@ -311,13 +371,20 @@ class AdminController extends Controller
 
     public function attendance()
     {
-        return view('admin.attendance');
+        $courses = Course::all();
+        return view('admin.attendance', compact('courses'));
     }
     public function index(ApplicationDataTable $dataTable)
     {
 
         // $user = Auth::user();
-        $applicants = Application::where('add_to_count', 1)->where('status', 'pending')->get();
+
+        $applicants = (auth()->user()->usertype == 'admin') ?
+                            Application::where('add_to_count', 1)->where('status', 'pending')->get()
+                        :
+                            Application::where('add_to_count', 1)->whereHas('circle', function($q){
+                                $q->where('head_id', auth()->id());
+                            })->where('status', 'approved')->get();
         $countapplicants['all'] = Application::where('add_to_count', 1)->count();
         $countapplicants['approved'] = Application::where('status', 'approved')->where('add_to_count', 1)->count();
         $countapplicants['pending'] = Application::where('status', 'pending')->where('add_to_count', 1)->count();
