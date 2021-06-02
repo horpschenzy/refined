@@ -83,9 +83,9 @@ class AdminController extends Controller
         if ($request->family_circle) {
 
             $check_head = DB::table('head_member')->where('head_id',$request->family_circle)->count();
-            if($check_head == 20){
+            if($check_head == 35){
                 $notification = array(
-                    'message' => 'Maximum amount reached for this !',
+                    'message' => 'Maximum amount reached for this family circle!',
                     'alert-type' => 'error'
                 );
                 return redirect('/approved')->with($notification);
