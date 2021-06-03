@@ -74,6 +74,13 @@ Route::post('/add/admin', 'AdminController@addAdmin');
 Route::get('/markattendance', 'CourseController@attendance');
 Route::post('/markattendance', 'CourseController@markAttendance');
 
+Route::get('/assignment', 'AssignmentController@index')->name('assignment');
+Route::post('/assignment', 'AssignmentController@store');
+Route::post('edit/assignment/{id}', 'AssignmentController@update');
+Route::post('delete/assignment', 'AssignmentController@deleteAssignment');
+Route::get('solve/issue', 'AdminController@solveRegIssue');
+
+
 //Member
 Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');
 Route::get('/member/reject/{email_code}', 'MemberController@reject');
@@ -89,4 +96,5 @@ Route::get('/member/profile', 'MemberController@profile')->name('member.profile'
 Route::post('/edit/profile', 'MemberController@editProfile');
 Route::post('/change/password', 'MemberController@changePassword');
 Route::get('/member/results', 'ExamController@results')->name('member.results');
+Route::get('/member/assignment', 'AssignmentController@memberAssignment')->name('member.assignment');
 

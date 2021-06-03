@@ -186,6 +186,12 @@
         <script src="admin/assets/js/pages/datatables.init.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
+            // $(document).ready( function () {
+            //     $('#datatable-buttons').DataTable( {
+            //     "bFilter": false
+            //     } );
+            // } );
+
             function reject(id){
                 swal({
                     title: "Are you sure you want to reject this application?",

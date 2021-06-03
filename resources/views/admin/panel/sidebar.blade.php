@@ -98,6 +98,12 @@
                 </li>
                 @endif
 
+                <li>
+                    <a href="{{route('assignment')}}" class=" waves-effect">
+                        <i class="mdi mdi-folder-account-outline"></i>
+                        <span>Assignment</span>
+                    </a>
+                </li>
 
             </ul>
         </div>

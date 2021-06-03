@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
 use App\DataTables\ApplicationDataTable;
@@ -18,6 +19,33 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
+    public function solveRegIssue()
+    {
+        $applications = Application::whereDoesntHave("user")->where('add_to_count',1)->where('status', 'approved')->get();
+        // dd($applications);
+        foreach ($applications as  $application) {
+            $newId = $application->id;
+            if ($newId < 10) {
+                $id = "000".$newId;
+            }
+            elseif ($newId >= 10 AND $newId < 100) {
+                $id = "00".$newId;
+            }
+            elseif ($newId >= 100 AND $newId < 1000) {
+                $id = "0".$newId;
+            }
+            else{
+                $id = $newId;
+            }
+            $user = new User();
+            $user->reg_no = 'REF/'.date('Y').'/'.$id;
+            $user->application_id = $application->id;
+            $user->password = Hash::make(strtolower($application->lastname.$application->id));
+            $user->save();
+        }
+        return 'ok';
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -320,7 +348,7 @@ class AdminController extends Controller
 
     public function approved()
     {
-        $applicants = Application::with('circle')->where('add_to_count', 1)->where('status', 'approved')->get();
+        $applicants = Application::with('circle')->where('add_to_count', 1)->where('status', 'approved')->limit(10)->get();
         $family_circles = User::select('family_circle', 'id')->whereNotNull('family_circle')->get();
         return view('admin.approved', compact('applicants', 'family_circles'));
     }
@@ -384,7 +412,7 @@ class AdminController extends Controller
                         :
                             Application::where('add_to_count', 1)->whereHas('circle', function($q){
                                 $q->where('head_id', auth()->id());
-                            })->where('status', 'approved')->get();
+                            })->where('status', 'approved')->limit(10)->get();
         $countapplicants['all'] = Application::where('add_to_count', 1)->count();
         $countapplicants['approved'] = Application::where('status', 'approved')->where('add_to_count', 1)->count();
         $countapplicants['pending'] = Application::where('status', 'pending')->where('add_to_count', 1)->count();
