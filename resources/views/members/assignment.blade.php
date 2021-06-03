@@ -30,6 +30,7 @@
             <!-- end page title -->
 
             <div class="row">
+                @include('admin.flash-message')
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
@@ -48,16 +49,19 @@
                                     <tr>
                                         <td>{{ $assignment->id }}</td>
                                         <td>{{ $assignment->topic }}</td>
-                                        <td>{{ 0 }}</td>
+                                        <td>{{ ($assignment->submissions) ? $assignment->submissions[0]->score ?? 0 : 0   }}</td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         Action <i class="mdi mdi-chevron-down"></i>
                                                     </a>
-
+                                                @if ($assignment->submissions && isset($assignment->submissions[0]))
+                                                @else
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                     <a href="#submitAssignment{{$assignment->id}}"    data-bs-toggle="modal" data-bs-target="#submitAssignment{{$assignment->id}}" class="dropdown-item">Submit Assignment</a>
                                                 </div>
+                                                @endif
+
                                             </div>
                                         </td>
                                     </tr>
@@ -69,7 +73,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="/submit/assignment/{{ $assignment->id }}" method="post" enctype="multipart/form-data" novalidate>
+                                                    <form action="/submit/assignment/{{ $assignment->id }}" method="post" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="card-body">
                                                             <input type="text" value="{{ $assignment->id }}" name="id" hidden>

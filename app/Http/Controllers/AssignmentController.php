@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Assignment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AssignmentController extends Controller
 {
     public function memberAssignment()
     {
-        $assignments = Assignment::all();
+        $assignments = Assignment::with(['submissions' => function($q)
+        {
+            $q->where('application_id',Auth::id());
+        }])->get();
         return view('members.assignment',compact('assignments'));
     }
     public function index()

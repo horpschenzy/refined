@@ -25,27 +25,27 @@ class AdminController extends Controller
         // dd($applications);
         foreach ($applications as  $application) {
             $newId = $application->id;
-            $getExisted = User::where('application_id', $application->id)->first();
-            if (!$getExisted) {
-                if ($newId < 10) {
-                    $id = "000".$newId;
-                }
-                elseif ($newId >= 10 AND $newId < 100) {
-                    $id = "00".$newId;
-                }
-                elseif ($newId >= 100 AND $newId < 1000) {
-                    $id = "0".$newId;
-                }
-                else{
-                    $id = $newId;
-                }
-                $user = new User();
-                $user->reg_no = 'REF/'.date('Y').'/'.$id;
-                $user->application_id = $application->id;
-                $user->password = Hash::make(strtolower($application->lastname.$application->id));
-                $user->save();
 
+            if ($newId < 10) {
+                $id = "000".$newId;
             }
+            elseif ($newId >= 10 AND $newId < 100) {
+                $id = "00".$newId;
+            }
+            elseif ($newId >= 100 AND $newId < 1000) {
+                $id = "0".$newId;
+            }
+            else{
+                $id = $newId;
+            }
+            $reg_no = 'REF/'.date('Y').'/'.$id;
+            $getExisted = User::where('reg_no', $reg_no)->first();
+            $newregno = ($getExisted) ? 'REF/'.date('Y').'/'.(2000 + (int)$id) : $reg_no;
+            $user = new User();
+            $user->reg_no = $newregno;
+            $user->application_id = $application->id;
+            $user->password = Hash::make(strtolower($application->lastname.$application->id));
+            $user->save();
         }
         return 'ok';
     }

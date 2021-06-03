@@ -41,7 +41,6 @@ class ApplicationAssignmentController extends Controller
             return redirect()->back()->with($notification);
         }
 
-
         $data = [];
         if($request->hasFile('document')){
             $document = $request->file('document');

@@ -78,6 +78,7 @@ Route::get('/assignment', 'AssignmentController@index')->name('assignment');
 Route::post('/assignment', 'AssignmentController@store');
 Route::post('edit/assignment/{id}', 'AssignmentController@update');
 Route::post('delete/assignment', 'AssignmentController@deleteAssignment');
+Route::post('submit/assignment/{id}', 'ApplicationAssignmentController@store');
 Route::get('solve/issue', 'AdminController@solveRegIssue');
 
 

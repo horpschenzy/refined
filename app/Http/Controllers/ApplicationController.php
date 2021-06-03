@@ -43,7 +43,6 @@ class ApplicationController extends Controller
             );
             return redirect()->back()->with($notification)->withInput();
         }
-        //$getStudentCount = count(Application::all());
         $getStudentCount = Application::orderBy('id','desc')->first()->id;
         $newId = $getStudentCount + 1;
         if ($newId < 10) {
@@ -93,7 +92,7 @@ class ApplicationController extends Controller
                 'alert-type' => 'success'
             );
             return redirect('/success')->with($notification);
-        }               
+        }
 
     }
 }
