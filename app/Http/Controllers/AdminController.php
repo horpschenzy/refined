@@ -67,10 +67,8 @@ class AdminController extends Controller
         $getApplication->lastname = $request->lastname;
         if ($getApplication->save()) {
             $user = User::where('application_id', $request->id)->first();
-            if($user){
-                $user = $user;
-            }
-            else{
+            if(!$user){
+
                 $user = new User();
                 $user->password = Hash::make(strtolower($getApplication->lastname));
             }
