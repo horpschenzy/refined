@@ -67,7 +67,16 @@ class AdminController extends Controller
         $getApplication->lastname = $request->lastname;
         if ($getApplication->save()) {
             $user = User::where('application_id', $request->id)->first();
+            if($user){
+                $user = $user;
+            }
+            else{
+                $user = new User();
+                $user->password = Hash::make(strtolower($getApplication->lastname));
+            }
+            $user->application_id = $getApplication->id;
             $user->reg_no = $request->email;
+            $user->usertype = $request->usertype;
             $user->family_circle = $request->family_circle;
             $user->telegram_link = $request->telegram_link;
 

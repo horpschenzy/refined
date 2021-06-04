@@ -114,10 +114,10 @@
                                     <tr>
                                         <td>{{ $user->firstname }}</td>
                                         <td>{{ $user->lastname }}</td>
-                                        <td>{{ $user->user->reg_no }}</td>
-                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ ucfirst(str_replace('_', ' ',$user->user->usertype)) }}</p></td>
-                                        <td>{{ $user->user->family_circle }}</td>
-                                        <td>{{ $user->user->telegram_link }}</td>
+                                        <td>{{ isset($user->user->reg_no)? $user->user->reg_no : '' }}</td>
+                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ ucfirst(str_replace('_', ' ',isset($user->user->usertype)? $user->user->usertype : '')) }}</p></td>
+                                        <td>{{ isset($user->user->family_circle)?$user->user->family_circle:'' }}</td>
+                                        <td>{{ isset($user->user->telegram_link)?$user->user->telegram_link:'' }}</td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -125,7 +125,7 @@
                                                     </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    @if ($user->user->usertype == 'family_head')
+                                                    @if ((isset($user->user->usertype)? $user->user->usertype : '') == 'family_head')
                                                         <a class="dropdown-item" onclick="assignCordinator({{ $user->id }})">Assign Co-ordinator</a>
                                                         <div class="dropdown-divider"></div>
                                                     @endif
@@ -163,14 +163,14 @@
                                                             <div class="mb-3 row">
                                                                 <label for="file-input" class="col-md-4 col-form-label">Email  (username)</label>
                                                                 <div class="col-md-8">
-                                                                    <input class="form-control" required type="email" value="{{$user->user->reg_no}}" name="email" id="text-input">
+                                                                    <input class="form-control" required type="email" value="{{isset($user->user->reg_no)? $user->user->reg_no : ''}}" name="email" id="text-input">
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="usertype" class="col-md-4 col-form-label">Usertype</label>
                                                                 <div class="col-md-8">
                                                                     <select class="form-control" required name="usertype" id="usertype">
-                                                                        <option value='{{ $user->user->usertype }}'>{{ ucfirst(str_replace('_', ' ',$user->user->usertype)) }}</option>
+                                                                        <option value='{{ isset($user->user->usertype)? $user->user->usertype : '' }}'>{{ ucfirst(str_replace('_', ' ',isset($user->user->usertype)? $user->user->usertype : '')) }}</option>
                                                                         <option value='cordinator'>Co-ordinator</option>
                                                                         <option value='family_head'>Family Head</option>
                                                                         <option value='admin'>Admin</option>
@@ -181,13 +181,13 @@
                                                             <div class="mb-3 row">
                                                                 <label for="file-input" class="col-md-4 col-form-label">Family Circle</label>
                                                                 <div class="col-md-8">
-                                                                    <input class="form-control" type="text" value="{{$user->user->family_circle}}" name="family_circle" id="text-input">
+                                                                    <input class="form-control" type="text" value="{{isset($user->user->family_circle)?$user->user->family_circle:''}}" name="family_circle" id="text-input">
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="file-input" class="col-md-4 col-form-label">Telegram Link</label>
                                                                 <div class="col-md-8">
-                                                                    <input class="form-control" type="text" value="{{$user->user->telegram_link}}" name="telegram_link" id="text-input">
+                                                                    <input class="form-control" type="text" value="{{isset($user->user->telegram_link)?$user->user->telegram_link:''}}" name="telegram_link" id="text-input">
                                                                 </div>
                                                             </div>
                                                         </div>
