@@ -136,11 +136,6 @@ class MemberController extends Controller
         return redirect('/')->with($notification)->withInput();
     }
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         return view('members.dashboard');
