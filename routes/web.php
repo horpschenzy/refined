@@ -75,6 +75,8 @@ Route::get('/markattendance', 'CourseController@attendance');
 Route::post('/markattendance', 'CourseController@markAttendance');
 
 Route::get('/assignment', 'AssignmentController@index')->name('assignment');
+Route::get('/view/submissions/{id}', 'ApplicationAssignmentController@viewSubmissions');
+Route::post('/mark/assignment/{id}', 'ApplicationAssignmentController@markAssignment');
 Route::post('/assignment', 'AssignmentController@store');
 Route::post('edit/assignment/{id}', 'AssignmentController@update');
 Route::post('delete/assignment', 'AssignmentController@deleteAssignment');

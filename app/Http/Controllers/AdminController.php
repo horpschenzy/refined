@@ -359,21 +359,21 @@ class AdminController extends Controller
 
     public function approved()
     {
-        $applicants = Application::with('circle')->where('add_to_count', 1)->where('status', 'approved')->limit(10)->get();
+        $applicants = Application::with('circle')->where('add_to_count', 1)->where('status', 'approved')->paginate(25);
         $family_circles = User::select('family_circle', 'id')->whereNotNull('family_circle')->get();
         return view('admin.approved', compact('applicants', 'family_circles'));
     }
 
     public function pending()
     {
-        $applicants = Application::where('add_to_count', 1)->where('status', 'pending')->get();
+        $applicants = Application::where('add_to_count', 1)->where('status', 'pending')->paginate(25);
 
         return view('admin.pending', compact('applicants'));
     }
 
     public function rejected()
     {
-        $applicants = Application::where('add_to_count', 1)->where('status', 'rejected')->get();
+        $applicants = Application::where('add_to_count', 1)->where('status', 'rejected')->paginate(25);
 
         return view('admin.rejected', compact('applicants'));
     }
@@ -419,11 +419,12 @@ class AdminController extends Controller
         // $user = Auth::user();
 
         $applicants = (auth()->user()->usertype == 'admin') ?
-                            Application::where('add_to_count', 1)->where('status', 'pending')->get()
+                            Application::where('add_to_count', 1)->where('status', 'pending')->paginate(25)
                         :
                             Application::where('add_to_count', 1)->whereHas('circle', function($q){
                                 $q->where('head_id', auth()->id());
-                            })->where('status', 'approved')->limit(10)->get();
+                            })->where('status', 'approved')->paginate(25);
+        // dd($applicants->links());
         $countapplicants['all'] = Application::where('add_to_count', 1)->count();
         $countapplicants['approved'] = Application::where('status', 'approved')->where('add_to_count', 1)->count();
         $countapplicants['pending'] = Application::where('status', 'pending')->where('add_to_count', 1)->count();

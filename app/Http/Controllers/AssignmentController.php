@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Validator;
 
 class AssignmentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function memberAssignment()
     {
         $assignments = Assignment::with(['submissions' => function($q)

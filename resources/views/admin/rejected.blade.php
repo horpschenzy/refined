@@ -168,6 +168,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <span class="text-right">{{ $applicants->links() }}</span>
                         </div>
                     </div>
                 </div>
@@ -214,7 +215,7 @@
         <script src="admin/assets/js/pages/datatables.init.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
-            
+
             function accept(id){
                 swal({
                     title: "Are you sure you want to accept this application?",
@@ -243,7 +244,7 @@
                               }
                             },
                         });
-                      
+
                     } else {
                       swal("Application Discarded!");
                     }
@@ -277,7 +278,7 @@
                               }
                             },
                         });
-                      
+
                     } else {
                       swal("Application Discarded!");
                     }

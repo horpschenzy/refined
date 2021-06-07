@@ -28,6 +28,7 @@
                 </div>
             </div>
             <!-- end page title -->
+            @if (auth()->user()->usertype == 'admin')
             <div class="row">
                 <div class="col-12">
                     @include('admin.flash-message')
@@ -50,6 +51,7 @@
                     </div>
                 </div>
             </div>
+            @endif
 
             <div class="row">
                 <div class="col-12">
@@ -76,11 +78,15 @@
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         Action <i class="mdi mdi-chevron-down"></i>
                                                     </a>
-
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                    @if (auth()->user()->usertype == 'admin')
                                                     <a href="#editAssignment{{$assignment->id}}"    data-bs-toggle="modal" data-bs-target="#editAssignment{{$assignment->id}}" class="dropdown-item">Edit</a>
                                                     <a class="dropdown-item" onclick="deleteAssignment({{ $assignment->id }})">Delete</a>
+                                                    @else
+                                                    <a href="/view/submissions/{{$assignment->id}}" target="_blank" class="dropdown-item">View Submissions</a>
+                                                    @endif
                                                 </div>
+
                                             </div>
                                         </td>
                                     </tr>

@@ -10,6 +10,20 @@ use Illuminate\Support\Facades\Validator;
 
 class ApplicationAssignmentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function viewSubmissions($id)
+    {
+        $applicants = ApplicationAssignment::with(['applications'=> function($q){
+            $q->with('user')->where('add_to_count', 1)->whereHas('circle', function($x){
+                $x->where('head_id', auth()->id());
+            });
+        }])->where('assignment_id', $id)->get();
+
+        return view('admin.applicantsassignment',compact('applicants'));
+    }
     public function markAssignment(Request $request, $id)
     {
         $getAssignment = ApplicationAssignment::find($id);
