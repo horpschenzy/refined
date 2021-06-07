@@ -32,73 +32,43 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                             <div class="mb-3 row">
-                                    <label for="attendance-date" class="col-md-2 col-form-label">Attendance Date</label>
-                                    <div class="col-md-10">
-                                        <input class="form-control" type="date" value="" id="attendance-date">
-                                    </div>
-                                </div>
-
-
-                        <div class="text-center mb-3">
-                            <button type="Search" class="btn btn-primary waves-effect waves-light">Search
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Class</th>
-                                        <th>Time-in</th>
-                                        <th>Time-out</th>
+                                        <th>Class Name</th>
+                                        <th>Description</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
+                                    @foreach ($courses as $course)
                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
+                                        <td>{{ $course->title }}</td>
+                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ $course->description }}</p></td>
+                                        <td><img src="/images/course/{{ $course->course_image }}" alt="course-image" class="avatar-lg me-2 img-thumbnail" /></td>
+                                        <td>
+                                            <div class="dropdown dropdown-topbar d-inline-block">
+                                                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Action <i class="mdi mdi-chevron-down"></i>
+                                                    </a>
+
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+                                                    <a class="dropdown-item" href="/markattendance?q={{$course->id}}">Mark Attendance</a>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009/01/12</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cedric Kelly</td>
-                                        <td>Senior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2012/03/29</td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
-
-            <!-- end row -->
+                <!-- end col -->
+            </div>
 
 
 

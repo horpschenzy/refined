@@ -15,6 +15,7 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
+                @if (auth()->user()->usertype == 'admin')
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-account-multiple"></i><span>Applicants</span>
@@ -26,9 +27,9 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{route('course')}}" class="waves-effect">
+                    <a href="{{route('classes')}}" class="waves-effect">
                         <i class="mdi mdi-book-open-page-variant"></i>
-                        <span>Courses</span>
+                        <span>Classes</span>
                     </a>
                 </li>
                 <li>
@@ -77,12 +78,6 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{route('attendance')}}" class=" waves-effect">
-                        <i class="mdi mdi-account-details"></i>
-                        <span>Attendance</span>
-                    </a>
-                </li>
-                <li>
                     <a href="{{route('admin.users')}}" class="waves-effect">
                         <i class="mdi mdi-account"></i>
                         <span>Users</span>
@@ -94,8 +89,21 @@
                         <span>Settings</span>
                     </a>
                 </li>
+                @else
+                <li>
+                    <a href="{{route('attendance')}}" class=" waves-effect">
+                        <i class="mdi mdi-account-details"></i>
+                        <span>Attendance</span>
+                    </a>
+                </li>
+                @endif
 
-
+                <li>
+                    <a href="{{route('assignment')}}" class=" waves-effect">
+                        <i class="mdi mdi-folder-account-outline"></i>
+                        <span>Assignment</span>
+                    </a>
+                </li>
 
             </ul>
         </div>

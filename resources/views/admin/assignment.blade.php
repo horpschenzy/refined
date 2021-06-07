@@ -22,46 +22,36 @@
                             <ol class="breadcrumb m-0">
                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                                <li class="breadcrumb-item active">Classes</li>
+                                <li class="breadcrumb-item active">Assignment</li>
                             </ol>
                     </div>
                 </div>
             </div>
             <!-- end page title -->
+            @if (auth()->user()->usertype == 'admin')
             <div class="row">
                 <div class="col-12">
                     @include('admin.flash-message')
                     <div class="card">
-                    <form method="POST" action="/classes" enctype="multipart/form-data">
+                    <form method="POST" action="/assignment" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="mb-3 row">
-                                <label for="text-input" class="col-md-2 col-form-label">Class Name</label>
+                                <label for="text-input" class="col-md-2 col-form-label">Assignment</label>
                                 <div class="col-md-10">
-                                    <input class="form-control" required type="text" value="{{old('title')}}" name="title" id="text-input">
+                                    <input class="form-control" required type="text" value="{{old('topic')}}" name="topic" id="text-input">
                                 </div>
                             </div>
-                             <div class="mb-3 row">
-                                    <label for="file-input" class="col-md-2 col-form-label">Class Image</label>
-                                    <div class="col-md-10">
-                                        <input class="form-control" required type="file" value="{{old('course_image')}}" name="course_image" id="file-input">
-                                    </div>
-                                </div>
-                                <div class="mb-3 row">
-                                    <label for="example-url-input" class="col-md-2 col-form-label">Description</label>
-                                    <div class="col-md-10">
-                                        <textarea class="form-control" required name="description"></textarea>
-                                    </div>
-                                </div>
                         </div>
                         <div class="text-center mb-3">
-                            <button type="submit" class="btn btn-primary waves-effect waves-light w-50">Add Class
+                            <button type="submit" class="btn btn-primary waves-effect waves-light w-50">Add Assignment
                             </button>
                         </div>
                     </form>
                     </div>
                 </div>
             </div>
+            @endif
 
             <div class="row">
                 <div class="col-12">
@@ -70,38 +60,74 @@
                             <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Class Name</th>
-                                        <th>Description</th>
-                                        <th>Image</th>
+                                        <th>Assignment ID</th>
+                                        <th>Topic</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($courses as $course)
+                                    @foreach ($assignments as $assignment)
                                     <tr>
-                                        <td>{{ $course->title }}</td>
-                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ $course->description }}</p></td>
-                                        <td><img src="/images/course/{{ $course->course_image }}" alt="course-image" class="avatar-lg me-2 img-thumbnail" /></td>
+                                        <td>{{ $assignment->id }}</td>
+                                        <td>{{ $assignment->topic }}</td>
+                                        <td>{{ ucfirst($assignment->status) }}</td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         Action <i class="mdi mdi-chevron-down"></i>
                                                     </a>
-
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    @if ($course->status == 'not started')
-                                                        <a class="dropdown-item" onclick="startStream({{ $course->id }})">Start</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        @elseif ($course->status == 'started')
-                                                        <a class="dropdown-item" onclick="endStream({{ $course->id }})">End</a>
-                                                        <div class="dropdown-divider"></div>
+                                                    @if (auth()->user()->usertype == 'admin')
+                                                    <a href="#editAssignment{{$assignment->id}}"    data-bs-toggle="modal" data-bs-target="#editAssignment{{$assignment->id}}" class="dropdown-item">Edit</a>
+                                                    <a class="dropdown-item" onclick="deleteAssignment({{ $assignment->id }})">Delete</a>
+                                                    @else
+                                                    <a href="/view/submissions/{{$assignment->id}}" target="_blank" class="dropdown-item">View Submissions</a>
                                                     @endif
-                                                    <a class="dropdown-item" onclick="deleteStream({{ $course->id }})">Delete</a>
                                                 </div>
+
                                             </div>
                                         </td>
                                     </tr>
+                                    <div class="modal fade" id="editAssignment{{$assignment->id}}" tabindex="-1" aria-labelledby="editAssignment" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="assignToFamily">Edit {{ $assignment->topic }} </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/edit/assignment/{{ $assignment->id }}" method="post">
+                                                        @csrf
+                                                        <div class="card-body">
+                                                            <input type="text" value="{{ $assignment->id }}" name="id" hidden>
+                                                            <div class="mb-3 row">
+                                                                <label for="text-input" class="col-md-4 col-form-label">Assignment</label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control" required type="text" value="{{$assignment->topic}}" name="topic" id="text-input">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="text-input" class="col-md-4 col-form-label">Status</label>
+                                                                <div class="col-md-8">
+                                                                    <select name="status" required="" id="" class="form-select" aria-label="Default select example">
+                                                                        <option value="{{ $assignment->status }}">{{ ucfirst($assignment->status) }}</option>
+                                                                        <option value="pending">Pending</option>
+                                                                        <option value="active">Active</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                                                            <button type="submit" class="btn btn-primary">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -160,78 +186,10 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         <script>
-            function startStream(id){
-                swal({
-                    title: "Are you sure you want to start this stream?",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: false,
-                  })
-                  .then((start_stream) => {
-                    if (start_stream) {
-                        let _token   = $('meta[name="csrf-token"]').attr('content');
-                        $.ajax({
-                            url: "/start",
-                            type:"POST",
-                            data:{
-                              id:id,
-                              _token: _token
-                            },
-
-                            success:function(response){
-                              console.log(response);
-                              if(response) {
-                                swal("Poof! Stream Started Successfully!", {
-                                    icon: "success", });
-
-                                location.reload();
-                              }
-                            },
-                        });
-
-                    } else {
-                      swal("Stream Discarded!");
-                    }
-                  });
-            }
-            function endStream(id){
-                swal({
-                    title: "Are you sure you want to end this stream?",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: false,
-                  })
-                  .then((end_stream) => {
-                    if (end_stream) {
-                        let _token   = $('meta[name="csrf-token"]').attr('content');
-                        $.ajax({
-                            url: "/end",
-                            type:"POST",
-                            data:{
-                              id:id,
-                              _token: _token
-                            },
-
-                            success:function(response){
-                              console.log(response);
-                              if(response) {
-                                swal("Poof! Stream Ended Successfully!", {
-                                    icon: "success", });
-
-                                location.reload();
-                              }
-                            },
-                        });
-
-                    } else {
-                      swal("Stream Discarded!");
-                    }
-                  });
-            }
-            function deleteStream(id)
+            function deleteAssignment(id)
             {
                 swal({
-                    title: "Are you sure you want to delete this stream?",
+                    title: "Are you sure you want to delete this assignment?",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -240,7 +198,7 @@
                     if (delete_stream) {
                         let _token   = $('meta[name="csrf-token"]').attr('content');
                         $.ajax({
-                            url: "/delete/stream",
+                            url: "/delete/assignment",
                             type:"POST",
                             data:{
                               id:id,
@@ -250,7 +208,7 @@
                             success:function(response){
                               console.log(response);
                               if(response) {
-                                swal("Poof! Stream Deleted Successfully!", {
+                                swal("Poof! Assignment Deleted Successfully!", {
                                     icon: "success", });
 
                                 location.reload();
@@ -259,7 +217,7 @@
                         });
 
                     } else {
-                      swal("Stream Discarded!");
+                      swal("Assignment Discarded!");
                     }
                   });
             }

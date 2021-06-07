@@ -18,4 +18,14 @@ class Application extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    /**
+     * Get the user that owns the Application
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function circle()
+    {
+        return $this->hasOne(HeadMember::class)->with('user');
+    }
 }

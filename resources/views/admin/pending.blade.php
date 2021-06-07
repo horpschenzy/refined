@@ -172,6 +172,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <span class="text-right">{{ $applicants->links() }}</span>
                         </div>
                     </div>
                 </div>

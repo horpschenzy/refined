@@ -30,7 +30,7 @@
             <!-- end page title -->
 
 
-
+            @if (auth()->user()->usertype == 'admin')
             <div class="row">
                 <div class="col-xl-3 col-sm-6">
                     <div class="card mini-stat bg-primary">
@@ -85,13 +85,15 @@
                     </div>
                 </div>
             </div>
+            @endif
+
 
             <div class="row">
 
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-4">Application Request</h4>
+                            <h4 class="card-title mb-4">{{(auth()->user()->usertype == 'admin') ? 'Approved Application' : 'Applicants' }}</h4>
                             <div class="table-responsive">
                                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
@@ -172,6 +174,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                           <span class="text-right">{{ $applicants->links() }}</span>
                         </div>
                     </div>
                 </div>

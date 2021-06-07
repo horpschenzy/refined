@@ -35,6 +35,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{route('member.assignment')}}" class=" waves-effect">
+                        <i class="mdi mdi-folder-account-outline"></i>
+                        <span>Assignment</span>
+                    </a>
+                </li>
+                <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-email-outline"></i>
                         <span>Exams and Test</span>

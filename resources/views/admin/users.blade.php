@@ -114,10 +114,10 @@
                                     <tr>
                                         <td>{{ $user->firstname }}</td>
                                         <td>{{ $user->lastname }}</td>
-                                        <td>{{ $user->user->reg_no }}</td>
-                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ ucfirst(str_replace('_', ' ',$user->user->usertype)) }}</p></td>
-                                        <td>{{ $user->user->family_circle }}</td>
-                                        <td>{{ $user->user->telegram_link }}</td>
+                                        <td>{{ isset($user->user->reg_no)? $user->user->reg_no : '' }}</td>
+                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ ucfirst(str_replace('_', ' ',isset($user->user->usertype)? $user->user->usertype : '')) }}</p></td>
+                                        <td>{{ isset($user->user->family_circle)?$user->user->family_circle:'' }}</td>
+                                        <td>{{ isset($user->user->telegram_link)?$user->user->telegram_link:'' }}</td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -125,15 +125,81 @@
                                                     </a>
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    @if ($user->user->usertype == 'family_head')
+                                                    @if ((isset($user->user->usertype)? $user->user->usertype : '') == 'family_head')
                                                         <a class="dropdown-item" onclick="assignCordinator({{ $user->id }})">Assign Co-ordinator</a>
                                                         <div class="dropdown-divider"></div>
                                                     @endif
+                                                    <a href="#editUser{{$user->id}}"    data-bs-toggle="modal" data-bs-target="#editUser{{$user->id}}" class="dropdown-item">Edit</a>
                                                     <a class="dropdown-item" onclick="deleteUser({{ $user->id }})">Delete</a>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
+
+                                    <div class="modal fade" id="editUser{{$user->id}}" tabindex="-1" aria-labelledby="editUser" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="assignToFamily">Edit {{ $user->firstname }} {{ $user->lastname }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/edit/user" method="post">
+                                                        @csrf
+                                                        <div class="card-body">
+                                                            <input type="text" value="{{$user->id}}" name="id" hidden>
+                                                            <div class="mb-3 row">
+                                                                <label for="text-input" class="col-md-4 col-form-label">First Name</label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control" required type="text" value="{{$user->firstname}}" name="firstname" id="text-input">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="file-input" class="col-md-4 col-form-label">Last Name</label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control" required type="text" value="{{$user->lastname}}" name="lastname" id="text-input">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="file-input" class="col-md-4 col-form-label">Email  (username)</label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control" required type="email" value="{{isset($user->user->reg_no)? $user->user->reg_no : ''}}" name="email" id="text-input">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="usertype" class="col-md-4 col-form-label">Usertype</label>
+                                                                <div class="col-md-8">
+                                                                    <select class="form-control" required name="usertype" id="usertype">
+                                                                        <option value='{{ isset($user->user->usertype)? $user->user->usertype : '' }}'>{{ ucfirst(str_replace('_', ' ',isset($user->user->usertype)? $user->user->usertype : '')) }}</option>
+                                                                        <option value='cordinator'>Co-ordinator</option>
+                                                                        <option value='family_head'>Family Head</option>
+                                                                        <option value='admin'>Admin</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="mb-3 row">
+                                                                <label for="file-input" class="col-md-4 col-form-label">Family Circle</label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control" type="text" value="{{isset($user->user->family_circle)?$user->user->family_circle:''}}" name="family_circle" id="text-input">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="file-input" class="col-md-4 col-form-label">Telegram Link</label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control" type="text" value="{{isset($user->user->telegram_link)?$user->user->telegram_link:''}}" name="telegram_link" id="text-input">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                                                            <button type="submit" class="btn btn-primary">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -192,78 +258,10 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         <script>
-            function startStream(id){
-                swal({
-                    title: "Are you sure you want to start this stream?",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: false,
-                  })
-                  .then((start_stream) => {
-                    if (start_stream) {
-                        let _token   = $('meta[name="csrf-token"]').attr('content');
-                        $.ajax({
-                            url: "/start",
-                            type:"POST",
-                            data:{
-                              id:id,
-                              _token: _token
-                            },
-
-                            success:function(response){
-                              console.log(response);
-                              if(response) {
-                                swal("Poof! Stream Started Successfully!", {
-                                    icon: "success", });
-
-                                location.reload();
-                              }
-                            },
-                        });
-
-                    } else {
-                      swal("Stream Discarded!");
-                    }
-                  });
-            }
-            function endStream(id){
-                swal({
-                    title: "Are you sure you want to end this stream?",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: false,
-                  })
-                  .then((end_stream) => {
-                    if (end_stream) {
-                        let _token   = $('meta[name="csrf-token"]').attr('content');
-                        $.ajax({
-                            url: "/end",
-                            type:"POST",
-                            data:{
-                              id:id,
-                              _token: _token
-                            },
-
-                            success:function(response){
-                              console.log(response);
-                              if(response) {
-                                swal("Poof! Stream Ended Successfully!", {
-                                    icon: "success", });
-
-                                location.reload();
-                              }
-                            },
-                        });
-
-                    } else {
-                      swal("Stream Discarded!");
-                    }
-                  });
-            }
-            function deleteStream(id)
+            function deleteUser(id)
             {
                 swal({
-                    title: "Are you sure you want to delete this stream?",
+                    title: "Are you sure you want to delete this user?",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -272,7 +270,7 @@
                     if (delete_stream) {
                         let _token   = $('meta[name="csrf-token"]').attr('content');
                         $.ajax({
-                            url: "/delete/stream",
+                            url: "/delete/user",
                             type:"POST",
                             data:{
                               id:id,
@@ -282,7 +280,7 @@
                             success:function(response){
                               console.log(response);
                               if(response) {
-                                swal("Poof! Stream Deleted Successfully!", {
+                                swal("Poof! User Deleted Successfully!", {
                                     icon: "success", });
 
                                 location.reload();
@@ -291,7 +289,7 @@
                         });
 
                     } else {
-                      swal("Stream Discarded!");
+                      swal("User Discarded!");
                     }
                   });
             }

@@ -35,7 +35,7 @@ Route::get('/faq', 'FrontendController@faq')->name('faq');
 
 //ADMIN
 Route::get('/applicants', 'AdminController@applicants')->name('get.applicants');
-Route::post('/assign/applicant/{id}', 'AdminController@assignApplicants');
+Route::post('/assign/applicant/{id} ', 'AdminController@assignApplicants');
 Route::get('/dashboard', 'AdminController@index')->name('dashboard');
 Route::get('/profile', 'AdminController@profile')->name('profile');
 Route::get('/rejected', 'AdminController@rejected')->name('rejected');
@@ -55,11 +55,14 @@ Route::post('/reject', 'AdminController@reject');
 Route::post('/accept', 'AdminController@accept');
 Route::post('/pend', 'AdminController@pend');
 Route::post('/delete/stream', 'LivestreamController@delete');
+Route::post('/delete/user', 'AdminController@deleteUser');
+Route::post('/edit/user/', 'AdminController@editUser');
 Route::post('/end', 'LivestreamController@end');
 Route::post('/start', 'LivestreamController@start');
 Route::post('/pend', 'AdminController@pend');
 Route::post('/logout', 'AdminController@logout')->name('logout');
-Route::get('/course', 'CourseController@index')->name('course');
+Route::get('/classes', 'CourseController@index')->name('classes');
+Route::post('/classes', 'CourseController@store');
 Route::get('/ExamandTest', 'ExamController@index')->name('exam');
 Route::get('/family', 'AdminController@family')->name('family');
 
@@ -67,6 +70,18 @@ Route::get('/addlesson', 'LessonController@index')->name('addlesson');
 Route::get('/users', 'AdminController@users')->name('admin.users');
 Route::get('/send-mail', 'AdminController@sendMail');
 Route::post('/add/admin', 'AdminController@addAdmin');
+
+Route::get('/markattendance', 'CourseController@attendance');
+Route::post('/markattendance', 'CourseController@markAttendance');
+
+Route::get('/assignment', 'AssignmentController@index')->name('assignment');
+Route::get('/view/submissions/{id}', 'ApplicationAssignmentController@viewSubmissions');
+Route::post('/mark/assignment/{id}', 'ApplicationAssignmentController@markAssignment');
+Route::post('/assignment', 'AssignmentController@store');
+Route::post('edit/assignment/{id}', 'AssignmentController@update');
+Route::post('delete/assignment', 'AssignmentController@deleteAssignment');
+Route::post('submit/assignment/{id}', 'ApplicationAssignmentController@store');
+Route::get('solve/issue', 'AdminController@solveRegIssue');
 
 
 //Member
@@ -84,4 +99,5 @@ Route::get('/member/profile', 'MemberController@profile')->name('member.profile'
 Route::post('/edit/profile', 'MemberController@editProfile');
 Route::post('/change/password', 'MemberController@changePassword');
 Route::get('/member/results', 'ExamController@results')->name('member.results');
+Route::get('/member/assignment', 'AssignmentController@memberAssignment')->name('member.assignment');
 

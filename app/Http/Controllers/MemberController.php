@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Validator;
 
 class MemberController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function rejectAdmission(Request $request, $email_code)
     {
         $user = User::select('reg_no','email_code')->where('email_code', $email_code)->where('reg_no', $request->username)->first();
@@ -28,7 +31,7 @@ class MemberController extends Controller
 
 
         $input = $request->all();
-        
+
         $this->validate($request, [
             'username' => 'required',
             'password' => 'required',
@@ -54,7 +57,7 @@ class MemberController extends Controller
                 ->with($notification);
         }
     }
-    
+
     public function acceptAdmission(Request $request, $email_code)
     {
         $user = User::select('reg_no','email_code')->where('email_code', $email_code)->where('reg_no', $request->username)->first();
@@ -68,7 +71,7 @@ class MemberController extends Controller
 
 
         $input = $request->all();
-        
+
         $this->validate($request, [
             'username' => 'required',
             'password' => 'required',
@@ -92,7 +95,7 @@ class MemberController extends Controller
                 ->with($notification);
         }
     }
-    
+
     public function reject($email_code)
     {
         $user = User::select('reg_no','email_code','application_id')->where('email_code', $email_code)->first();
@@ -112,7 +115,7 @@ class MemberController extends Controller
         );
         return redirect('/')->with($notification)->withInput();
     }
-    
+
     public function accept($email_code)
     {
         $user = User::select('reg_no','email_code','id')->where('email_code', $email_code)->first();
@@ -131,11 +134,6 @@ class MemberController extends Controller
         User::where('id', $user->id)->update(['email_code' => NULL]);
 
         return redirect('/')->with($notification)->withInput();
-    }
-
-    public function __construct()
-    {
-        $this->middleware('auth');
     }
 
     public function index()
@@ -178,7 +176,7 @@ class MemberController extends Controller
 
     public function editProfile(Request $request)
     {
-        
+
         $applicant = Application::where('id', Auth::user()->application_id);
         if($request->hasFile('picture')){
             $picture = $request->file('picture');
@@ -217,7 +215,7 @@ class MemberController extends Controller
             );
             return redirect()->back()->with($notification)->withInput();
         }
-        
+
         $validate  = Validator::make($request->all(), [
             'password' => 'required',
             'newpassword' => 'required',
@@ -231,7 +229,7 @@ class MemberController extends Controller
             );
             return redirect()->back()->with($notification)->withInput();
         }
-   
+
         $updatepassword = User::find(auth()->user()->id)->update(['password'=> Hash::make($request->newpassword)]);
         if($updatepassword){
             $notification = array(
