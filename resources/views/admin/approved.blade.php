@@ -71,8 +71,8 @@
                                             <td>{{$applicant->firstname}} </td>
                                             <td>{{$applicant->lastname}}</td>
                                             <td>{{ ($applicant->assign) ? 'YES' : 'NO' }}</td>
-                                            <td><span class="badge rounded-pill bg-primary">{{$applicant->gender}}</span></td>
-                                            <td><span>{{($applicant->circle) ? $applicant->circle->user->family_circle : '' }}</span></td>
+                                            <td><span>{{$applicant->gender}}</span></td>
+                                            <td><span class="badge rounded-pill bg-primary">{{($applicant->circle) ? $applicant->circle->user->family_circle : '' }}</span></td>
                                             <td>{{ucfirst($applicant->pastor_wife)}}</td>
                                             <td>{{ucfirst($applicant->maritalstatus)}}</td>
                                             <td>{{$applicant->phone}}</td>
