@@ -11,7 +11,7 @@ class FrontendController extends Controller
     protected function customLogin(Request $request)
     {
         $input = $request->all();
-        
+
         $this->validate($request, [
             'username' => 'required',
             'password' => 'required',
@@ -72,6 +72,11 @@ class FrontendController extends Controller
     public function apply()
     {
         return view('frontend.apply');
+    }
+
+    public function secret()
+    {
+        return view('frontend.secret');
     }
 
     public function faq()
