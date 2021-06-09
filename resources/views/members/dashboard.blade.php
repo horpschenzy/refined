@@ -90,6 +90,39 @@
                                                 </td>
                                             <td>12am-12:30am</td>
                                         </tr>
+                                        <tr>
+                                            <th scope="row">Vigils</th>
+                                            <td>Fridays</td>
+                                            <td>2nd Schedule <br>
+                                                July – 30th
+                                                August – 6th, 20th, 27th
+                                                September – 3rd
+                                                </td>
+                                            <td>12am-1:00am</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Vigils</th>
+                                            <td>Fridays</td>
+                                            <td>3rd Schedule (2nd Fridays of the month) <br>
+                                                June – 11th
+                                                July – 9th
+                                                August – 13th
+                                                September – 10th
+                                                </td>
+                                            <td>11:00am-1:00am</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Special Meetings Married and Singles special </th>
+                                            <td>Monday</td>
+                                            <td>06/09/2021</td>
+                                            <td>6pm -7pm</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Time out with Pastor Funke Obadje</th>
+                                            <td>Thursday</td>
+                                            <td>09/09/2021</td>
+                                            <td>6pm -8pm</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
