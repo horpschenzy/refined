@@ -51,7 +51,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{route('member.settings')}}" class=" waves-effect">
+                    <a href="{{route('member.profile')}}" class=" waves-effect">
                         <i class="mdi mdi-cog"></i>
                         <span>Settings</span>
                     </a>

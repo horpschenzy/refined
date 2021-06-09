@@ -179,6 +179,97 @@
                     </div>
                 </div>
             </div>
+
+              <!-- Time Table -->
+              <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">COURSE SCHEDULE</h4>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered border-primary mb-0">
+
+                                    <thead>
+                                        <tr>
+                                            <th>SCHEDULE</th>
+                                            <th>DAY</th>
+                                            <th>DATE</th>
+                                            <th>TIME</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Main Teachings</th>
+                                            <td>Thursdays</td>
+                                            <td>June - 10th , 17th, 24th <br>
+                                                July – 1st, 8th, 15th , 22nd, 29th <br>
+                                                August - 5th, 12th, 19th, 26th <br>
+                                                September – 2nd, 9th
+                                                </td>
+                                            <td>6pm-8pm</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Seminars/Book Review</th>
+                                            <td>Mondays</td>
+                                            <td>June – 14th, 21st, 28th <br>
+                                                July - 5th, 12th, 19th, 26th  <br>
+                                                August – 2nd, 9th, 16th, 23rd. 30th <br>
+                                                September - 6th, 13th
+                                                </td>
+                                            <td>6pm-7pm</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Vigils</th>
+                                            <td>Fridays</td>
+                                            <td>1st Schedule <br>
+                                                June – 18th & 25th <br>
+                                                July – 2nd, 16th & 23rd
+                                                </td>
+                                            <td>12am-12:30am</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Vigils</th>
+                                            <td>Fridays</td>
+                                            <td>2nd Schedule <br>
+                                                July – 30th
+                                                August – 6th, 20th, 27th
+                                                September – 3rd
+                                                </td>
+                                            <td>12am-1:00am</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Vigils</th>
+                                            <td>Fridays</td>
+                                            <td>3rd Schedule (2nd Fridays of the month) <br>
+                                                June – 11th
+                                                July – 9th
+                                                August – 13th
+                                                September – 10th
+                                                </td>
+                                            <td>11:00am-1:00am</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Special Meetings Married and Singles special </th>
+                                            <td>Monday</td>
+                                            <td>06/09/2021</td>
+                                            <td>6pm -7pm</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Time out with Pastor Funke Obadje</th>
+                                            <td>Thursday</td>
+                                            <td>09/09/2021</td>
+                                            <td>6pm -8pm</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end page Time Table -->
             <!-- Button trigger modal -->
 {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assignToFamily">
     Launch demo modal
