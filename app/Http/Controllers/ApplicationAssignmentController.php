@@ -45,7 +45,7 @@ class ApplicationAssignmentController extends Controller
     public function store(Request $request, $id)
     {
         $validate  = Validator::make($request->all(), [
-            'document'=> 'required|file',
+            'document'=> 'file',
         ]);
         if($validate->fails()){
             $notification = array(
@@ -55,7 +55,7 @@ class ApplicationAssignmentController extends Controller
             return redirect()->back()->with($notification);
         }
 
-        $data = [];
+        $data['text'] = $request->text;
         if($request->hasFile('document')){
             $document = $request->file('document');
             $data['document'] = $filename = time() . '.' . $document->getClientOriginalExtension();

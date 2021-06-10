@@ -38,6 +38,7 @@
                                     <tr>
                                         <th>Reg No</th>
                                         <th>Document</th>
+                                        <th>Text</th>
                                         <th>Score</th>
                                         <th>Action</th>
                                     </tr>
@@ -47,7 +48,12 @@
                                     @foreach ($applicants as $applicant)
                                     <tr>
                                         <td>{{ $applicant->applications->user->reg_no }}</td>
-                                        <td><a href="/images/application_assignment/{{$applicant->document}}" target="_blank" class="btn btn-primary btn-sm">View document</a></td>
+                                        <td>
+                                            @if ($applicant->document)
+
+                                            <a href="/images/application_assignment/{{$applicant->document}}" target="_blank" class="btn btn-primary btn-sm">View document</a></td>
+                                            @endif
+                                        <td>{{ $applicant->text }}</td>
                                         <td>{{($applicant->score)? $applicant->score : 0 }}</td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">

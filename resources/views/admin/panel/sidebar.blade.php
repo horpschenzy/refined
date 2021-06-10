@@ -99,6 +99,13 @@
                 @endif
 
                 <li>
+                    <a href="{{route('classroom')}}" class="waves-effect">
+                        <i class="mdi mdi-teach"></i>
+                        <span>Classroom</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{route('assignment')}}" class=" waves-effect">
                         <i class="mdi mdi-folder-account-outline"></i>
                         <span>Assignment</span>
