@@ -3,7 +3,7 @@
 @section('styles')
     <link href="admin/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="admin/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-    
+
     <!-- Responsive datatable examples -->
     <link href="admin/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 @endsection
@@ -48,20 +48,21 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="example-url-input" class="col-md-2 col-form-label">URL</label>
+                                    <label for="example-url-input" class="col-md-2 col-form-label">MIXLR URL</label>
                                     <div class="col-md-10">
-                                        <input class="form-control" required type="url" value="{{old('url')}}" name="url" id="example-url-input">
+                                        <input class="form-control" type="url" value="{{old('mixlr_url')}}" name="mixlr_url" id="example-url-input">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="example-url-input" class="col-md-2 col-form-label">Type</label>
+                                    <label for="example-url-input" class="col-md-2 col-form-label">YOUTUBE URL</label>
                                     <div class="col-md-10">
-                                        <select class="form-select" aria-label="Default select example" required name="type">
-                                            <option selected>Open this select video type</option>
-                                            <option value="Youtube">Youtube</option>
-                                            <option value="Vimeo">Vimeo</option>
-                                            <option value="Mixlr">Mixlr</option>
-                                          </select>
+                                        <input class="form-control" type="url" value="{{old('youtube_url')}}" name="youtube_url" id="example-url-input">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="example-url-input" class="col-md-2 col-form-label">VIMEO URL</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" type="url" value="{{old('vimeo_url')}}" name="vimeo_url" id="example-url-input">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
@@ -79,28 +80,7 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="row">
-                <div class="col-xl-3"></div>
-                <div class="col-xl-6">
-                    <div class="card">
-                        <div class="card-body text-center">
 
-                            <h4 class="card-title">Popup with video or map</h4>
-                            <p class="card-title-desc">In this example lazy-loading of images is enabled for the next image based on move direction. </p>
-
-                            <div class="row">
-                                <div class="col-12">
-                                    <a class="popup-youtube btn btn-secondary" href="http://www.youtube.com/watch?v=0O2aH4XLbto">Open YouTube Video</a>
-                                    <a class="popup-vimeo btn btn-secondary" href="https://vimeo.com/45830194">Open Vimeo Video</a>
-                                    <a class="popup-gmaps btn btn-secondary" href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom">Open Mixlr</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3"></div>
-            </div> --}}
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -109,8 +89,9 @@
                                 <thead>
                                     <tr>
                                         <th>Event Name</th>
-                                        <th>URL</th>
-                                        <th>Type</th>
+                                        <th>MIXLR URL</th>
+                                        <th>YOUTUBE URL</th>
+                                        <th>VIMEO URL</th>
                                         <th>Description</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -121,8 +102,9 @@
                                     @foreach ($livestreams as $livestream)
                                     <tr>
                                         <td>{{ $livestream->event_name }}</td>
-                                        <td>{{ $livestream->url }}</td>
-                                        <td>{{ $livestream->type }}</td>
+                                        <td>{{ $livestream->mixlr_url }}</td>
+                                        <td>{{ $livestream->youtube_url }}</td>
+                                        <td>{{ $livestream->vimeo_url }}</td>
                                         <td><p style="text-align: justify; text-justify: inter-word;">{{ $livestream->description }}</p></td>
                                         <td>{{ ucfirst($livestream->status) }}</td>
                                         <td>
@@ -133,7 +115,7 @@
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                     @if ($livestream->status == 'not started')
-                                                        <a class="dropdown-item" onclick="startStream({{ $livestream->id }})">Start</a>   
+                                                        <a class="dropdown-item" onclick="startStream({{ $livestream->id }})">Start</a>
                                                         <div class="dropdown-divider"></div>
                                                         @elseif ($livestream->status == 'started')
                                                         <a class="dropdown-item" onclick="endStream({{ $livestream->id }})">End</a>
@@ -230,7 +212,7 @@
                               }
                             },
                         });
-                      
+
                     } else {
                       swal("Stream Discarded!");
                     }
@@ -264,7 +246,7 @@
                               }
                             },
                         });
-                      
+
                     } else {
                       swal("Stream Discarded!");
                     }

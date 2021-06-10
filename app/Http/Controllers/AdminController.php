@@ -401,6 +401,11 @@ class AdminController extends Controller
         $livestream = Livestream::where('status', 'started')->first();
         return view('admin.classroom', compact('livestream'));
     }
+    public function showClassroom($id, $type)
+    {
+        $livestream = Livestream::where('status', 'started')->first();
+        return view('admin.indexclassroom', compact('livestream','type'));
+    }
 
     public function resource()
     {
