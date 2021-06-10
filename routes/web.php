@@ -46,6 +46,7 @@ Route::get('/pending', 'AdminController@pending')->name('pending');
 Route::get('/livestream', 'AdminController@livestream')->name('livestream');
 Route::post('/livestream', 'LivestreamController@store');
 Route::get('/classroom', 'AdminController@classroom')->name('classroom');
+Route::get('/classroom/{id}/{type}', 'AdminController@showClassroom');
 Route::get('/resource', 'AdminController@resource')->name('resource');
 Route::post('/resource', 'ResourceController@store');
 Route::get('/attendance', 'AdminController@attendance')->name('attendance');
@@ -93,6 +94,7 @@ Route::post('/accept/admission/{email_code}', 'MemberController@acceptAdmission'
 Route::post('/reject/admission/{email_code}', 'MemberController@rejectAdmission');
 Route::get('/member/resource', 'MemberController@resource')->name('member.resources');
 Route::get('/member/classroom', 'MemberController@classroom')->name('member.classroom');
+Route::get('/member/classroom/{id}/{type}', 'MemberController@showClassroom');
 Route::get('/member/courses', 'MemberController@course')->name('member.course');
 Route::get('/member/examandtest', 'MemberController@examandtest')->name('member.examandtest');
 Route::get('/member/settings', 'MemberController@settings')->name('member.settings');

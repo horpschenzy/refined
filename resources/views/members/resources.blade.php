@@ -29,7 +29,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">{{ $resource->file_name }}</h4>
                                 <p class="card-text">{{ $resource->description }}</p>
-                                <a href="{{ $resource->url }}" class="btn btn-primary">Get it Now</a>
+                                <a href="{{ $resource->url }}" class="btn btn-primary" target="_blank">Get it Now</a>
                             </div>
                         </div>
                     </div>

@@ -22,7 +22,7 @@ class LivestreamController extends Controller
         }
         return false;
     }
-    
+
     public function delete(Request $request)
     {
         $id = $request->id;
@@ -36,7 +36,7 @@ class LivestreamController extends Controller
         }
         return false;
     }
-    
+
     public function end(Request $request)
     {
         $id = $request->id;
@@ -55,8 +55,6 @@ class LivestreamController extends Controller
     {
         $validate  = Validator::make($request->all(), [
             'event_name' => 'required',
-            'url' => 'required',
-            'type' => 'required',
             'cover_image'=> 'file|image|mimes:jpeg,png,gif,webp',
         ]);
         if($validate->fails()){
@@ -66,10 +64,10 @@ class LivestreamController extends Controller
             );
             return redirect()->back()->with($notification);
         }
-        
 
-        $data = $request->only(['event_name', 'url', 'type', 'description']);
-        
+
+        $data = $request->only(['event_name', 'mixlr_url','youtube_url','vimeo_url', 'type', 'description']);
+
         if($request->hasFile('cover_image')){
             $cover_image = $request->file('cover_image');
             $data['cover_image'] = $filename = time() . '.' . $cover_image->getClientOriginalExtension();

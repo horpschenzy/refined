@@ -45,12 +45,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('classroom')}}" class="waves-effect">
-                        <i class="mdi mdi-teach"></i>
-                        <span>Classroom</span>
-                    </a>
-                </li>
-                <li>
                     <a href="{{route('resource')}}" class=" waves-effect">
                         <i class="mdi mdi-file-outline"></i>
                         <span>Resources</span>
@@ -97,6 +91,13 @@
                     </a>
                 </li>
                 @endif
+
+                <li>
+                    <a href="{{route('classroom')}}" class="waves-effect">
+                        <i class="mdi mdi-teach"></i>
+                        <span>Classroom</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="{{route('assignment')}}" class=" waves-effect">

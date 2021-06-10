@@ -153,6 +153,12 @@ class MemberController extends Controller
         return view('members.classroom', compact('livestream'));
     }
 
+    public function showClassroom($id, $type)
+    {
+        $livestream = Livestream::where('status', 'started')->first();
+        return view('members.indexclassroom', compact('livestream','type'));
+    }
+
     public function course()
     {
         return view('members.course');

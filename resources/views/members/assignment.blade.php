@@ -80,7 +80,13 @@
                                                             <div class="mb-3 row">
                                                                 <label for="text-input" class="col-md-4 col-form-label">Assignment</label>
                                                                 <div class="col-md-8">
-                                                                    <input class="form-control" required type="file" name="document" id="text-input">
+                                                                    <input class="form-control" type="file" name="document" id="text-input">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="text-input" class="col-md-4 col-form-label">Assignment</label>
+                                                                <div class="col-md-8">
+                                                                    <textarea class="form-control" name="text"></textarea>
                                                                 </div>
                                                             </div>
 
