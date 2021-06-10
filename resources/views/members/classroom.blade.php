@@ -58,6 +58,7 @@
                 <div class="col-xl-6">
                     <div class="card">
                         <div class="card-body text-center">
+                            @if ($livestream)
 
                             <h4 class="card-title">Select Platform type</h4>
                             <h3 class="card-title">Event Name : {{$livestream->event_name}}</h3>
@@ -74,7 +75,9 @@
                                     @endif
                                 </div>
                             </div>
-
+                            @else
+                                <h4 class="card-title"> NO STREAM AVAILABLE. PLEASE CHECK BACK LATER</h4>
+                            @endif
                         </div>
                     </div>
                 </div>
