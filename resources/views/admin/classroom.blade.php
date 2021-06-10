@@ -11,9 +11,9 @@
                     <div class="page-title-box">
                         <h4>Dashboard</h4>
                             <ol class="breadcrumb m-0">
-                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                                <li class="breadcrumb-item active">Classroom</li>
+                                <li class="breadcrumb-item"><a href="/classroom">Classroom</a></li>
                             </ol>
                     </div>
                 </div>
