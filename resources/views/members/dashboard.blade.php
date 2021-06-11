@@ -24,23 +24,51 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card card-body">
-                       <h6>Dearly Beloved <span style="text-transform: capitalize">{{ auth()->user()->application->firstname }}</span></h6>,
-                        <p>I am glad to welcome you on board the REFINED mentoring course for
-                            women in Ministry. <br> You are in for a life changing encounter.
+                    <div class="card card-body alert alert-success alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                        <div class="">
+                            <div class="">
+
+                                <h6>Dearly Beloved <span style="text-transform: capitalize">{{ auth()->user()->application->firstname }}</span></h6>,
+                                <p>I am glad to welcome you on board the REFINED mentoring course for                                 women in Ministry. <br> You are in for a life changing encounter.
                             <strong>Get ready to be REFINED!</strong>
                             <h6>Pastor Funke Obadje.</h6> </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card card-body">
-                        <h6>Terms and Conditions <span style="text-transform: capitalize">{{ auth()->user()->application->firstname }}</span></h6>,
-                         <ul>
-                             <li>You are expressly <span style="text-transform: uppercase; color: red"> prohibited </span> from sharing your private log-in access with others who are not part of the School</li>
-                             <li>ONLY posts related to the course are allowed on the telegram groups.</li>
-                             <li>Sharing of course content such as links to live teaching sessions, voice notes etc is <strong>NOT ALLOWED</strong>.</li>
-                             <li>Unnecessary posts and Broadcast Messages are discouraged on the group. </li>
-                         </ul>
-                     </div>
                 </div>
+                <div class="col-xl-12">
+                    <div class="card alert  alert-dismissible fade show">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                        <div class="card-body">
+                            <h4 class="card-title">Welcome Message</h4>
+                            <p class="card-title-desc">Opening words from the convener REFINED.</p>
+
+                            <!-- 16:9 aspect ratio -->
+                            <div class="ratio ratio-21x9">
+                                <iframe src="https://www.youtube.com/embed/ndmjc-m5upk" title="YouTube video" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+
+
+                    <div class="col-md-12 mb-5">
+                        <div class="card card-body alert alert-danger alert-dismissible fade show mb-0" role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                            <h6>Terms and Conditions <span style="text-transform: capitalize">{{ auth()->user()->application->firstname }}</span></h6>,
+                            <ul>
+                                <li>You are expressly <span style="text-transform: uppercase; color: red"> prohibited </span> from sharing your private log-in access with others who are not part of the School</li>
+                                <li>ONLY posts related to the course are allowed on the telegram groups.</li>
+                                <li>Sharing of course content such as links to live teaching sessions, voice notes etc is <strong>NOT ALLOWED</strong>.</li>
+                                <li>Unnecessary posts and Broadcast Messages are discouraged on the group. </li>
+                            </ul>
+                        </div>
+                    </div>
+
             </div>
             <!-- Time Table -->
             <div class="row">
