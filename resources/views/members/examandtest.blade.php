@@ -21,7 +21,7 @@
             </div>
             <!-- end page title -->
 
-            <div class="alert alert-soft-blue d-flex align-items-center card-margin p-2" role="alert">
+            {{-- <div class="alert alert-soft-blue d-flex align-items-center card-margin p-2" role="alert">
                 <i class="material-icons mr-3">info</i>
                 <div class="text-body">Your currently answered to <strong class="text-primary">5 correct</strong> questions. </div>
             </div>
@@ -121,7 +121,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- end row -->
 
