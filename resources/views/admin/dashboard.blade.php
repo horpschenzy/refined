@@ -100,6 +100,7 @@
                                         <th>Image</th>
                                         <th>Firstname</th>
                                         <th>Lastname</th>
+                                        <th>Reg No.</th>
                                         <th>Gender</th>
                                         <th>Age Range</th>
                                         <th>Pastor's Wife</th>
@@ -129,6 +130,7 @@
                                             <td> <img src="images/{{ $applicant->picture }}" alt="user-image" class="avatar-xs me-2 rounded-circle" /></td>
                                             <td>{{$applicant->firstname}} </td>
                                             <td>{{$applicant->lastname}}</td>
+                                            <td>{{$applicant->user->reg_no}}</td>
                                             <td>{{$applicant->gender}}</td>
                                             <td>{{$applicant->agerange}}</td>
                                             <td>{{ucfirst($applicant->pastor_wife)}}</td>
@@ -165,6 +167,7 @@
                                                         <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
                                                         <a class="dropdown-item" onclick="deleteApplicant({{ $applicant->id }})">Delete</a>
+                                                        <a class="dropdown-item" >Reset Password</a>
                                                     </div>
                                                 </div>
                                             </td>

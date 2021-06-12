@@ -52,6 +52,7 @@
                                         <th>Assigned to Family</th>
                                         <th>Gender</th>
                                         <th>Family Circle</th>
+                                        <th>Reg No.</th>
                                         <th>Pastor's Wife</th>
                                         <th>Marital Status</th>
                                         <th>Phone number</th>
@@ -73,6 +74,7 @@
                                             <td>{{ ($applicant->assign) ? 'YES' : 'NO' }}</td>
                                             <td><span>{{$applicant->gender}}</span></td>
                                             <td><span class="badge rounded-pill bg-primary">{{($applicant->circle) ? $applicant->circle->user->family_circle : '' }}</span></td>
+                                            <td>{{$applicant->user->reg_no}}</td>
                                             <td>{{ucfirst($applicant->pastor_wife)}}</td>
                                             <td>{{ucfirst($applicant->maritalstatus)}}</td>
                                             <td>{{$applicant->phone}}</td>
@@ -101,6 +103,7 @@
                                                         <div class="dropdown-divider"></div>
                                                         @endif
                                                         <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
+                                                        <a class="dropdown-item">Reset Password</a>
                                                     </div>
                                                 </div>
                                             </td>
