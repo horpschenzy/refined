@@ -48,6 +48,24 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
+                                    <label for="text-input" class="col-md-2 col-form-label">Mixlr Link</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control"  type="text" value="{{old('mixlr_url')}}" name="mixlr_url" id="text-input">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="text-input" class="col-md-2 col-form-label">Youtube Link</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control"  type="text" value="{{old('youtube_url')}}" name="youtube_url" id="text-input">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="text-input" class="col-md-2 col-form-label">Vimeo url</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control"  type="text" value="{{old('vimeo_url')}}" name="vimeo_url" id="text-input">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
                                     <label for="example-url-input" class="col-md-2 col-form-label">Description</label>
                                     <div class="col-md-10">
                                         <textarea class="form-control" required name="description"></textarea>
@@ -72,6 +90,9 @@
                                     <tr>
                                         <th>Class Name</th>
                                         <th>Description</th>
+                                        <th>Vimeo Url</th>
+                                        <th>Youtube Url</th>
+                                        <th>Mixlr Url</th>
                                         <th>Image</th>
                                         <th>Action</th>
                                     </tr>
@@ -82,7 +103,11 @@
                                     <tr>
                                         <td>{{ $course->title }}</td>
                                         <td><p style="text-align: justify; text-justify: inter-word;">{{ $course->description }}</p></td>
-                                        <td><img src="/images/course/{{ $course->course_image }}" alt="course-image" class="avatar-lg me-2 img-thumbnail" /></td>
+                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ $course->vimeo_url }}</p></td>
+                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ $course->youtube_url }}</p></td>
+                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ $course->mixlr_url }}</p></td>
+
+                                        <td><img src="/images/course/{{ $course->course_image }}" alt="course-images" class="avatar-lg me-2 img-thumbnail" /></td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

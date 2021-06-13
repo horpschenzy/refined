@@ -37,6 +37,8 @@ Route::get('/faq', 'FrontendController@faq')->name('faq');
 //ADMIN
 Route::get('/applicants', 'AdminController@applicants')->name('get.applicants');
 Route::post('/assign/applicant/{id} ', 'AdminController@assignApplicants');
+Route::post('/reset/password/{id} ', 'AdminController@resetPasswordApplicants');
+
 Route::get('/dashboard', 'AdminController@index')->name('dashboard');
 Route::get('/profile', 'AdminController@profile')->name('profile');
 Route::get('/rejected', 'AdminController@rejected')->name('rejected');

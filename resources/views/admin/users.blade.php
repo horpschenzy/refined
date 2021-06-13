@@ -126,7 +126,7 @@
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                     @if ((isset($user->user->usertype)? $user->user->usertype : '') == 'family_head')
-                                                        <a class="dropdown-item" onclick="assignCordinator({{ $user->id }})">Assign Co-ordinator</a>
+                                                        <a href="#assigncoordinator{{$user->id}}" data-bs-toggle="modal" data-bs-target="#assigncoordinator{{$user->id}}" class="dropdown-item">Assign Co-ordinator</a>
                                                         <div class="dropdown-divider"></div>
                                                     @endif
                                                     <a href="#editUser{{$user->id}}"    data-bs-toggle="modal" data-bs-target="#editUser{{$user->id}}" class="dropdown-item">Edit</a>
@@ -136,6 +136,52 @@
                                         </td>
                                     </tr>
 
+                                    <div class="modal fade" id="assigncoordinator{{$user->id}}" tabindex="-1" aria-labelledby="assigncoordinator" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="assignToFamily">Assign Co-ordinator to {{ $user->firstname }} {{ $user->lastname }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/assign/coordinator" method="post">
+                                                        @csrf
+                                                        <div class="card-body">
+                                                            <input type="text" value="{{$user->id}}" name="id" hidden>
+                                                            <div class="mb-3 row">
+                                                                <label for="usertype" class="col-md-4 col-form-label">Co-ordinators</label>
+                                                                <div class="col-md-8">
+                                                                    <select class="form-control" required name="usertype" id="usertype">
+                                                                        <option value='{{ isset($user->user->usertype)? $user->user->usertype : '' }}'>{{ ucfirst(str_replace('_', ' ',isset($user->user->usertype)? $user->user->usertype : '')) }}</option>
+                                                                        <option value='cordinator'>Co-ordinator</option>
+                                                                        <option value='family_head'>Family Head</option>
+                                                                        <option value='admin'>Admin</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="mb-3 row">
+                                                                <label for="file-input" class="col-md-4 col-form-label">Family Circle</label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control" type="text" value="{{isset($user->user->family_circle)?$user->user->family_circle:''}}" name="family_circle" id="text-input">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="file-input" class="col-md-4 col-form-label">Telegram Link</label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control" type="text" value="{{isset($user->user->telegram_link)?$user->user->telegram_link:''}}" name="telegram_link" id="text-input">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                                                            <button type="submit" class="btn btn-primary">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="modal fade" id="editUser{{$user->id}}" tabindex="-1" aria-labelledby="editUser" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">

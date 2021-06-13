@@ -101,6 +101,8 @@
                                                         <div class="dropdown-divider"></div>
                                                         @endif
                                                         <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
+                                                        <a href="#restPassword{{$applicant->id}}"    data-bs-toggle="modal" data-bs-target="#restPassword{{$applicant->id}}" class="dropdown-item">Reset Password</a>
+
                                                     </div>
                                                 </div>
                                             </td>
@@ -134,10 +136,60 @@
                                               </div>
                                             </div>
                                           </div>
+                                        </div>
+
+
+
+                                        <div class="modal fade" id="restPassword{{$applicant->id}}" tabindex="-1" aria-labelledby="restPassword" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="RestPassword">Reset Password</h5>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/reset/password/{{$applicant->user->id}}" method="post">
+                                                        @csrf
+                                                        <div>
+                                                            <h3>Reset Password to Default</h3>
+                                                            <h4> {{$applicant->firstname}} {{$applicant->lastname}}</h4>
+                                                        </div>
+                                                        <input type="hidden" name="password" value="default">
+
+                                                        <div class="modal-footer">
+                                                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                                                            <button type="submit" class="btn btn-primary">Reset</button>
+                                                        </div>
+                                                    </form>
+                                              </div>
+                                            </div>
+                                          </div>
+
+
+
+
 
                                           @endforeach
 
-                                    </tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        </tbody>
                                 </table>
                             </div>
                             <span class="text-right">{{ $applicants->links() }}</span>

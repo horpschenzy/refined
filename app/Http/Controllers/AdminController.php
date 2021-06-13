@@ -187,6 +187,29 @@ class AdminController extends Controller
         return redirect('/approved')->with($notification);
     }
 
+      public function resetPasswordApplicants(Request $request, $id)
+      {
+          $user = User::find($id);
+          if(!$user){
+            $notification = array(
+                'message' => 'Invalid User id',
+                'alert-type' => 'error'
+            );
+            return redirect('/approved')->with($notification);
+          }
+
+          $user->password = Hash::make($request->password);
+          $user->save();
+
+          $notification = array(
+            'message' => 'Password Reset to default  Successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect('/approved')->with($notification);
+
+
+      }
+
     public function sendMail()
     {
         $applicants = Application::select('email')->where('add_to_count', 1)->where('status', 'approved')->get();
@@ -359,8 +382,9 @@ class AdminController extends Controller
 
     public function approved()
     {
-        $applicants = Application::with('circle')->where('add_to_count', 1)->where('status', 'approved')->paginate(25);
+        $applicants = Application::with('circle')->with('user')->where('add_to_count', 1)->where('status', 'approved')->paginate(25);
         $family_circles = User::select('family_circle', 'id')->whereNotNull('family_circle')->get();
+        // dd($applicants);
         return view('admin.approved', compact('applicants', 'family_circles'));
     }
 

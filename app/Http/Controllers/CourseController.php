@@ -76,7 +76,7 @@ class CourseController extends Controller
         }
 
 
-        $data = $request->only(['title', 'description']);
+        $data = $request->only(['title', 'description', 'youtube_url', 'vimeo_url', 'mixlr_url']);
 
         if($request->hasFile('course_image')){
             $course_image = $request->file('course_image');
