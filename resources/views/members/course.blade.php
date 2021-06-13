@@ -26,18 +26,18 @@
 
                     <!-- Simple card -->
                     <div class="card">
-                        <img class="card-img-top img-fluid" src="/images/course/{{ $course->course_image }}" alt="Card image cap">
-                        <div class="card-body">
+                        <img class="card-img-top" width="200" height="200" src="/images/course/{{ $course->course_image }}" alt="Card image cap">
+                        <div class="card-body" style="height: 200px">
                             <h4 class="card-title">{{ $course->title }}</h4>
                             <p class="card-text">{{$course->description}}</p>
                             @if(!empty($course->youtube_url))
                             <a href="{{ $course->youtube_url}}" target="_blank" class="btn btn-primary waves-effect waves-light">Youtube</a>
-                            @elseif (!empty($course->vimeo_url))
+                            @endif
+                            @if (!empty($course->vimeo_url))
                             <a href="{{$course->vimeo_url}}"  target="_blank" class="btn btn-primary waves-effect waves-light">Vimeo</a>
-                            @elseif(!empty($course->mixlr_url))
+                            @endif
+                            @if(!empty($course->mixlr_url))
                                 <a href="{{$course->mixlr_url}}"  target="_blank" class="btn btn-primary waves-effect waves-light">Mixlr</a>
-                            @else
-
                             @endif
                         </div>
 
@@ -54,130 +54,7 @@
 
                 <!-- end col -->
             </div>
-            {{-- <div class="row">
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-primary">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-account-multiple float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Account Number</h6>
-                                <h4 class="mb-4 text-white">1015899501</h4>
-                                <span class="ms-2">Oluwaseun Olayide</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-primary">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-cash float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Total Investment</h6>
-                                <h2 class="mb-4 text-white">&#x20A6;6,782,800</h2>
-                                <span class="badge bg-danger"> -29% </span> <span class="ms-2">From previous period</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-primary">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-cash-plus float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Monthly Earnings</h6>
-                                <h2 class="mb-4 text-white">&#x20A6;18,670.95</h2>
-                                <span class="badge bg-warning"> 0% </span> <span class="ms-2">From previous period</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-primary">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-briefcase-check float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Active Loans</h6>
-                                <h2 class="mb-4 text-white">0</h2>
-                                <span class="badge bg-info"> 0% </span> <span class="ms-2">For 2021</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end row -->
 
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">Recent Transactions</h4>
-
-                            <div class="table-responsive">
-                                <table class="table align-middle table-centered table-vertical table-nowrap">
-
-                                    <tbody>
-                                        <thead>
-                                            <th>Date</th>
-                                            <th>Transaction Detail</th>
-                                            <th>Type</th>
-                                            <th>Amount</th>
-                                            <th></th>
-                                        </thead>
-                                        <tr>
-                                            <td>
-                                                06 March 2021
-                                            </td>
-                                            <td><i class="mdi mdi-checkbox-blank-circle text-success"></i> Joining Fee
-                                                <p class="m-0 text-muted font-14">CASH DEPOSIT-Voucher # : CASH DEPOSIT-Voucher #</p>
-                                            </td>
-                                            <td>
-                                                CREDIT
-                                            </td>
-                                            <td>
-                                                &#x20A6;100,000
-                                            </td>
-                                            <td>
-                                               <a href="#" class="btn btn-primary">View</a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                06 April 2021
-                                            </td>
-                                            <td>
-                                                <i class="mdi mdi-checkbox-blank-circle text-success"></i> Monthly Subscription
-                                                <p class="m-0 text-muted font-14">TRANSFER CREDIT : Ops_Monthly Subscription payment Month_Oluwaseun Olayide_06-04-2021</p>
-                                            <td>
-                                                CREDIT
-                                            </td>
-                                            <td>
-                                                &#x20A6;100,000
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-primary">View</a>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-        </div>
         <!-- container-fluid -->
     </div>
     <!-- End Page-content -->

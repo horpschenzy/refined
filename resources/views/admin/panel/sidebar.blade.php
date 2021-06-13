@@ -29,7 +29,7 @@
                 <li>
                     <a href="{{route('classes')}}" class="waves-effect">
                         <i class="mdi mdi-book-open-page-variant"></i>
-                        <span>Classes</span>
+                        <span>Courses</span>
                     </a>
                 </li>
                 <li>

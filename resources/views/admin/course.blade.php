@@ -22,7 +22,7 @@
                             <ol class="breadcrumb m-0">
                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                                <li class="breadcrumb-item active">Classes</li>
+                                <li class="breadcrumb-item active">Courses</li>
                             </ol>
                     </div>
                 </div>
@@ -36,13 +36,13 @@
                         @csrf
                         <div class="card-body">
                             <div class="mb-3 row">
-                                <label for="text-input" class="col-md-2 col-form-label">Class Name</label>
+                                <label for="text-input" class="col-md-2 col-form-label">Course Name</label>
                                 <div class="col-md-10">
                                     <input class="form-control" required type="text" value="{{old('title')}}" name="title" id="text-input">
                                 </div>
                             </div>
                              <div class="mb-3 row">
-                                    <label for="file-input" class="col-md-2 col-form-label">Class Image</label>
+                                    <label for="file-input" class="col-md-2 col-form-label">Course Image</label>
                                     <div class="col-md-10">
                                         <input class="form-control" required type="file" value="{{old('course_image')}}" name="course_image" id="file-input">
                                     </div>
@@ -73,7 +73,7 @@
                                 </div>
                         </div>
                         <div class="text-center mb-3">
-                            <button type="submit" class="btn btn-primary waves-effect waves-light w-50">Add Class
+                            <button type="submit" class="btn btn-primary waves-effect waves-light w-50">Add Course
                             </button>
                         </div>
                     </form>
@@ -88,7 +88,7 @@
                             <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Class Name</th>
+                                        <th>Course Name</th>
                                         <th>Description</th>
                                         <th>Vimeo Url</th>
                                         <th>Youtube Url</th>

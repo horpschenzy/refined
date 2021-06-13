@@ -25,8 +25,8 @@
                     <div class="col-md-6 col-lg-6 col-xl-4">
                         <!-- Simple card -->
                         <div class="card">
-                            <img class="card-img-top img-fluid" src="/images/resource/{{ $resource->picture }}" alt="{{ $resource->file_name }}">
-                            <div class="card-body">
+                            <img class="card-img-top" width="200" height="300" src="/images/resource/{{ $resource->picture }}" alt="{{ $resource->file_name }}">
+                            <div class="card-body" style="height: 500px">
                                 <h4 class="card-title">{{ $resource->file_name }}</h4>
                                 <p class="card-text">{{ $resource->description }}</p>
                                 <a href="{{ $resource->url }}" class="btn btn-primary" target="_blank">Get it Now</a>
