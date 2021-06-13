@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-sm-4"></div>
                 <div class="col-sm-2">
-                    <a href="/send-mail" class="btn btn-primary btn-sm"> SEND MAIL </a>
+                    <a href="/export" class="btn btn-primary btn-sm"> Export All Approved </a>
                 </div>
             </div>
             <!-- end page title -->
