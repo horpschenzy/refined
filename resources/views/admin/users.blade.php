@@ -105,11 +105,13 @@
                                         <th>Usertype</th>
                                         <th>Family Circle</th>
                                         <th>Telegram Link</th>
+                                        <th>Co-ordinator</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
+                                    {{-- isset($user->user->cordinator->firstname) ? $user->user->cordinator->firstname.''.$user->user->cordinator->lastname:'' --}}
                                     @foreach ($users as $user)
                                     <tr>
                                         <td>{{ $user->firstname }}</td>
@@ -119,6 +121,11 @@
                                         <td>{{ isset($user->user->family_circle)?$user->user->family_circle:'' }}</td>
                                         <td>{{ isset($user->user->telegram_link)?$user->user->telegram_link:'' }}</td>
                                         <td>
+                                            @if (isset($user->user->cordinators))
+                                                {{ $user->user->cordinators->firstname.' '.$user->user->cordinators->lastname }}
+                                            @endif
+                                        </td>
+                                        <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         Action <i class="mdi mdi-chevron-down"></i>
@@ -126,8 +133,11 @@
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                     @if ((isset($user->user->usertype)? $user->user->usertype : '') == 'family_head')
-                                                        <a href="#assigncoordinator{{$user->id}}" data-bs-toggle="modal" data-bs-target="#assigncoordinator{{$user->id}}" class="dropdown-item">Assign Co-ordinator</a>
-                                                        <div class="dropdown-divider"></div>
+                                                        @if (!$user->user->cordinator)
+
+                                                            <a href="#assigncoordinator{{$user->id}}" data-bs-toggle="modal" data-bs-target="#assigncoordinator{{$user->id}}" class="dropdown-item">Assign Co-ordinator</a>
+                                                            <div class="dropdown-divider"></div>
+                                                        @endif
                                                     @endif
                                                     <a href="#editUser{{$user->id}}"    data-bs-toggle="modal" data-bs-target="#editUser{{$user->id}}" class="dropdown-item">Edit</a>
                                                     <a class="dropdown-item" onclick="deleteUser({{ $user->id }})">Delete</a>
@@ -151,25 +161,12 @@
                                                             <div class="mb-3 row">
                                                                 <label for="usertype" class="col-md-4 col-form-label">Co-ordinators</label>
                                                                 <div class="col-md-8">
-                                                                    <select class="form-control" required name="usertype" id="usertype">
-                                                                        <option value='{{ isset($user->user->usertype)? $user->user->usertype : '' }}'>{{ ucfirst(str_replace('_', ' ',isset($user->user->usertype)? $user->user->usertype : '')) }}</option>
-                                                                        <option value='cordinator'>Co-ordinator</option>
-                                                                        <option value='family_head'>Family Head</option>
-                                                                        <option value='admin'>Admin</option>
+                                                                    <select class="form-control" required name="cordinator" id="cordinator">
+                                                                        <option value=''>Select Co-ordinator</option>
+                                                                        @foreach ($coordinators as $coordinator)
+                                                                        <option value='{{ $coordinator->id }}'>{{ $coordinator->firstname.' '.$coordinator->lastname }}</option>
+                                                                        @endforeach
                                                                     </select>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="mb-3 row">
-                                                                <label for="file-input" class="col-md-4 col-form-label">Family Circle</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control" type="text" value="{{isset($user->user->family_circle)?$user->user->family_circle:''}}" name="family_circle" id="text-input">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="file-input" class="col-md-4 col-form-label">Telegram Link</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control" type="text" value="{{isset($user->user->telegram_link)?$user->user->telegram_link:''}}" name="telegram_link" id="text-input">
                                                                 </div>
                                                             </div>
                                                         </div>
