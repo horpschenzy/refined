@@ -37,6 +37,8 @@ Route::get('/faq', 'FrontendController@faq')->name('faq');
 //ADMIN
 Route::get('/applicants', 'AdminController@applicants')->name('get.applicants');
 Route::post('/assign/applicant/{id} ', 'AdminController@assignApplicants');
+Route::post('/reset/password/{id} ', 'AdminController@resetPasswordApplicants');
+
 Route::get('/dashboard', 'AdminController@index')->name('dashboard');
 Route::get('/profile', 'AdminController@profile')->name('profile');
 Route::get('/rejected', 'AdminController@rejected')->name('rejected');
@@ -84,7 +86,8 @@ Route::post('edit/assignment/{id}', 'AssignmentController@update');
 Route::post('delete/assignment', 'AssignmentController@deleteAssignment');
 Route::post('submit/assignment/{id}', 'ApplicationAssignmentController@store');
 Route::get('solve/issue', 'AdminController@solveRegIssue');
-
+Route::get('export', 'ImportExportController@export')->name('export');
+Route::post('/assign/coordinator', 'AdminController@assignCordinator');
 
 //Member
 Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');

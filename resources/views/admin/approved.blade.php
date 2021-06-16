@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-sm-4"></div>
                 <div class="col-sm-2">
-                    <a href="/send-mail" class="btn btn-primary btn-sm"> SEND MAIL </a>
+                    <a href="/export" class="btn btn-primary btn-sm"> Export All Approved </a>
                 </div>
             </div>
             <!-- end page title -->
@@ -49,6 +49,7 @@
                                         <th>Image</th>
                                         <th>Firstname</th>
                                         <th>Lastname</th>
+                                        <th>Reg Number</th>
                                         <th>Assigned to Family</th>
                                         <th>Gender</th>
                                         <th>Family Circle</th>
@@ -71,6 +72,7 @@
                                             <td> <img src="images/{{ $applicant->picture }}" alt="user-image" class="avatar-xs me-2 rounded-circle" /></td>
                                             <td>{{$applicant->firstname}} </td>
                                             <td>{{$applicant->lastname}}</td>
+                                            <td>{{ $applicant->user->reg_no }}</td>
                                             <td>{{ ($applicant->assign) ? 'YES' : 'NO' }}</td>
                                             <td><span>{{$applicant->gender}}</span></td>
                                             <td><span class="badge rounded-pill bg-primary">{{($applicant->circle) ? $applicant->circle->user->family_circle : '' }}</span></td>
@@ -103,7 +105,8 @@
                                                         <div class="dropdown-divider"></div>
                                                         @endif
                                                         <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
-                                                        <a class="dropdown-item">Reset Password</a>
+                                                        <a href="#restPassword{{$applicant->id}}"    data-bs-toggle="modal" data-bs-target="#restPassword{{$applicant->id}}" class="dropdown-item">Reset Password</a>
+
                                                     </div>
                                                 </div>
                                             </td>
@@ -137,10 +140,60 @@
                                               </div>
                                             </div>
                                           </div>
+                                        </div>
+
+
+
+                                        <div class="modal fade" id="restPassword{{$applicant->id}}" tabindex="-1" aria-labelledby="restPassword" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="RestPassword">Reset Password</h5>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/reset/password/{{$applicant->user->id}}" method="post">
+                                                        @csrf
+                                                        <div>
+                                                            <h3>Reset Password to Default</h3>
+                                                            <h4> {{$applicant->firstname}} {{$applicant->lastname}}</h4>
+                                                        </div>
+                                                        <input type="hidden" name="password" value="default">
+
+                                                        <div class="modal-footer">
+                                                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                                                            <button type="submit" class="btn btn-primary">Reset</button>
+                                                        </div>
+                                                    </form>
+                                              </div>
+                                            </div>
+                                          </div>
+
+
+
+
 
                                           @endforeach
 
-                                    </tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        </tbody>
                                 </table>
                             </div>
                             <span class="text-right">{{ $applicants->links() }}</span>

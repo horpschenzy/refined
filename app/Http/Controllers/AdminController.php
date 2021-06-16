@@ -60,9 +60,32 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
+    public function assignCordinator(Request $request)
+    {
+        $id = $request->id;
+
+        $getUser = User::where('application_id', $id)->update([
+            'cordinator' => $request->cordinator
+        ]);
+        if ($getUser) {
+            $notification = array(
+                'message' => 'Co-ordinator has been assigned successfully!',
+                'alert-type' => 'success'
+            );
+            return back()->with($notification);
+        }
+
+        $notification = array(
+            'message' => 'Co-ordinator cant be assigned!',
+            'alert-type' => 'error'
+        );
+        return back()->with($notification);
+    }
+
     public function editUser(Request $request)
     {
         $getApplication = Application::where('id', $request->id)->first();
+        $getUser = User::where('application_id', $request->id)->first();
         $getApplication->firstname = $request->firstname;
         $getApplication->lastname = $request->lastname;
         if ($getApplication->save()) {
@@ -71,6 +94,17 @@ class AdminController extends Controller
 
                 $user = new User();
                 $user->password = Hash::make(strtolower($getApplication->lastname));
+            }
+
+            if ($getUser->family_circle != $request->family_circle) {
+                $checkExistFamilyCircle = User::where('family_circle',$request->family_circle)->first();
+                if ($checkExistFamilyCircle) {
+                    $notification = array(
+                        'message' => 'Family Circle already exist!',
+                        'alert-type' => 'error'
+                    );
+                    return back()->with($notification);
+                }
             }
             $user->application_id = $getApplication->id;
             $user->reg_no = $request->email;
@@ -186,6 +220,29 @@ class AdminController extends Controller
         );
         return redirect('/approved')->with($notification);
     }
+
+      public function resetPasswordApplicants(Request $request, $id)
+      {
+          $user = User::find($id);
+          if(!$user){
+            $notification = array(
+                'message' => 'Invalid User id',
+                'alert-type' => 'error'
+            );
+            return redirect('/approved')->with($notification);
+          }
+
+          $user->password = Hash::make($request->password);
+          $user->save();
+
+          $notification = array(
+            'message' => 'Password Reset to default  Successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect('/approved')->with($notification);
+
+
+      }
 
     public function sendMail()
     {
@@ -359,8 +416,9 @@ class AdminController extends Controller
 
     public function approved()
     {
-        $applicants = Application::with('circle')->where('add_to_count', 1)->where('status', 'approved')->paginate(25);
+        $applicants = Application::with('circle')->with('user')->where('add_to_count', 1)->where('status', 'approved')->paginate(25);
         $family_circles = User::select('family_circle', 'id')->whereNotNull('family_circle')->get();
+        // dd($applicants);
         return view('admin.approved', compact('applicants', 'family_circles'));
     }
 
@@ -386,8 +444,14 @@ class AdminController extends Controller
 
     public function users()
     {
-        $users = Application::with('user')->where('add_to_count', 0)->get();
-        return view('admin.users', compact('users'));
+        $users = Application::with(['user'=> function($q){
+            $q->with('cordinators');
+        }])->where('add_to_count', 0)->get();
+        // dd($users);
+        $coordinators = Application::whereHas('user', function($q){
+            $q->where('usertype', 'cordinator');
+        })->where('add_to_count', 0)->get();
+        return view('admin.users', compact('users', 'coordinators'));
     }
 
     public function livestream()

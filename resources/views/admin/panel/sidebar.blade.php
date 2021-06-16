@@ -15,7 +15,7 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                @if (auth()->user()->usertype == 'admin')
+            @if (auth()->user()->usertype == 'admin')
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-account-multiple"></i><span>Applicants</span>
@@ -29,15 +29,15 @@
                 <li>
                     <a href="{{route('classes')}}" class="waves-effect">
                         <i class="mdi mdi-book-open-page-variant"></i>
-                        <span>Classes</span>
+                        <span>Courses</span>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{route('addlesson')}}" class="waves-effect">
                         <i class="mdi mdi-cash-multiple"></i>
                         <span>Lessons</span>
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{route('livestream')}}" class="waves-effect">
                         <i class="mdi mdi-monitor-cellphone"></i>
@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('examandtest')}}" class=" waves-effect">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-folder-account-outline"></i>
                         <span>Exams and Test</span>
                     </a>
@@ -83,14 +83,14 @@
                         <span>Settings</span>
                     </a>
                 </li>
-                @else
+            @else
                 <li>
                     <a href="{{route('attendance')}}" class=" waves-effect">
                         <i class="mdi mdi-account-details"></i>
                         <span>Attendance</span>
                     </a>
                 </li>
-                @endif
+            @endif
 
                 <li>
                     <a href="{{route('classroom')}}" class="waves-effect">

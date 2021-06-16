@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Course;
 use App\Models\Resource;
 use App\Models\Livestream;
 use App\Models\Application;
@@ -161,7 +162,8 @@ class MemberController extends Controller
 
     public function course()
     {
-        return view('members.course');
+        $courses = Course::all();
+        return view('members.course', compact('courses'));
     }
 
     public function examandtest()

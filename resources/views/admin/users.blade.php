@@ -105,11 +105,13 @@
                                         <th>Usertype</th>
                                         <th>Family Circle</th>
                                         <th>Telegram Link</th>
+                                        <th>Co-ordinator</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
+                                    {{-- isset($user->user->cordinator->firstname) ? $user->user->cordinator->firstname.''.$user->user->cordinator->lastname:'' --}}
                                     @foreach ($users as $user)
                                     <tr>
                                         <td>{{ $user->firstname }}</td>
@@ -119,6 +121,11 @@
                                         <td>{{ isset($user->user->family_circle)?$user->user->family_circle:'' }}</td>
                                         <td>{{ isset($user->user->telegram_link)?$user->user->telegram_link:'' }}</td>
                                         <td>
+                                            @if (isset($user->user->cordinators))
+                                                {{ $user->user->cordinators->firstname.' '.$user->user->cordinators->lastname }}
+                                            @endif
+                                        </td>
+                                        <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         Action <i class="mdi mdi-chevron-down"></i>
@@ -126,8 +133,11 @@
 
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                     @if ((isset($user->user->usertype)? $user->user->usertype : '') == 'family_head')
-                                                        <a class="dropdown-item" onclick="assignCordinator({{ $user->id }})">Assign Co-ordinator</a>
-                                                        <div class="dropdown-divider"></div>
+                                                        @if (!$user->user->cordinator)
+
+                                                            <a href="#assigncoordinator{{$user->id}}" data-bs-toggle="modal" data-bs-target="#assigncoordinator{{$user->id}}" class="dropdown-item">Assign Co-ordinator</a>
+                                                            <div class="dropdown-divider"></div>
+                                                        @endif
                                                     @endif
                                                     <a href="#editUser{{$user->id}}"    data-bs-toggle="modal" data-bs-target="#editUser{{$user->id}}" class="dropdown-item">Edit</a>
                                                     <a class="dropdown-item" onclick="deleteUser({{ $user->id }})">Delete</a>
@@ -136,6 +146,39 @@
                                         </td>
                                     </tr>
 
+                                    <div class="modal fade" id="assigncoordinator{{$user->id}}" tabindex="-1" aria-labelledby="assigncoordinator" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="assignToFamily">Assign Co-ordinator to {{ $user->firstname }} {{ $user->lastname }}</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/assign/coordinator" method="post">
+                                                        @csrf
+                                                        <div class="card-body">
+                                                            <input type="text" value="{{$user->id}}" name="id" hidden>
+                                                            <div class="mb-3 row">
+                                                                <label for="usertype" class="col-md-4 col-form-label">Co-ordinators</label>
+                                                                <div class="col-md-8">
+                                                                    <select class="form-control" required name="cordinator" id="cordinator">
+                                                                        <option value=''>Select Co-ordinator</option>
+                                                                        @foreach ($coordinators as $coordinator)
+                                                                        <option value='{{ $coordinator->id }}'>{{ $coordinator->firstname.' '.$coordinator->lastname }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                                                            <button type="submit" class="btn btn-primary">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="modal fade" id="editUser{{$user->id}}" tabindex="-1" aria-labelledby="editUser" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
