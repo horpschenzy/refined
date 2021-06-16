@@ -100,8 +100,10 @@
                                                         @if (!$applicant->assign)
 
                                                         <a href="#assignToFamily{{$applicant->id}}"    data-bs-toggle="modal" data-bs-target="#assignToFamily{{$applicant->id}}" class="dropdown-item">Assign to Family</a>
-                                                        <div class="dropdown-divider"></div>
+                                                        @else
+                                                        <a href="#assignToFamily{{$applicant->id}}"    data-bs-toggle="modal" data-bs-target="#assignToFamily{{$applicant->id}}" class="dropdown-item">Re-Assign to Family</a>
                                                         @endif
+                                                        <div class="dropdown-divider"></div>
                                                         <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
                                                         <a href="#restPassword{{$applicant->id}}"    data-bs-toggle="modal" data-bs-target="#restPassword{{$applicant->id}}" class="dropdown-item">Reset Password</a>
 
