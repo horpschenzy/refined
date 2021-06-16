@@ -49,6 +49,7 @@
                                         <th>Image</th>
                                         <th>Firstname</th>
                                         <th>Lastname</th>
+                                        <th>Reg Number</th>
                                         <th>Assigned to Family</th>
                                         <th>Gender</th>
                                         <th>Family Circle</th>
@@ -70,6 +71,7 @@
                                             <td> <img src="images/{{ $applicant->picture }}" alt="user-image" class="avatar-xs me-2 rounded-circle" /></td>
                                             <td>{{$applicant->firstname}} </td>
                                             <td>{{$applicant->lastname}}</td>
+                                            <td>{{ $applicant->user->reg_no }}</td>
                                             <td>{{ ($applicant->assign) ? 'YES' : 'NO' }}</td>
                                             <td><span>{{$applicant->gender}}</span></td>
                                             <td><span class="badge rounded-pill bg-primary">{{($applicant->circle) ? $applicant->circle->user->family_circle : '' }}</span></td>
