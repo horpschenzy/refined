@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <div id="questions_wrapper">
+                {{-- <div id="questions_wrapper">
                     <div class="card mb-4">
                         <div class="card-header d-flex justify-content-between">
                             <div class=" d-flex align-items-center col-8">
@@ -195,7 +195,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <!-- end row -->
