@@ -37,10 +37,10 @@
                 <li>
                     <a href="{{route('member.assignment')}}" class=" waves-effect">
                         <i class="mdi mdi-folder-account-outline"></i>
-                        <span>Assignment</span>
+                        <span>Test</span>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-email-outline"></i>
                         <span>Exams and Test</span>
@@ -49,7 +49,7 @@
                         <li><a href="{{route('member.examandtest')}}">Start</a></li>
                         <li><a href="{{route('member.results')}}">Results</a></li>
                     </ul>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{route('member.profile')}}" class=" waves-effect">
                         <i class="mdi mdi-cog"></i>

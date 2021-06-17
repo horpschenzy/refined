@@ -22,11 +22,23 @@
                             <ol class="breadcrumb m-0">
                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                                <li class="breadcrumb-item active">Assignment</li>
+                                <li class="breadcrumb-item active">Test</li>
                             </ol>
                     </div>
                 </div>
             </div>
+            {{-- <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title-box">
+                        <h4>Dashboard</h4>
+                            <ol class="breadcrumb m-0">
+                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                               
+                                <li class="breadcrumb-item active">Assignment</li>
+                            </ol>
+                    </div>
+                </div>
+            </div> --}}
             <!-- end page title -->
 
             <div class="row">
@@ -37,11 +49,12 @@
                             <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Assignment ID</th>
+                                        <th>Test ID</th>
+                                        {{-- <th>Assignment ID</th> --}}
                                         <th>Topic</th>
                                         <th>Link</th>
                                         <th>Score</th>
-                                        <th>Action</th>
+                                        {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
 
@@ -52,7 +65,7 @@
                                         <td>{{ $assignment->topic }}</td>
                                         <td><a href="{{ $assignment->url }}" target="_blank">{{ $assignment->url }}</a></td>
                                         <td>{{ ($assignment->submissions) ? $assignment->submissions[0]->score ?? 0 : 0   }}</td>
-                                        <td>
+                                        {{-- <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         Action <i class="mdi mdi-chevron-down"></i>
@@ -65,7 +78,7 @@
                                                 @endif
 
                                             </div>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                     <div class="modal fade" id="submitAssignment{{$assignment->id}}" tabindex="-1" aria-labelledby="submitAssignment" aria-hidden="true">
                                         <div class="modal-dialog">
