@@ -30,7 +30,7 @@ class AssignmentController extends Controller
     public function store(Request $request)
     {
         $validate  = Validator::make($request->all(), [
-            'topic' => 'required',
+            'topic' => 'required', 'url'
         ]);
         if($validate->fails()){
             $notification = array(
@@ -40,7 +40,7 @@ class AssignmentController extends Controller
             return redirect()->back()->with($notification);
         }
 
-        $data = $request->only(['topic']);
+        $data = $request->only(['topic', 'url']);
         $assignment = new Assignment($data);
         if ($assignment->save()) {
             $notification = array(

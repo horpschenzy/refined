@@ -39,6 +39,7 @@
                                     <tr>
                                         <th>Assignment ID</th>
                                         <th>Topic</th>
+                                        <th>Link</th>
                                         <th>Score</th>
                                         <th>Action</th>
                                     </tr>
@@ -49,6 +50,7 @@
                                     <tr>
                                         <td>{{ $assignment->id }}</td>
                                         <td>{{ $assignment->topic }}</td>
+                                        <td><a href="{{ $assignment->url }}" target="_blank">{{ $assignment->url }}</a></td>
                                         <td>{{ ($assignment->submissions) ? $assignment->submissions[0]->score ?? 0 : 0   }}</td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
