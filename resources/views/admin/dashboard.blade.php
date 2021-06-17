@@ -162,11 +162,16 @@
                                                         </a>
 
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                        <a class="dropdown-item" onclick="accept({{ $applicant->id }})">Accept</a>
-                                                        <a class="dropdown-item" onclick="pend({{ $applicant->id }})">Pend</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
-                                                        <a class="dropdown-item" onclick="deleteApplicant({{ $applicant->id }})">Delete</a>
+                                                        @if(auth()->user()->usertype == 'admin')
+                                                            <a class="dropdown-item" onclick="accept({{ $applicant->id }})">Accept</a>
+                                                            <a class="dropdown-item" onclick="pend({{ $applicant->id }})">Pend</a>
+                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item" onclick="reject({{ $applicant->id }})">Reject</a>
+                                                            <a class="dropdown-item" onclick="deleteApplicant({{ $applicant->id }})">Delete</a>
+
+                                                        @endif
+                                                        <a class="dropdown-item" >Reset Password</a>
+
                                                     </div>
                                                 </div>
                                             </td>

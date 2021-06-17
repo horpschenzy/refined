@@ -41,6 +41,11 @@
                                 <div class="col-md-10">
                                     <input class="form-control" required type="text" value="{{old('topic')}}" name="topic" id="text-input">
                                 </div>
+                                <label for="text-input" class="col-md-2 col-form-label">URL</label>
+                                <div class="col-md-10 mt-2">
+                                    <input class="form-control" type="text" value="{{old('url')}}" name="url" id="text-input">
+                                </div>
+
                             </div>
                         </div>
                         <div class="text-center mb-3">
@@ -62,6 +67,7 @@
                                     <tr>
                                         <th>Assignment ID</th>
                                         <th>Topic</th>
+                                        <th>URL</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -72,6 +78,7 @@
                                     <tr>
                                         <td>{{ $assignment->id }}</td>
                                         <td>{{ $assignment->topic }}</td>
+                                        <td><a href="{{ $assignment->url }}" target="_blank">{{ $assignment->url }}</a></td>
                                         <td>{{ ucfirst($assignment->status) }}</td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
