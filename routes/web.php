@@ -88,6 +88,7 @@ Route::post('submit/assignment/{id}', 'ApplicationAssignmentController@store');
 Route::get('solve/issue', 'AdminController@solveRegIssue');
 Route::get('export', 'ImportExportController@export')->name('export');
 Route::post('/assign/coordinator', 'AdminController@assignCordinator');
+Route::post('/search/{status}', 'AdminController@search');
 
 //Member
 Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');

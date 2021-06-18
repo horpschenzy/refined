@@ -19,6 +19,25 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
+    public function search(Request $request, $status)
+    {
+        $search = $request->search;
+        $applicants = Application::with('circle')->with('user')->where('add_to_count', 1)->where('status', $status)->where(
+            function($query) use ($search) {
+                return $query->where('firstname', 'LIKE', '%'.$search.'%')
+                             ->orWhere('lastname', 'LIKE', '%'.$search.'%')
+                             ->orWhere('phone', 'LIKE', '%'.$search.'%')
+                             ->orWhere('email', 'LIKE', '%'.$search.'%')
+                             ->orWhereHas('user', function ($q) use ($search)
+                             {
+                                 $q->where('reg_no','LIKE', '%'.$search.'%');
+                             });
+            })->paginate(25);
+        $family_circles = User::select('family_circle', 'id')->whereNotNull('family_circle')->get();
+
+        return view('admin.'.$status, compact('applicants', 'family_circles'));
+
+    }
     public function solveRegIssue()
     {
         $applications = Application::whereDoesntHave("user")->where('add_to_count',1)->where('status', 'approved')->get();

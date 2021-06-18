@@ -22,73 +22,26 @@
                             <ol class="breadcrumb m-0">
                                  <li class="breadcrumb-item"><a href="javascript: void(0);">REFINED</a></li>
                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                                <li class="breadcrumb-item active">Dashboard</li>
+                               <li class="breadcrumb-item active"><a href="/rejected">All Rejected</a></li>
                             </ol>
                     </div>
                 </div>
             </div>
             <!-- end page title -->
 
-            {{-- <div class="row">
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-primary">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-account-multiple float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Applicants</h6>
-                                <h2 class="mb-4 text-white">{{ $countapplicants['all'] }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-success">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-account-multiple float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Accepted Members</h6>
-                                <h2 class="mb-4 text-white">{{ $countapplicants['approved'] }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-danger">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-account-multiple float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Reject Applicants</h6>
-                                <h2 class="mb-4 text-white">{{ $countapplicants['rejected'] }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card mini-stat bg-warning">
-                        <div class="card-body mini-stat-img">
-                            <div class="mini-stat-icon">
-                                <i class="mdi mdi-account-multiple float-end"></i>
-                            </div>
-                            <div class="text-white">
-                                <h6 class="text-uppercase mb-3 font-size-16 text-white">Pending for Review</h6>
-                                <h2 class="mb-4 text-white">{{  $countapplicants['pending']  }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
+
 
             <div class="row">
 
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
+                            <div class="float-end">
+                                <form action="/search/rejected" method="POST">
+                                    @csrf
+                                    <input type="text" class="form-control" required name="search">
+                                </form>
+                            </div>
                             <h4 class="card-title mb-4">Rejected Applicants</h4>
 
                             <div class="table-responsive">
