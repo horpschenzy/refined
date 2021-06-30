@@ -37,7 +37,19 @@
                 <li>
                     <a href="{{route('member.assignment')}}" class=" waves-effect">
                         <i class="mdi mdi-folder-account-outline"></i>
+                        <span>Assignment</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('member.test')}}" class=" waves-effect">
+                        <i class="mdi mdi-folder-account-outline"></i>
                         <span>Test</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('member.exam')}}" class=" waves-effect">
+                        <i class="mdi mdi-folder-account-outline"></i>
+                        <span>Exam</span>
                     </a>
                 </li>
                 {{-- <li>

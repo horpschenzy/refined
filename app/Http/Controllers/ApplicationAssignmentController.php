@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assignment;
 use App\Models\HeadMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,8 +22,9 @@ class ApplicationAssignmentController extends Controller
                 $x->where('head_id', auth()->id());
             });
         }])->where('assignment_id', $id)->get();
+        $assignment = Assignment::where('id',$id)->first();
 
-        return view('admin.applicantsassignment',compact('applicants'));
+        return view('admin.applicantsassignment',compact('applicants', 'assignment'));
     }
     public function markAssignment(Request $request, $id)
     {

@@ -22,7 +22,7 @@
                             <ol class="breadcrumb m-0">
                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                                <li class="breadcrumb-item active">Submissions</li>
+                                <li class="breadcrumb-item active">{{ ucfirst($result->type) }} Results</li>
                             </ol>
                     </div>
                 </div>
@@ -32,72 +32,48 @@
                 <div class="col-12">
                     @include('admin.flash-message')
                     <div class="card">
+                    <form method="POST" action="/add/result" enctype="multipart/form-data">
+                        @csrf
+                        <div class="card-body">
+                            <input class="form-control" type="text" value="{{ $result->id }}" name="id" hidden required>
+                            <div class="mb-3 row">
+                                <label for="text-input" class="col-md-2 col-form-label">Result File (.xlsx)</label>
+                                <div class="col-md-10">
+                                    <input class="form-control" required type="file" name="result_file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="text-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mb-3">
+                            <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light w-50">Upload Result
+                            </button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    @include('admin.flash-message')
+                    <div class="card">
                         <div class="card-body">
                             <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Reg No</th>
-                                        @if ($assignment->type == 'assignment')
-                                        <th>Document</th>
-                                        <th>Text</th>
-                                        @endif
+                                        <th>Date</th>
+                                        <th>Registration number</th>
+                                        <th>Name</th>
                                         <th>Score</th>
-                                        @if ($assignment->type == 'assignment')
-                                        <th>Action</th>
-                                        @endif
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     @foreach ($applicants as $applicant)
-                                    @if (isset($applicant->applications->user))
                                     <tr>
-                                        <td>{{ $applicant->applications->user->reg_no}}</td>
-                                        @if ($assignment->type == 'assignment')
-                                        <td>
-                                            @if ($applicant->document)
-
-                                            <a href="/images/application_assignment/{{$applicant->document}}" target="_blank" class="btn btn-primary btn-sm">View document</a></td>
-                                            @endif
-                                        <td>{{ $applicant->text }}</td>
-                                        @endif
-                                        <td>{{($applicant->score)? $applicant->score : 0 }}</td>
-                                        @if ($assignment->type == 'assignment')
-                                        <td>
-                                            <div class="dropdown dropdown-topbar d-inline-block">
-                                                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Action <i class="mdi mdi-chevron-down"></i>
-                                                    </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-
-                                                    <a href="#markAssignment{{$applicant->id}}"    data-bs-toggle="modal" data-bs-target="#markAssignment{{$applicant->id}}" class="dropdown-item">Mark Assignment</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        @endif
+                                        <td>{{ ($applicant->created_at)}}</td>
+                                        <td>{{ $applicant->applications->user->reg_no }}</td>
+                                        <td>{{ $applicant->applications->lastname.' '.$applicant->applications->firstname }}</td>
+                                        <td>{{ $applicant->score }}</td>
                                     </tr>
-                                        <div class="modal fade" id="markAssignment{{$applicant->id}}" tabindex="-1" aria-labelledby="markAssignment" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">Mark Assignment</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form action="/mark/assignment/{{$applicant->id}}" method="post">
-                                                            @csrf
-                                                            <label for="familyName">Score</label>
-                                                            <input type="number" name="score" class="form-control" required>
-                                                            <div class="modal-footer">
-                                                                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
-                                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
                                     @endforeach
                                 </tbody>
                             </table>

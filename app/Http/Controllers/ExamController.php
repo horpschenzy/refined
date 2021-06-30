@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assignment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ExamController extends Controller
 {
@@ -21,74 +23,78 @@ class ExamController extends Controller
         return view('admin.results');
     }
 
-     public function index()
+    public function index()
     {
-        return view('admin.examandtest');
+        $exams = Assignment::where('type', 'exam')->get();
+        return view('admin.exam',compact('exams'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validate  = Validator::make($request->all(), [
+            'topic' => 'required', 'url'
+        ]);
+        if($validate->fails()){
+            $notification = array(
+                'message' => $validate->messages()->first(),
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
+
+        $data = $request->only(['topic', 'url']);
+        $data['type'] = 'exam';
+        $exam = new Assignment($data);
+        if ($exam->save()) {
+            $notification = array(
+                'message' => 'Exam Added Successfully!',
+                'alert-type' => 'success'
+            );
+            return back()->with($notification);
+        }
+        $notification = array(
+            'message' => 'Exam Can\'t be  Added at this time, Please try again later.',
+            'alert-type' => 'error'
+        );
+        return back()->with($notification);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $exam = Assignment::where('id',$id)->first();
+        $exam->topic = $request->topic;
+        $exam->status = $request->status;
+        $exam->url = $request->url;
+        if ($exam->save()) {
+            $notification = array(
+                'message' => 'Exam Updated Successfully!',
+                'alert-type' => 'success'
+            );
+            return back()->with($notification);
+        }
+        $notification = array(
+            'message' => 'Exam Can\'t be  Updated at this time, Please try again later.',
+            'alert-type' => 'error'
+        );
+        return back()->with($notification);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function deleteExam(Request $request)
     {
-        //
+        $id = $request->id;
+        $delete_exam = Assignment::where('id',$id)->delete();
+        if($delete_exam){
+            $notification = array(
+                'message' => 'Exam Deleted Successfully!',
+                'alert-type' => 'success'
+            );
+            return back()->with($notification);
+        }
+        $notification = array(
+            'message' => 'Exam Can\'t be Deleted!',
+            'alert-type' => 'error'
+        );
+        return back()->with($notification);
     }
 }

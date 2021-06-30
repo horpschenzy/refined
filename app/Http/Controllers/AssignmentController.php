@@ -19,12 +19,29 @@ class AssignmentController extends Controller
         $assignments = Assignment::with(['submissions' => function($q)
         {
             $q->where('application_id',Auth::id());
-        }])->get();
+        }])->where('type','assignment')->get();
         return view('members.assignment',compact('assignments'));
+    }
+    public function memberExam()
+    {
+        $exams = Assignment::with(['submissions' => function($q)
+        {
+            $q->where('application_id',Auth::id());
+        }])->where('type','exam')->get();
+        return view('members.exam',compact('exams'));
+    }
+
+    public function memberTest()
+    {
+        $tests = Assignment::with(['submissions' => function($q)
+        {
+            $q->where('application_id',Auth::id());
+        }])->where('type','test')->get();
+        return view('members.test',compact('tests'));
     }
     public function index()
     {
-        $assignments = Assignment::all();
+        $assignments = Assignment::where('type', 'assignment')->get();
         return view('admin.assignment',compact('assignments'));
     }
     public function store(Request $request)
@@ -41,6 +58,7 @@ class AssignmentController extends Controller
         }
 
         $data = $request->only(['topic', 'url']);
+        $data['type'] = 'assignment';
         $assignment = new Assignment($data);
         if ($assignment->save()) {
             $notification = array(
@@ -60,6 +78,7 @@ class AssignmentController extends Controller
         $assignment = Assignment::where('id',$id)->first();
         $assignment->topic = $request->topic;
         $assignment->status = $request->status;
+        $assignment->url = $request->url;
         if ($assignment->save()) {
             $notification = array(
                 'message' => 'Assignment Updated Successfully!',

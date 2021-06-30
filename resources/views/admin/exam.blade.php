@@ -22,7 +22,7 @@
                             <ol class="breadcrumb m-0">
                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
-                                <li class="breadcrumb-item active">Assignment</li>
+                                <li class="breadcrumb-item active">Exam</li>
                             </ol>
                     </div>
                 </div>
@@ -33,11 +33,11 @@
                 <div class="col-12">
                     @include('admin.flash-message')
                     <div class="card">
-                    <form method="POST" action="/assignment" enctype="multipart/form-data">
+                    <form method="POST" action="/exam" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="mb-3 row">
-                                <label for="text-input" class="col-md-2 col-form-label">Assignment</label>
+                                <label for="text-input" class="col-md-2 col-form-label">Exam</label>
                                 <div class="col-md-10">
                                     <input class="form-control" required type="text" value="{{old('topic')}}" name="topic" id="text-input">
                                 </div>
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="text-center mb-3">
-                            <button type="submit" class="btn btn-primary waves-effect waves-light w-50">Add Assignment
+                            <button type="submit" class="btn btn-primary waves-effect waves-light w-50">Add Exam
                             </button>
                         </div>
                     </form>
@@ -65,7 +65,7 @@
                             <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Assignment ID</th>
+                                        <th>Exam ID</th>
                                         <th>Topic</th>
                                         <th>URL</th>
                                         <th>Status</th>
@@ -74,12 +74,12 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($assignments as $assignment)
+                                    @foreach ($exams as $exam)
                                     <tr>
-                                        <td>{{ $assignment->id }}</td>
-                                        <td>{{ $assignment->topic }}</td>
-                                        <td><a href="{{ $assignment->url }}" target="_blank">{{ $assignment->url }}</a></td>
-                                        <td>{{ ucfirst($assignment->status) }}</td>
+                                        <td>{{ $exam->id }}</td>
+                                        <td>{{ $exam->topic }}</td>
+                                        <td><a href="{{ $exam->url }}" target="_blank">{{ $exam->url }}</a></td>
+                                        <td>{{ ucfirst($exam->status) }}</td>
                                         <td>
                                             <div class="dropdown dropdown-topbar d-inline-block">
                                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -87,45 +87,45 @@
                                                     </a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                     @if (auth()->user()->usertype == 'admin')
-                                                    <a href="#editAssignment{{$assignment->id}}"    data-bs-toggle="modal" data-bs-target="#editAssignment{{$assignment->id}}" class="dropdown-item">Edit</a>
-                                                    <a class="dropdown-item" onclick="deleteAssignment({{ $assignment->id }})">Delete</a>
+                                                    <a href="#editexam{{$exam->id}}"    data-bs-toggle="modal" data-bs-target="#editexam{{$exam->id}}" class="dropdown-item">Edit</a>
+                                                    <a class="dropdown-item" onclick="deleteExam({{ $exam->id }})">Delete</a>
                                                     @else
-                                                    <a href="/view/submissions/{{$assignment->id}}" target="_blank" class="dropdown-item">View Submissions</a>
+                                                    <a href="/view/submissions/{{$exam->id}}" target="_blank" class="dropdown-item">View Submissions</a>
                                                     @endif
                                                 </div>
 
                                             </div>
                                         </td>
                                     </tr>
-                                    <div class="modal fade" id="editAssignment{{$assignment->id}}" tabindex="-1" aria-labelledby="editAssignment" aria-hidden="true">
+                                    <div class="modal fade" id="editexam{{$exam->id}}" tabindex="-1" aria-labelledby="editexam" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                <h5 class="modal-title" id="assignToFamily">Edit {{ $assignment->topic }} </h5>
+                                                <h5 class="modal-title" id="assignToFamily">Edit {{ $exam->topic }} </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="/edit/assignment/{{ $assignment->id }}" method="post">
+                                                    <form action="/edit/exam/{{ $exam->id }}" method="post">
                                                         @csrf
                                                         <div class="card-body">
-                                                            <input type="text" value="{{ $assignment->id }}" name="id" hidden>
+                                                            <input type="text" value="{{ $exam->id }}" name="id" hidden>
                                                             <div class="mb-3 row">
-                                                                <label for="text-input" class="col-md-4 col-form-label">Assignment</label>
+                                                                <label for="text-input" class="col-md-4 col-form-label">Exam</label>
                                                                 <div class="col-md-8">
-                                                                    <input class="form-control" required type="text" value="{{$assignment->topic}}" name="topic" id="text-input">
+                                                                    <input class="form-control" required type="text" value="{{$exam->topic}}" name="topic" id="text-input">
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="text-input" class="col-md-4 col-form-label">Url</label>
                                                                 <div class="col-md-8">
-                                                                    <input class="form-control" type="text" value="{{$assignment->url}}" name="url" id="text-input">
+                                                                    <input class="form-control" type="text" value="{{$exam->url}}" name="url" id="text-input">
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="text-input" class="col-md-4 col-form-label">Status</label>
                                                                 <div class="col-md-8">
                                                                     <select name="status" required="" id="" class="form-select" aria-label="Default select example">
-                                                                        <option value="{{ $assignment->status }}">{{ ucfirst($assignment->status) }}</option>
+                                                                        <option value="{{ $exam->status }}">{{ ucfirst($exam->status) }}</option>
                                                                         <option value="pending">Pending</option>
                                                                         <option value="active">Active</option>
                                                                     </select>
@@ -199,19 +199,19 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         <script>
-            function deleteAssignment(id)
+            function deleteExam(id)
             {
                 swal({
-                    title: "Are you sure you want to delete this assignment?",
+                    title: "Are you sure you want to delete this exam?",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
                   })
-                  .then((delete_stream) => {
-                    if (delete_stream) {
+                  .then((delete_exam) => {
+                    if (delete_exam) {
                         let _token   = $('meta[name="csrf-token"]').attr('content');
                         $.ajax({
-                            url: "/delete/assignment",
+                            url: "/delete/exam",
                             type:"POST",
                             data:{
                               id:id,
@@ -221,7 +221,7 @@
                             success:function(response){
                               console.log(response);
                               if(response) {
-                                swal("Poof! Assignment Deleted Successfully!", {
+                                swal("Poof! Exam Deleted Successfully!", {
                                     icon: "success", });
 
                                 location.reload();
@@ -230,7 +230,7 @@
                         });
 
                     } else {
-                      swal("Assignment Discarded!");
+                      swal("Exam Discarded!");
                     }
                   });
             }

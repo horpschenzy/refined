@@ -67,7 +67,6 @@ Route::post('/pend', 'AdminController@pend');
 Route::post('/logout', 'AdminController@logout')->name('logout');
 Route::get('/classes', 'CourseController@index')->name('classes');
 Route::post('/classes', 'CourseController@store');
-Route::get('/ExamandTest', 'ExamController@index')->name('exam');
 Route::get('/family', 'AdminController@family')->name('family');
 
 Route::get('/addlesson', 'LessonController@index')->name('addlesson');
@@ -89,6 +88,16 @@ Route::get('solve/issue', 'AdminController@solveRegIssue');
 Route::get('export', 'ImportExportController@export')->name('export');
 Route::post('/assign/coordinator', 'AdminController@assignCordinator');
 Route::post('/search/{status}', 'AdminController@search');
+Route::get('/test', 'TestController@index')->name('test');
+Route::post('/test', 'TestController@store');
+Route::post('edit/test/{id}', 'TestController@update');
+Route::post('delete/test', 'TestController@deleteTest');
+Route::get('/exam', 'ExamController@index')->name('exam');
+Route::post('/exam', 'ExamController@store');
+Route::post('edit/exam/{id}', 'ExamController@update');
+Route::post('delete/exam', 'ExamController@deleteExam');
+Route::post('/add/result', 'TestController@addResult');
+Route::get('/view/result/{id}', 'TestController@viewResult');
 
 //Member
 Route::get('/member/dashboard', 'MemberController@index')->name('member.dashboard');
@@ -107,4 +116,6 @@ Route::post('/edit/profile', 'MemberController@editProfile');
 Route::post('/change/password', 'MemberController@changePassword');
 Route::get('/member/results', 'ExamController@results')->name('member.results');
 Route::get('/member/assignment', 'AssignmentController@memberAssignment')->name('member.assignment');
+Route::get('/member/test', 'AssignmentController@memberTest')->name('member.test');
+Route::get('/member/exam', 'AssignmentController@memberExam')->name('member.exam');
 

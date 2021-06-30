@@ -15,15 +15,14 @@
         <div class="container-fluid">
 
             <!-- start page title -->
-
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title-box">
                         <h4>Dashboard</h4>
                             <ol class="breadcrumb m-0">
                                  <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-
-                                <li class="breadcrumb-item active">Assignment</li>
+                               {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li> --}}
+                                <li class="breadcrumb-item active">Test</li>
                             </ol>
                     </div>
                 </div>
@@ -38,77 +37,27 @@
                             <table id="datatable" class="table table-bordered dt-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Assignment ID</th>
+                                        <th>Test ID</th>
                                         <th>Topic</th>
                                         <th>Link</th>
                                         <th>Score</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($assignments as $assignment)
+                                    @foreach ($tests as $test)
                                     <tr>
-                                        <td>{{ $assignment->id }}</td>
-                                        <td>{{ $assignment->topic }}</td>
+                                        <td>{{ $test->id }}</td>
+                                        <td>{{ $test->topic }}</td>
                                         <td>
-                                            @if ($assignment->submissions && isset($assignment->submissions[0]))
+                                            @if ($test->submissions && isset($test->submissions[0]))
                                                 DONE
                                             @else
-                                            <a href="{{ $assignment->url }}" target="_blank">{{ $assignment->url }}</a>
+                                            <a href="{{ $test->url }}" target="_blank">{{ $test->url }}</a>
                                             @endif
                                         </td>
-                                        <td>{{ ($assignment->submissions) ? $assignment->submissions[0]->score ?? 0 : 0   }}</td>
-                                        <td>
-                                            <div class="dropdown dropdown-topbar d-inline-block">
-                                                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Action <i class="mdi mdi-chevron-down"></i>
-                                                    </a>
-                                                @if ($assignment->submissions && isset($assignment->submissions[0]))
-                                                @else
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a href="#submitAssignment{{$assignment->id}}"    data-bs-toggle="modal" data-bs-target="#submitAssignment{{$assignment->id}}" class="dropdown-item">Submit Assignment</a>
-                                                </div>
-                                                @endif
-
-                                            </div>
-                                        </td>
+                                        <td>{{ ($test->submissions) ? $test->submissions[0]->score ?? 0 : 0   }}</td>
                                     </tr>
-                                    <div class="modal fade" id="submitAssignment{{$assignment->id}}" tabindex="-1" aria-labelledby="submitAssignment" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                <h5 class="modal-title" id="assignToFamily">Submit {{ $assignment->topic }} </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="/submit/assignment/{{ $assignment->id }}" method="post" enctype="multipart/form-data">
-                                                        @csrf
-                                                        <div class="card-body">
-                                                            <input type="text" value="{{ $assignment->id }}" name="id" hidden>
-                                                            <div class="mb-3 row">
-                                                                <label for="text-input" class="col-md-4 col-form-label">Assignment</label>
-                                                                <div class="col-md-8">
-                                                                    <input class="form-control" type="file" name="document" id="text-input">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="text-input" class="col-md-4 col-form-label">Assignment</label>
-                                                                <div class="col-md-8">
-                                                                    <textarea class="form-control" name="text"></textarea>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
-                                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     @endforeach
                                 </tbody>
                             </table>

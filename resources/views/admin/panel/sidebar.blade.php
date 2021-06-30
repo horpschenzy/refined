@@ -52,16 +52,6 @@
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-folder-account-outline"></i>
-                        <span>Exams and Test</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('examandtest')}}">Create</a></li>
-                        <li><a href="{{route('results')}}">Results</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-account-multiple"></i>
                         <span>Family Cirle</span>
                     </a>
@@ -104,6 +94,16 @@
                         <i class="mdi mdi-folder-account-outline"></i>
                         <span>Assignment</span>
                     </a>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-folder-account-outline"></i>
+                        <span>Exams and Test</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('test')}}">Test</a></li>
+                        <li><a href="{{route('exam')}}">Exam</a></li>
+                    </ul>
                 </li>
 
             </ul>
