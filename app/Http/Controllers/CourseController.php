@@ -76,7 +76,7 @@ class CourseController extends Controller
         }
 
 
-        $data = $request->only(['title', 'description', 'youtube_url', 'vimeo_url', 'mixlr_url']);
+        $data = $request->only(['title', 'description', 'youtube_url', 'vimeo_url', 'mixlr_url','anchor_url']);
 
         if($request->hasFile('course_image')){
             $course_image = $request->file('course_image');
@@ -91,5 +91,11 @@ class CourseController extends Controller
             );
             return redirect()->back()->with($notification);
         }
+    }
+
+    public function show($type, $id)
+    {
+        $course = Course::where('id', $id)->first();
+        return view('members.courseview', compact('course','type'));
     }
 }

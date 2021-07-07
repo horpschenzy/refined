@@ -66,6 +66,12 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
+                                    <label for="text-input" class="col-md-2 col-form-label">Anchor url</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control"  type="text" value="{{old('anchor_url')}}" name="anchor_url" id="text-input">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
                                     <label for="example-url-input" class="col-md-2 col-form-label">Description</label>
                                     <div class="col-md-10">
                                         <textarea class="form-control" required name="description"></textarea>
@@ -93,6 +99,7 @@
                                         <th>Vimeo Url</th>
                                         <th>Youtube Url</th>
                                         <th>Mixlr Url</th>
+                                        <th>Anchor Url</th>
                                         <th>Image</th>
                                         <th>Action</th>
                                     </tr>
@@ -106,6 +113,7 @@
                                         <td><p style="text-align: justify; text-justify: inter-word;">{{ $course->vimeo_url }}</p></td>
                                         <td><p style="text-align: justify; text-justify: inter-word;">{{ $course->youtube_url }}</p></td>
                                         <td><p style="text-align: justify; text-justify: inter-word;">{{ $course->mixlr_url }}</p></td>
+                                        <td><p style="text-align: justify; text-justify: inter-word;">{{ $course->anchor_url }}</p></td>
 
                                         <td><img src="/images/course/{{ $course->course_image }}" alt="course-images" class="avatar-lg me-2 img-thumbnail" /></td>
                                         <td>

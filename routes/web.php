@@ -109,6 +109,7 @@ Route::get('/member/resource', 'MemberController@resource')->name('member.resour
 Route::get('/member/classroom', 'MemberController@classroom')->name('member.classroom');
 Route::get('/member/classroom/{id}/{type}', 'MemberController@showClassroom');
 Route::get('/member/courses', 'MemberController@course')->name('member.course');
+Route::get('/view/course/{type}/{id}', 'CourseController@show');
 Route::get('/member/examandtest', 'MemberController@examandtest')->name('member.examandtest');
 Route::get('/member/settings', 'MemberController@settings')->name('member.settings');
 Route::get('/member/profile', 'MemberController@profile')->name('member.profile');

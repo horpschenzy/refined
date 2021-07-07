@@ -31,13 +31,16 @@
                             <h4 class="card-title">{{ $course->title }}</h4>
                             <p class="card-text">{{$course->description}}</p>
                             @if(!empty($course->youtube_url))
-                            <a href="{{ $course->youtube_url}}" target="_blank" class="btn btn-primary waves-effect waves-light">Youtube</a>
+                            <a href="/view/youtube/{{ $course->id}}" target="_blank" class="btn btn-primary waves-effect waves-light">Youtube</a>
                             @endif
                             @if (!empty($course->vimeo_url))
-                            <a href="{{$course->vimeo_url}}"  target="_blank" class="btn btn-primary waves-effect waves-light">Vimeo</a>
+                            <a href="/view/course/vimeo/{{$course->id}}"  target="_blank" class="btn btn-primary waves-effect waves-light">Vimeo</a>
                             @endif
                             @if(!empty($course->mixlr_url))
-                                <a href="{{$course->mixlr_url}}"  target="_blank" class="btn btn-primary waves-effect waves-light">Mixlr</a>
+                                <a href="/view/course/mixlr/{{$course->id}}"  target="_blank" class="btn btn-primary waves-effect waves-light">Mixlr</a>
+                            @endif
+                            @if(!empty($course->anchor_url))
+                                <a href="/view/course/anchor/{{$course->id}}"  target="_blank" class="btn btn-primary waves-effect waves-light">Anchor</a>
                             @endif
                         </div>
 
