@@ -1,5 +1,8 @@
 @extends('members.layouts.member-app')
+@section('extra-js')
+<script src="https://cdn.jwplayer.com/libraries/LbETsLcA.js"></script>
 
+@endsection
 @section('content')
 <div class="main-content">
     <div class="page-content">
