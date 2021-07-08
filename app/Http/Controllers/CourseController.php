@@ -98,4 +98,22 @@ class CourseController extends Controller
         $course = Course::where('id', $id)->first();
         return view('members.courseview', compact('course','type'));
     }
+
+    public function deleteCourse(Request $request)
+    {
+        $id = $request->id;
+        $delete_course = Course::where('id',$id)->delete();
+        if($delete_course){
+            $notification = array(
+                'message' => 'Course Deleted Successfully!',
+                'alert-type' => 'success'
+            );
+            return back()->with($notification);
+        }
+        $notification = array(
+            'message' => 'Course Can\'t be Deleted!',
+            'alert-type' => 'error'
+        );
+        return back()->with($notification);
+    }
 }

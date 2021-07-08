@@ -96,6 +96,7 @@ Route::get('/exam', 'ExamController@index')->name('exam');
 Route::post('/exam', 'ExamController@store');
 Route::post('edit/exam/{id}', 'ExamController@update');
 Route::post('delete/exam', 'ExamController@deleteExam');
+Route::post('delete/course', 'CourseController@deleteCourse');
 Route::post('/add/result', 'TestController@addResult');
 Route::get('/view/result/{id}', 'TestController@viewResult');
 

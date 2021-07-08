@@ -264,7 +264,7 @@
             function deleteStream(id)
             {
                 swal({
-                    title: "Are you sure you want to delete this stream?",
+                    title: "Are you sure you want to delete this course?",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -273,7 +273,7 @@
                     if (delete_stream) {
                         let _token   = $('meta[name="csrf-token"]').attr('content');
                         $.ajax({
-                            url: "/delete/stream",
+                            url: "/delete/course",
                             type:"POST",
                             data:{
                               id:id,
