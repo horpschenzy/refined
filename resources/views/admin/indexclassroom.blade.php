@@ -41,8 +41,8 @@
                                             @elseif ($type == 'Vimeo')
                                                 <iframe src="{{ $livestream->vimeo_url }}" title="{{ $livestream->event_name }}" allowfullscreen></iframe>
                                             @elseif ($type == 'Mixlr')
-                                                 {{-- <iframe src="{{ $livestream->mixlr_url }}" title="{{ $livestream->event_name }}" width="100%" height="180px" scrolling="no" frameborder="no" marginheight="0" marginwidth="0"></iframe> --}}
-                                                <div id="player"></div>
+                                                 <iframe src="{{ $livestream->mixlr_url }}" title="{{ $livestream->event_name }}" width="100%" height="180px" scrolling="no" frameborder="no" marginheight="0" marginwidth="0"></iframe>
+                                                {{-- <div id="player"></div>
                                                 <script type="text/javascript">
                                                     var playerInstance = jwplayer("player");
                                                     playerInstance.setup({
@@ -56,7 +56,7 @@
                                                         width: 480,
                                                         height: 40
                                                     });
-                                                </script>
+                                                </script> --}}
                                             @endif
                                         </div>
                                         @else
