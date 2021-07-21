@@ -29,7 +29,15 @@ class FrontendController extends Controller
                 User::where('id',Auth::id())->update(['encrypt' => NULL]);
             }
             if($usertype == 'user'){
-                return redirect()->route('member.dashboard')->with($notification);
+                if (auth()->user()->application->status == 'approved') {
+                    return redirect()->route('member.dashboard')->with($notification);
+                }
+                $notification = array(
+                    'message' => 'Account Disabled, kindly contact the admin!',
+                    'alert-type' => 'error'
+                );
+                return redirect()->back()
+                    ->with($notification);
             }else{
                 return redirect()->route('dashboard')->with($notification);
             }
