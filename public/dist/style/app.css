@@ -105,14 +105,19 @@ body ::selection {
   color: #fff;
   background-color: #1cbac8;
 }
-
-p, h1 {
+.fw-300 {
+    font-weight: 300;
+}
+.display-5 {
+    font-size: 2.5rem;
+}
+p {
   font-family: 'Open Sans';
   color: #fff;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   letter-spacing: 1px;
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: 300;
+  font-size: 16px;
   color: #282828;
 }
 
@@ -184,18 +189,20 @@ p.paragraph {
 }
 
 .btn-primary {
-  background-color: #CD9C5E;
+  background-color: #FEB45C;
+  /* background-color: #CD9C5E; */
 }
 
 .btn .btn-custom {
     color: #fff;
-    border-color: #CD9C5E;
-    background-color: #CD9C5E;
+    border-color: #FEB45C;
+    background-color: #FEB45C;
   }
 
 .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
   /* background-color: #14a7b4; */
-  background-color: #a37941;
+  background-color: #1b2949;
+  border: 2px solid #ffffff;
 }
 
 .btn-link {
@@ -203,22 +210,25 @@ p.paragraph {
 }
 
 .btn-link:hover, .btn-link:active, .btn-link:focus {
-  color: #a37941;
+  color: #1b2949;
 }
 
 .btn-secondary {
   font-family: 'Open Sans';
-  color: #fff;
-  text-transform: capitalize;
+  color: #1b2949;
+  /* text-transform: capitalize; */
   letter-spacing: 1px;
   font-weight: 400;
   font-size: 14px;
-  color: #a37941;
+  border: 2px solid #1b2949;
+  background-color: none;
 }
 
 .btn-secondary:hover, .btn-secondary:active, .btn-secondary:focus {
-  color: #a37941;
-  background-color: #fbfbfb;
+  color: #ffff;
+  background-color: #1b2949;
+  border: none;
+
 }
 
 .btn-danger {
@@ -577,7 +587,7 @@ button {
 
 .navbar {
   padding: 0;
-  background-color: #fff;
+  background-color: #1b2949;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.04);
 }
 
@@ -3185,8 +3195,8 @@ button {
 }
 
 #price5 .price .price-footer {
-  background-color: #fafafa;
-  border-top: 1px solid #eaeaea;
+  background-color: #1b2949;
+  border-top: 5px solid #FEB45C;
   padding: 50px 0;
   display: flex;
 }
@@ -3265,9 +3275,10 @@ button {
 }
 
 #footer2 {
-  padding: 60px;
-  background-color: #fff;
-  border-top: 1px solid #eaeaea;
+  padding: 50px;
+  background-color: #1b2949;
+  border-top: 5px solid #FEB45C;
+  color: #ffffff;
 }
 
 #footer2 .copy {
@@ -3276,10 +3287,11 @@ button {
 
 #footer2 .copy p {
   margin-top: 10px;
+  color: #ffffff;
 }
 
 #footer2 .copy p a {
-  color: #730e6f;
+  color: #FEB45C;
 
 }
 
