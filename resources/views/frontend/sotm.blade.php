@@ -18,7 +18,7 @@
             <form action="" method="POST">
                 @csrf
                 <label for="ref">Registration Number</label>
-                <input type="text" placeholder="REF/2021/0001">
+                <input type="text" placeholder="REF/2022/0001">
                 <label for="email">Email Address</label>
                 <input type="email" placeholder="example@gmail.com">
                 <button type="submit" class="btn btn-primary btn-sh-primary ">join us</button>

@@ -8,7 +8,7 @@
         </div>
         <div class="col-lg-6">
           <div class="copy">
-            <p>&copy; 2021 REFINED is Proudly Powered By <a href="https://segunobadje.org">SOTM Patners</a></p>
+            <p>&copy; 2022 REFINED is Proudly Powered By <a href="https://segunobadje.org">SOTM Patners</a></p>
           </div>
         </div>
         <div class="col-lg-3">
