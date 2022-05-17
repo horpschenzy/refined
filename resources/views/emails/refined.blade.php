@@ -107,7 +107,7 @@ padding:15px 30px!important;
 <td align="left" style="padding:0;Margin:0;padding-bottom:5px;padding-top:20px"><h3 style="Margin:0;line-height:22px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;font-style:normal;font-weight:bold;color:#333333">OFFER OF ADMISSION,</h3></td>
 </tr>
 <tr style="border-collapse:collapse">
-<td align="left" style="padding:0;Margin:0;padding-bottom:10px;padding-top:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify">Sequel to your application, the REFINED mentoring School is offering you admission to the REFINED 2021 Online Mentoring Course for Women In Ministry. This 3-month course starts on the 10th of June to the 19th of September, 2021. </p></td>
+<td align="left" style="padding:0;Margin:0;padding-bottom:10px;padding-top:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify">Sequel to your application, the REFINED mentoring School is offering you admission to the REFINED {{date('Y')}} Online Mentoring Course for Women In Ministry. This 3-month course starts on the 10th of June to the 19th of September, {{date('Y')}}. </p></td>
 </tr>
 <tr style="border-collapse:collapse">
 <td style="padding:0;Margin:0;padding-top:5px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:justify">This admission is offered to you after a careful review of your application. As part of our requirements for processing your registration for the course, we expect that you agree to the Terms and Condition of the School.</p></td>
@@ -118,7 +118,7 @@ padding:15px 30px!important;
 
 <tr style="border-collapse:collapse">
 <td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px">Please note that by creating an account with us, you accept the terms and conditions stated above. <br><br> 
-	Please click the button below to <strong>ACCEPT</strong> or <strong>REJECT</strong> the offer of admission on or before Thursday, 27th May 2021. Failure to do this will mean forfeiture of your admission. <br><br>
+	Please click the button below to <strong>ACCEPT</strong> or <strong>REJECT</strong> the offer of admission on or before Thursday, 27th May {{date('Y')}}. Failure to do this will mean forfeiture of your admission. <br><br>
 
 	Upon acceptance, expect to be sent an onboarding mail which will contain your Registration number, Family circle name and a telegram invite link to join your Family Circle. <br>
 No mail from us in box? Check Promotions/Spam. <br><br>

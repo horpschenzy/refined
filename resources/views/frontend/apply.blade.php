@@ -8,13 +8,13 @@
         <div class="row justify-content-center">
           <div class="col-md-8">
             <div class="section-head text-center">
-              <h1>Application Closed</h1>
-              <p>Application for Refined 2021 is now closed</p>
-              {{-- <p>Book your slot in the up coming 2021 Refined for Women by Pastor (Dr.) Funke Obadje. We thank God 2020 was glorious, we believe God for much more in 2021</p> --}}
+              {{-- <h1>Application Closed</h1>
+              <p>Application for Refined 2021 is now closed</p> --}}
+              <p>Book your slot in the up coming 2022 Refined for Women by Pastor (Dr.) Funke Obadje. We thank God 2021 was glorious, we believe God for much more in 2022</p>
             </div>
           </div>
         </div>
-        {{-- <div class="row justify-content-center">
+        <div class="row justify-content-center">
           <div class="col-md-8">
               <form action="/register" method="POST" enctype="multipart/form-data">
                   @csrf
@@ -51,6 +51,7 @@
                  <div class="form">
                     <label for="exampleFormControlSelect1">Marital status</label>
                     <select class="form-control"  name="maritalstatus" required>
+                      <option value="">Select Marital Status</option>
                       <option value="single">Single</option>
                       <option value="married">Married</option>
                       <option value="divorced">Divorced</option>
@@ -60,6 +61,7 @@
                   <div class="form ">
                     <label for="exampleFormControlSelect1">Gender</label>
                     <select class="form-control form-control-lg" required name="gender">
+                      <option value="">Select Gender</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                     </select>
@@ -67,6 +69,7 @@
                   <div class="form">
                     <label for="sel1">Age range</label>
                     <select class="form-control form-control-lg" required name="agerange">
+                      <option value="">Age</option>
                       <option value="10-18">10-18</option>
                       <option value="19-25">19-25</option>
                       <option value="26-34">26-34</option>
@@ -132,25 +135,25 @@
                         <label class="radio-inline">No<input style="margin-right: 5px;" type="radio" name="pastor_wife" value="no" required></label>
                     </div>
 
-                    <div class="section-head">
+                    {{-- <div class="section-head">
                         <hr>
                         <h1>QUESTIONS ABOUT REFINED</h1>
                         <hr>
-                    </div>
+                    </div> --}}
 
+                    <div class="form">
+                      <label for="sel1">Have you been denied admission for this REFINED before?</label>
+                      <label class="checkbox-inline">Yes<input style="margin-right: 5px;" name="denied_admission" type="radio" value="yes" required></label>
+                      <label class="checkbox-inline">No<input style="margin-right: 5px;" name="denied_admission"  type="radio" value="no" required></label>
+                    </div>
+                    <div class="form">
+                      <label for="year">If yes, what year?</label>
+                      <input type="text" class="form-control" name="yearofattendance" id="yearofattendance" value="{{ old('yearofattendance') }}">
+                    </div>
                     <div class="form-group">
                         <label for="sel1">Have you taken REFINED before?</label>
                         <label class="checkbox-inline">Yes<input style="margin-right: 5px;" name="take_refined" type="radio" value="yes" required></label>
                         <label class="checkbox-inline">No<input style="margin-right: 5px;" name="take_refined"  type="radio" value="no" required></label>
-                  </div>
-                    <div class="form">
-                        <label for="sel1">Have you been denied admission for this REFINED before?</label>
-                        <label class="checkbox-inline">Yes<input style="margin-right: 5px;" name="denied_admission" type="radio" value="yes" required></label>
-                        <label class="checkbox-inline">No<input style="margin-right: 5px;" name="denied_admission"  type="radio" value="no" required></label>
-                  </div>
-                  <div class="form">
-                    <label for="year">If yes, what year?</label>
-                    <input type="text" class="form-control" name="yearofattendance" id="yearofattendance" value="{{ old('yearofattendance') }}">
                   </div>
                   <div class="form-group">
                     <label for="sel1">Did you complete and graduate from REFINED?</label>
@@ -176,7 +179,7 @@
               </form>
 
           </div>
-        </div> --}}
+        </div>
       </div>
     </div>
 </div>
