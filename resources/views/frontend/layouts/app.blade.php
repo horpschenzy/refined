@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="etc/css/bootstrap.min.css">
   <link rel="stylesheet" href="dist/style/app.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
-  <title>REFINED 2021</title>
+  <title>REFINED {{ date('Y') }}</title>
 </head>
 <body>
 

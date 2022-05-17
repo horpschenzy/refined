@@ -115,13 +115,13 @@ padding:15px 30px 15px 30px!important;
 </p></td>
 </tr>
 <tr style="border-collapse:collapse">
-<td align="left" style="padding:0;Margin:0;padding-top:5px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px">Course Starts: <strong>10th June, 2021.</strong></p></td>
+<td align="left" style="padding:0;Margin:0;padding-top:5px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px">Course Starts: <strong>10th June, {{date('Y')}}.</strong></p></td>
 </tr>
 <tr style="border-collapse:collapse">
 <td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:center">Please submit questions to <strong>refinedcourse@gmail.com</strong> or <strong>+2348069457305</strong> (Telegram ONLY)</p></td>
 </tr>
 <tr style="border-collapse:collapse">
-<td align="left" style="padding:0;Margin:0;padding-top:40px"><h3 style="Margin:0;line-height:22px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;font-style:normal;font-weight:bold;color:#333333">Thank you.<br></h3><h3 style="Margin:0;line-height:22px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;font-style:normal;font-weight:bold;color:#333333">REFINED 2021 TEAM</h3></td>
+<td align="left" style="padding:0;Margin:0;padding-top:40px"><h3 style="Margin:0;line-height:22px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;font-style:normal;font-weight:bold;color:#333333">Thank you.<br></h3><h3 style="Margin:0;line-height:22px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:18px;font-style:normal;font-weight:bold;color:#333333">REFINED {{date('Y')}} TEAM</h3></td>
 </tr>
 </table></td>
 </tr>
