@@ -71,6 +71,7 @@ class ApplicationController extends Controller
             $picture->move(public_path().'/images/',$filename);
         }
 
+        $data['status'] = 'pending';
         $application = new Application($data);
         if($application->save()){
 
