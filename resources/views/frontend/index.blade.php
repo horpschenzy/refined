@@ -19,7 +19,7 @@
             <form action="/login" method="POST">
                 @csrf
                 <label for="ref">Registration Number</label>
-                <input type="text" placeholder="REF/2021/0001" name="username" required>
+                <input type="text" placeholder="REF/2022/0001" name="username" required>
                 <label for="Password">Password</label>
                 <input type="password" placeholder="Enter Password" name="password" required>
                 <button type="submit" class="btn btn-primary btn-sh-primary ">Login</button>
