@@ -49,7 +49,7 @@
                                                         primary: 'html5',
                                                         playlist: [{
                                                         sources: [{
-                                                            file: "https://edge.mixlr.com/channel/jokqn",
+                                                            file: "https://edge.mixlr.com/channel/kudjv",
                                                             type: 'mp3'
                                                         }]
                                                         }],
