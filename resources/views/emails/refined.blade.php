@@ -120,7 +120,7 @@ padding:15px 30px!important;
 <td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px">Please note that by creating an account with us, you accept the terms and conditions stated above. <br><br> 
 	Expect to be sent an onboarding mail which will contain your Registration number, Family circle name and a telegram invite link to join your Family Circle. <br>
 No mail from us in box? Check Promotions/Spam. <br><br>
-N.B: Download the Telegram and Whatsapp application in preparation for this process.
+N.B: Download the Telegram and Whatsapp application in preparation for this process and also Login to the website will be active on Monday, 13th June, {{date('Y')}}. Till then, don’t attempt to login to the website.
 <br><br>
 Please accept our hearty Congratulations! We hope to hear from you soon. 
 
