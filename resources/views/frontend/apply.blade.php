@@ -7,14 +7,14 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="section-head text-center">
-                            {{-- <h1>Application Closed</h1>
-              <p>Application for Refined 2022 is now closed</p> --}}
-                            <p>Book your slot in the upcoming 2022 Refined for Women in ministry by Pastor (Dr.) Funke
-                                Obadje. We thank God 2021 was glorious, we believe God for much more in 2022</p>
+                            <h1>Application Closed</h1>
+              <p>Application for Refined 2022 is now closed</p>
+                            {{-- <p>Book your slot in the upcoming 2022 Refined for Women in ministry by Pastor (Dr.) Funke
+                                Obadje. We thank God 2021 was glorious, we believe God for much more in 2022</p> --}}
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
+                {{-- <div class="row justify-content-center">
                     <div class="col-md-8">
                         <form action="/register" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -159,12 +159,6 @@
                                         name="pastor_wife" value="no" required></label>
                             </div>
 
-                            {{-- <div class="section-head">
-                        <hr>
-                        <h1>QUESTIONS ABOUT REFINED</h1>
-                        <hr>
-                    </div> --}}
-
                             <div class="form">
                                 <label for="sel1">Have you been denied admission for this REFINED before?</label>
                                 <label class="checkbox-inline">Yes<input style="margin-right: 5px;" name="denied_admission"
@@ -213,7 +207,7 @@
                         </form>
 
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
