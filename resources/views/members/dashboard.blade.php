@@ -43,7 +43,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12">
+                    {{-- <div class="col-xl-12">
                         <div class="card alert  alert-dismissible fade show">
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                             </button>
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div> <!-- end col -->
+                    </div> <!-- end col --> --}}
 
 
                     <div class="col-md-12 mb-5">
