@@ -43,7 +43,7 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-xl-12">
+                    <div class="col-xl-12">
                         <div class="card alert  alert-dismissible fade show">
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                             </button>
@@ -53,12 +53,12 @@
 
                                 <!-- 16:9 aspect ratio -->
                                 <div class="ratio ratio-21x9">
-                                    <iframe src="https://www.youtube.com/embed/ndmjc-m5upk" title="YouTube video"
+                                    <iframe src="https://www.youtube.com/embed/K6Zk4QlAAdo" title="YouTube video"
                                         allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
-                    </div> <!-- end col --> --}}
+                    </div> <!-- end col -->
 
 
                     <div class="col-md-12 mb-5">
