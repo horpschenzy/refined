@@ -29,7 +29,7 @@ Route::post('/admin/login', 'FrontendController@customlogin');
 Route::post('/login', 'FrontendController@customlogin');
 Route::post('/register', 'ApplicationController@store');
 Route::get('/about', 'FrontendController@about')->name('about');
-Route::get('/apply', 'FrontendController@apply')->name('apply');
+Route::get('/apply', 'FrontendController@secret')->name('apply');
 Route::get('/secret', 'FrontendController@secret')->name('secret');
 Route::get('/contact', 'FrontendController@contact')->name('contact');
 Route::get('/faq', 'FrontendController@faq')->name('faq');

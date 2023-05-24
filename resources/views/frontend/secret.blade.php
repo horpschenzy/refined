@@ -10,7 +10,7 @@
             <div class="section-head text-center">
               {{-- <h1>Application Closed</h1>
               <p>Application for Refined 2022 is now closed</p> --}}
-              <p>Book your slot in the up coming 2022 Refined for Women by Pastor (Dr.) Funke Obadje. We thank God 2021 was glorious, we believe God for much more in 2022</p>
+              <p>Book your slot in the up coming 2022 Refined for Women by Pastor (Dr.) Funke Obadje. We thank God 2022 was glorious, we believe God for much more in 2023</p>
             </div>
           </div>
         </div>
