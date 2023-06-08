@@ -60,13 +60,6 @@
                 <option value="Widow">Widow</option>
                 <option value="Single mom">Single mom</option>
               </select>
-              - Single but engaged
-- Single not engaged
-- Married
-- Divorced
-- Separated 
-- Widow
-- Single mom
             </div>
             <div class="form ">
               <label for="exampleFormControlSelect1">Gender</label>
