@@ -52,11 +52,21 @@
             <div class="form">
               <label for="exampleFormControlSelect1">Marital status</label>
               <select class="form-control" name="maritalstatus" required>
-                <option value="single">Single</option>
-                <option value="married">Married</option>
-                <option value="divorced">Divorced</option>
-                <option value="separated">Separated</option>
+                <option value="Single but engaged">Single but engaged</option>
+                <option value="Single not engaged">Single not engaged</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Separated">Separated</option>
+                <option value="Widow">Widow</option>
+                <option value="Single mom">Single mom</option>
               </select>
+              - Single but engaged
+- Single not engaged
+- Married
+- Divorced
+- Separated 
+- Widow
+- Single mom
             </div>
             <div class="form ">
               <label for="exampleFormControlSelect1">Gender</label>
