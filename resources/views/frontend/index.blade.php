@@ -52,7 +52,7 @@
                 <div class="col-10 col-sm-8 col-lg-5">
                     {{-- <img src="dist/images/refined-flier.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
                         width="400" height="400" loading="lazy" style="border-radius: 10px;"> --}}
-                    <img src="dist/images/refined-flier.jpg" class="d-block mx-lg-auto img-fluid" alt="Refined Flier"
+                    <img src="dist/images/refined-2023-web.jpg" class="d-block mx-lg-auto img-fluid" alt="Refined Flier"
                         width="100%" loading="lazy" style="border-radius: 10px;">
                 </div>
             </div>
@@ -113,10 +113,7 @@
                         </p>
 
                         <p>
-                            Towards the end of this course,you would be attending live teaching sessions with Pastor Funke
-                            and
-                            by the grace of God,it will be an empowering and destiny encountering prophetic moment where you
-                            will be prayed for and imparted for the assignment ahead.</p>
+                            At the end of this course, you would be attending an onsite retreat with Pastor Funke Obadje and by the grace of God, it will be an empowering and destiny encountering prophetic moment where you will be prayed for and imparted for the assignment ahead.</p>
                         </p>
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
