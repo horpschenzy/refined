@@ -177,8 +177,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Yajra\DataTables\ButtonsServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        // Mailjet\LaravelMailjet\MailjetServiceProvider::class,
-        // Mailjet\LaravelMailjet\MailjetMailServiceProvider::class,
+        Mailjet\LaravelMailjet\MailjetServiceProvider::class,
     ],
 
     /*
