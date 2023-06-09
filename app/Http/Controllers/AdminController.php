@@ -420,10 +420,10 @@ class AdminController extends Controller
             $details['password'] = strtolower($applicant->first()->lastname.$id);
             $this->email = $applicant->first()->email;
             $user->update(['email_code' => $details['code']]);
-            Mail::send('emails.refined', $details , function($message){
+            /* Mail::send('emails.refined', $details , function($message){
                 $message->to($this->email)
                         ->subject('Refined Acceptance Mail');
-            });
+            }); */
             $notification = array(
                 'message' => "Application Accepted Successfully.",
                 'alert-type' => 'success'

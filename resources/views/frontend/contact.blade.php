@@ -11,7 +11,7 @@
           <div class="col-md-8">
             <div class="section-head">
               <h1>Get in Touch</h1>
-              <p>Telegram Only: <strong>+2348069457305</strong></p>
+              <p>Telegram Only: <strong>+2347025041000</strong></p>
               <p>Email: <strong>refinedcourse@gmail.com</strong></p>
             </div>
           </div>
