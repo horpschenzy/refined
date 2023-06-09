@@ -42,7 +42,7 @@
                                         <th>Username</th>
                                         <th>Usertype</th>
                                         <th>Family Circle</th>
-                                        <th>Telegram Link</th>
+                                        <th>Whatsapp Link</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

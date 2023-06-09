@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="file-input" class="col-md-2 col-form-label">Telegram Link</label>
+                                <label for="file-input" class="col-md-2 col-form-label">Whatsapp Link</label>
                                 <div class="col-md-10">
                                     <input class="form-control" type="text" value="{{old('telegram_link')}}" name="telegram_link" id="text-input">
                                 </div>
@@ -104,7 +104,7 @@
                                         <th>Username</th>
                                         <th>Usertype</th>
                                         <th>Family Circle</th>
-                                        <th>Telegram Link</th>
+                                        <th>Whatsapp Link</th>
                                         <th>Co-ordinator</th>
                                         <th>Action</th>
                                     </tr>
@@ -228,7 +228,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
-                                                                <label for="file-input" class="col-md-4 col-form-label">Telegram Link</label>
+                                                                <label for="file-input" class="col-md-4 col-form-label">Whatsapp Link</label>
                                                                 <div class="col-md-8">
                                                                     <input class="form-control" type="text" value="{{isset($user->user->telegram_link)?$user->user->telegram_link:''}}" name="telegram_link" id="text-input">
                                                                 </div>
