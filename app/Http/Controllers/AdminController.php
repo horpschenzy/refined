@@ -437,7 +437,6 @@ class AdminController extends Controller
     {
         $applicants = Application::with('circle')->with('user')->where('add_to_count', 1)->where('status', 'approved')->paginate(25);
         $family_circles = User::select('family_circle', 'id')->whereNotNull('family_circle')->get();
-        // dd($applicants);
         return view('admin.approved', compact('applicants', 'family_circles'));
     }
 

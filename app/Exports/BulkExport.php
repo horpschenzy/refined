@@ -23,7 +23,6 @@ class BulkExport implements FromCollection, WithMapping, WithHeadings
     public function map($applicant): array
     {
         return [
-            $applicant->id,
             $applicant->firstname,
             $applicant->lastname,
             $applicant->user->reg_no,
@@ -40,7 +39,6 @@ class BulkExport implements FromCollection, WithMapping, WithHeadings
     public function headings(): array
     {
         return [
-            'Id',
             'First Name',
             'Last Name',
             'Red No.',
