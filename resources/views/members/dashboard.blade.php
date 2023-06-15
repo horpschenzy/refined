@@ -146,12 +146,6 @@
                                             </td>
                                             <td>10:30pm-12:30am</td>
                                         </tr>
-                                        {{-- <tr>
-                                            <th scope="row">Special Meetings Married and Singles special </th>
-                                            <td>Monday</td>
-                                            <td>06/09/2021</td>
-                                            <td>6pm -7pm</td>
-                                        </tr> --}}
                                         <tr>
                                             <th scope="row">Time-out with PFO</th>
                                             <td>Monday</td>

@@ -300,62 +300,50 @@
                                             <tr>
                                                 <th scope="row">Main Teachings</th>
                                                 <td>Thursdays</td>
-                                                <td>June - 16th , 23rd, 30th <br>
-                                                    July – 7th, 14th, 21st , 28th <br>
-                                                    August - 4th, 11th, 18th, 25th <br>
-                                                    September – 1st, 8th
+                                                <td>June - 29th <br>
+                                                    July – 6th, 13th, 20th, 27th <br>
+                                                    August - 3rd, 10th, 17th, 24th, 31st <br>
                                                 </td>
                                                 <td>6pm-8pm</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Seminars/Book Review</th>
                                                 <td>Mondays</td>
-                                                <td>June – 20th, 27th <br>
-                                                    July - 4th, 11th, 18th, 25th <br>
-                                                    August – 1st, 8th, 15th, 22rd. 29th <br>
-                                                    September - 5th, 12th
+                                                <td>July - 3th, 10th, 17th, 24th, 31st <br>
+                                                    August – 7th, 14th, 21st, 28th <br>
+                                                    September - 4th
                                                 </td>
                                                 <td>6pm-7pm</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Vigils</th>
                                                 <td>Fridays</td>
-                                                <td>1st Schedule <br>
-                                                    June – 17th & 24th <br>
-                                                    July – 1st, 15th & 22nd
+                                                <td>June – 30th <br />
+                                                    July – 7th, 21st, 28th
                                                 </td>
                                                 <td>12am-12:30am</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Vigils</th>
                                                 <td>Fridays</td>
-                                                <td>2nd Schedule <br>
-                                                    July – 29th
-                                                    August – 5th, 19th, 26th
-                                                    September – 3rd
+                                                <td> August – 4th, 18th, 25th <br>
+                                                    September – 1st
                                                 </td>
-                                                <td>12am-1:00am</td>
+                                                <td>12:00am-1:00am</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Vigils</th>
                                                 <td>Fridays</td>
-                                                <td>3rd Schedule (2nd Fridays of the month) <br>
-                                                    July – 8th
-                                                    August – 12th
-                                                    September – 9th
+                                                <td> July - 14th <br />
+                                                    August – 10th <br>
+                                                    September – 10th
                                                 </td>
-                                                <td>11:00am-1:00am</td>
+                                                <td>10:30pm-12:30am</td>
                                             </tr>
-                                            {{-- <tr>
-                                                <th scope="row">Special Meetings Married and Singles special </th>
-                                                <td>Monday</td>
-                                                <td>06/09/2021</td>
-                                                <td>6pm -7pm</td>
-                                            </tr> --}}
                                             <tr>
-                                                <th scope="row">Time out with Pastor Funke Obadje</th>
-                                                <td>Thursday</td>
-                                                <td>08/09/2022</td>
+                                                <th scope="row">Time-out with PFO</th>
+                                                <td>Monday</td>
+                                                <td>11th September</td>
                                                 <td>6pm -8pm</td>
                                             </tr>
                                         </tbody>
