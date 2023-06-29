@@ -43,23 +43,24 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col-xl-12">
+                <div class="col-xl-12">
                     <div class="card alert  alert-dismissible fade show">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>
                         <div class="card-body">
                             <h4 class="card-title">Welcome Message</h4>
-                            <p class="card-title-desc">Opening words from the convener REFINED.</p>
+                            <p class="card-title-desc">Opening words from the convener REFINED</p>
 
                             <!-- 16:9 aspect ratio -->
                             <div class="ratio ratio-21x9">
-                                <iframe src="https://player.vimeo.com/video/721080624?h=2290496b99" width="640"
-                                    height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
-                                    allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/UwxrUNwlonE" width="640"
+                                    height="360" title="Opening words from the convener REFINED" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
+
+                
                 <!-- end col -->
 
 
