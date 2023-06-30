@@ -84,6 +84,7 @@ class FrontendController extends Controller
 
     public function secret()
     {
+        abort(401);
         return view('frontend.secret');
     }
 

@@ -43,7 +43,7 @@
                     <p>Join the thousands of women who are taking over the world for God through their
                         various ministries</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <a href="{{ route('apply') }}" class="btn btn-primary btn-lg px-4 me-md-2 w-100">Apply </a>
+                        {{-- <a href="{{ route('apply') }}" class="btn btn-primary btn-lg px-4 me-md-2 w-100">Apply </a> --}}
                         <a href="{{ route('memberslogin') }}" class="btn btn-secondary btn-lg px-4 me-md-2 w-100">Login
                         </a>
                     </div>
@@ -117,7 +117,7 @@
                         </p>
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <a href="{{ route('apply') }}" class="btn btn-primary btn-lg px-4 me-md-2 w-100">Apply </a>
+                        {{-- <a href="{{ route('apply') }}" class="btn btn-primary btn-lg px-4 me-md-2 w-100">Apply </a> --}}
                     </div>
                 </div>
             </div>
