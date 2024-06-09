@@ -52,7 +52,7 @@
                 <div class="col-10 col-sm-8 col-lg-5">
                     {{-- <img src="dist/images/refined-flier.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
                         width="400" height="400" loading="lazy" style="border-radius: 10px;"> --}}
-                    <img src="dist/images/refined-2023-web.jpg" class="d-block mx-lg-auto img-fluid" alt="Refined Flier"
+                    <img src="dist/images/refined-24-web.jpg" class="d-block mx-lg-auto img-fluid" alt="Refined Flier"
                         width="100%" loading="lazy" style="border-radius: 10px;">
                 </div>
             </div>
