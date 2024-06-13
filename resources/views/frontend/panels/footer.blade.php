@@ -33,7 +33,7 @@
             </div>
             <div class="col-lg-9">
                 <div class="copy">
-                    <p>&copy; 2023 REFINED is Proudly Powered By <a href="https://segunobadje.org">SOTM Partners</a></p>
+                    <p>&copy; {{ date('Y') }} REFINED is Proudly Powered By <a href="https://segunobadje.org">SOTM Partners</a></p>
                 </div>
             </div>
             {{-- <div class="col-lg-3">

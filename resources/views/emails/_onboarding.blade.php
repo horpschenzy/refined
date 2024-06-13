@@ -115,7 +115,7 @@ padding:15px 30px 15px 30px!important;
 </p></td>
 </tr>
 <tr style="border-collapse:collapse">
-<td align="left" style="padding:0;Margin:0;padding-top:5px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px">Course Starts: <strong>Thursday, 16th June, {{date('Y')}}.</strong></p></td>
+<td align="left" style="padding:0;Margin:0;padding-top:5px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px">Course Starts: <strong>Thursday, 27th June, {{date('Y')}}.</strong></p></td>
 </tr>
 <tr style="border-collapse:collapse">
 <td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px;text-align:center">Please submit questions to <strong>refinedcourse@gmail.com</strong> or <strong>+2347025041000</strong> (WhatsApp ONLY)</p></td>

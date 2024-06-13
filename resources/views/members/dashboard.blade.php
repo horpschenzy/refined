@@ -106,52 +106,49 @@
                                     <tbody>
                                         <tr>
                                             <th scope="row">Main Teachings</th>
-                                            <td>Thursdays</td>
-                                            <td>June - 29th <br>
-                                                July – 6th, 13th, 20th, 27th <br>
-                                                August - 3rd, 10th, 17th, 24th, 31st <br>
+                                            <td>Thursday</td>
+                                            <td>June: 27th <br>
+                                                July: 4th, 11th, 18th, 25th<br>
+                                                August: 1st, 8th, 15th, 22nd, 29th<br>
+                                                September: 5th <br>
                                             </td>
                                             <td>6pm-8pm</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Seminars/Book Review</th>
-                                            <td>Mondays</td>
-                                            <td>July - 3th, 10th, 17th, 24th, 31st <br>
-                                                August – 7th, 14th, 21st, 28th <br>
-                                                September - 4th
+                                            <th scope="row">Seminar/Book Review</th>
+                                            <td>Monday</td>
+                                            <td>July: 1st, 8th, 14th, 22nd, 29th<br>
+                                                August: 5th, 12th, 19th, 26th<br>
+                                                September: 2nd, 9th
                                             </td>
                                             <td>6pm-7pm</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Vigils</th>
-                                            <td>Fridays</td>
-                                            <td>June – 30th <br />
-                                                July – 7th, 21st, 28th
+                                            <th scope="row" rowspan="2">Vigil</th>
+                                            <td rowspan="2">Friday</td>
+                                            <td>June: 28th <br>
+                                                July: 5th, 12th, 19th, 26th <br>
+                                                August: 2nd  <br>
                                             </td>
                                             <td>12am-12:30am</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Vigils</th>
-                                            <td>Fridays</td>
-                                            <td> August – 4th, 18th, 25th <br>
-                                                September – 1st
+                                            <td>August: 9th, 16th, 23rd, 30th<br>
+                                                September: 6th, 13th<br>
+                                                August: 2nd  <br>
                                             </td>
                                             <td>12:00am-1:00am</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Vigils</th>
-                                            <td>Fridays</td>
-                                            <td> July - 14th <br />
-                                                August – 10th <br>
-                                                September – 10th
-                                            </td>
-                                            <td>10:30pm-12:30am</td>
+                                            <th scope="row" rowspan="2">Special Meeting</th>
+                                            <td>Special Seminar</td>
+                                            <td>July 15th </td>
+                                            <td></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Time-out with PFO</th>
-                                            <td>Monday</td>
-                                            <td>11th September</td>
-                                            <td>6pm -8pm</td>
+                                            <td>Time-out with PFO</td>
+                                            <td></td>
+                                            <td></td>
                                         </tr>
                                     </tbody>
                                 </table>
