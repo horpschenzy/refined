@@ -107,47 +107,46 @@
                                         <tr>
                                             <th scope="row">Main Teachings</th>
                                             <td>Thursday</td>
-                                            <td>June: 27th <br>
-                                                July: 4th, 11th, 18th, 25th<br>
-                                                August: 1st, 8th, 15th, 22nd, 29th<br>
-                                                September: 5th <br>
+                                            <td>June: 19th, 26th<br>
+                                                July: 3rd ,10th ,17th,24th ,31st<br>
+                                                August: 7th, 14th, 21st, 28th<br>
+                                                September: 4th <br>
                                             </td>
-                                            <td>6pm-8pm</td>
+                                            <td>6:00pm-8:00pm</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Seminar/Book Review</th>
                                             <td>Monday</td>
-                                            <td>July: 1st, 8th, 14th, 22nd, 29th<br>
-                                                August: 5th, 12th, 19th, 26th<br>
-                                                September: 2nd, 9th
+                                            <td>June: 23rd, 30th <br>
+                                                July: 7th, 14th, 21st, 28th<br>
+                                                August: 4th,11th,18th,25th<br>
+                                                September: 1st, 8th
                                             </td>
-                                            <td>6pm-7pm</td>
+                                            <td>6:00pm-7:00pm</td>
                                         </tr>
                                         <tr>
                                             <th scope="row" rowspan="2">Vigil</th>
                                             <td rowspan="2">Friday</td>
-                                            <td>June: 28th <br>
-                                                July: 5th, 12th, 19th, 26th <br>
-                                                August: 2nd  <br>
+                                            <td>June: 20th, 27th<br>
+                                                July: 4th,11th,18th,25th<br>
                                             </td>
-                                            <td>12am-12:30am</td>
+                                            <td>12:00am-12:30am</td>
                                         </tr>
                                         <tr>
-                                            <td>August: 9th, 16th, 23rd, 30th<br>
-                                                September: 6th, 13th<br>
-                                                August: 2nd  <br>
+                                            <td>August: 1st, 8th,15th,22rd,29th<br>
+                                                September: 5th<br>
                                             </td>
                                             <td>12:00am-1:00am</td>
                                         </tr>
                                         <tr>
                                             <th scope="row" rowspan="2">Special Meeting</th>
-                                            <td>Special Seminar</td>
-                                            <td>July 15th </td>
+                                            <td>Time out with PFO</td>
+                                            <td></td>
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td>Time-out with PFO</td>
-                                            <td></td>
+                                            <td>Close out retreat</td>
+                                            <td>September 18th to 20th</td>
                                             <td></td>
                                         </tr>
                                     </tbody>
