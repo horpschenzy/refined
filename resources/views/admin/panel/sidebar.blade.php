@@ -53,7 +53,7 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-account-multiple"></i>
-                        <span>Family Cirle</span>
+                        <span>Family Circle</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('family')}}">Family List</a></li>
