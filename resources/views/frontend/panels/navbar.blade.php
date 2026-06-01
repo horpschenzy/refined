@@ -57,7 +57,7 @@
                  </li>
              </ul>
 
-             {{-- <a href="{{ route('apply') }}" class="btn btn-primary">Apply</a> --}}
+             <a href="{{ route('apply') }}" class="btn btn-primary">Apply</a>
 
          </div>
      </div>

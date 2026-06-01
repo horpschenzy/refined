@@ -52,7 +52,7 @@
                 <div class="col-10 col-sm-8 col-lg-5">
                     {{-- <img src="dist/images/refined-flier.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
                         width="400" height="400" loading="lazy" style="border-radius: 10px;"> --}}
-                    <img src="dist/images/refined-2025.jpg" class="d-block mx-lg-auto img-fluid" alt="Refined Flier"
+                    <img src="dist/images/refined-2026.jpg" class="d-block mx-lg-auto img-fluid" alt="Refined Flier"
                         width="100%" loading="lazy" style="border-radius: 10px;">
                 </div>
             </div>
@@ -68,52 +68,36 @@
                         style="background-color: #1b2949; color: #ffffff; border-bottom :5px solid #FEB45C;">About Refined
                     </h1>
                     <div class="text-justify mb-5">
-                        <p class="mb-3">REFINED is an online mentoring platform for Women in Ministry. </p>
-
-                        <p class="mb-3">It is a three-month grooming and preparation course, a mentoring program
-                            for
-                            women in ministry
-                            who want to be better equipped for the assignment that God has called them to and this platform
-                            is
-                            facilitated by Pastor Funke Obadje. </p>
-
-                        <p class="mb-3"> “Having gotten countless calls and requests from women who desire to be
-                            mentored and even
-                            mentored a few personally along the lines of ministry, God laid it on my heart to put together a
-                            platform where women who desire to be effective in ministry, women who have questions in their
-                            heart
-                            concerning ministry and balancing it with the home front can get answers to those questions”,
-                            says
-                            Pastor Funke Obadje. </p>
-
-                        <p class="mb-3">Hence, the REFINED course and mentoring program.This three months
-                            intensive
-                            online course is a
-                            catalyst to jump start and refine you into a thoroughly furnished minister, effective in this
-                            day.
-                        </p>
-
-                        <p class="mb-3">This platform will expose you to powerful teachings,thought provoking
-                            seminars
-                            and assignments
-                            that will help you unearth the treasures that lie within you and build capacity for your
-                            assignment.
-                        </p>
-
-                        <p class="mb-3"> During this course,you will be required to attend all teachings which
-                            would
-                            be made available
-                            in audio and video format online, at the end of which there will be a take home assignment to be
-                            submitted at the end of the week. All these would be done online.</p>
+                        <p class="mb-3">REFINED is an online mentoring platform for Women.</p>
 
                         <p class="mb-3">
-                            <em>So, are you a woman with a call upon her life? | Are you a woman in ministry?
-                                | Do you desire to be an effective minister? | Then, this platform is for you.
+                            It is a three-month grooming and preparation course, a mentoring program for women who want to be better equipped for the assignment that God has called them to and this platform is facilitated by Pastor Funke Obadje.
+                        </p>
+
+                        <p class="mb-3">
+                            “Having gotten countless calls and requests from women who desire to be mentored and even mentored a few personally along the lines of life and ministry, God laid it on my heart to put together a platform where women who desire to be effective in life and ministry, women who have questions in their heart concerning life, ministry and balancing it with the home front can get answers to those questions”, says Pastor Funke Obadje.
+                        </p>
+
+                        <p class="mb-3">
+                            Hence, the REFINED course and mentoring program.This three months intensive online course is a catalyst to jump start and refine you into a thoroughly furnished woman, effective in this day.
+                        </p>
+
+                        <p class="mb-3">
+                            This platform will expose you to powerful teachings,thought provoking seminars and assignments that will help you unearth the treasures that lie within you and build capacity for your assignment.
+                        </p>
+
+                        <p class="mb-3">
+                            During this course,you will be required to attend all teachings which would be made available in audio and video format online, at the end of which there will be a take home assignment to be submitted at the end of the week. All these would be done online.
+                        </p>
+
+                        <p class="mb-3">
+                            <em>
+                                So, are you a woman with a call upon her life? | Do you desire to be effective in that which God has called you to do? | Then, this platform is for you!
                             </em>
                         </p>
 
                         <p>
-                            At the end of this course, you would be attending an onsite retreat with Pastor Funke Obadje and by the grace of God, it will be an empowering and destiny encountering prophetic moment where you will be prayed for and imparted for the assignment ahead.</p>
+                            At the end of this course, you would be attending an onsite retreat with Pastor Funke Obadje and by the grace of God, it will be an empowering and destiny defining prophetic moment where you will be prayed for and imparted for the assignment ahead.
                         </p>
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
