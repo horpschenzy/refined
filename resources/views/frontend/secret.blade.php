@@ -180,16 +180,16 @@
               <input type="text" class="form-control" name="yearofattendance" id="yearofattendance"
                 value="{{ old('yearofattendance') }}">
             </div>
-            <div class="form-group">
+            <div class="form-group" id="graduate_refined_section" style="display:none;">
               <label for="sel1" class="font-weight-bold mt-3">Did you complete and graduate from REFINED?</label> <br />
               <label class="checkbox-inline text-center">Yes<input style="margin-right: 5px;" name="graduate_refined" type="radio"
-                  value="yes" required></label>
+                  value="yes"></label>
               <label class="checkbox-inline text-center">No<input style="margin-right: 5px;" name="graduate_refined" type="radio"
-                  value="no" required></label>
+                  value="no"></label>
             </div>
-            <div class="form">
+            <div class="form" id="retake_section" style="display:none;">
               <label for="church" class="font-weight-bold mt-3">Why do you want to retake REFINED?</label>
-              <input type="text" class="form-control" name="retake" id="church" value="{{ old('retake') }}" required>
+              <input type="text" class="form-control" name="retake" id="church" value="{{ old('retake') }}">
             </div>
             <div class="form">
               <label for="church" class="font-weight-bold mt-3">State your expectation from the course </label>
@@ -213,5 +213,17 @@
 </div>
 
 
+
+@push('stripts')
+<script>
+  document.querySelectorAll('input[name="take_refined"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      var show = this.value === 'yes';
+      document.getElementById('graduate_refined_section').style.display = show ? '' : 'none';
+      document.getElementById('retake_section').style.display = show ? '' : 'none';
+    });
+  });
+</script>
+@endpush
 
 @endsection
